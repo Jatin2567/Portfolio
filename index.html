@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jatin Aggarwal — Software Engineer (Systems, AI & Voice)</title>
-  <meta name="description" content="I build and document software systems across distributed storage, developer tooling, data preparation, browser-based AI, full-stack web engineering, and IVR systems.">
+  <title>Jatin Aggarwal — Software Engineer</title>
+  <meta name="description" content="Jatin Aggarwal’s portfolio: web development, AI tools, voice interfaces, and distributed systems. Explore selected projects, experience, and skills.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=zoom_v5">
+  <link rel="stylesheet" href="style.css?v=content_v6">
 </head>
-<body class="palette-warm">
+<body class="palette-warm"><a class="skip-link" href="#projects">Skip to selected work</a>
   <!-- Interactive 3D WebGL Background Canvas with Soft Focus -->
-  <canvas id="tech3dCanvas" class="tech-3d-canvas"></canvas>
+  <canvas id="tech3dCanvas" class="tech-3d-canvas" aria-hidden="true"></canvas><div class="studio-grid" aria-hidden="true"></div>
 
   <!-- Organic Warm Gradients for Visual Depth -->
   <div class="warm-glow glow-top"></div>
@@ -26,50 +26,48 @@
       <a href="#" class="brand-logotype">
         <span class="brand-initial">Jatin Aggarwal</span>
         <span class="brand-status" id="brandStatusBadge" title="Live Delhi NCR Availability Clock">
-          <span class="status-pulse-dot"></span>
           <span id="headerLiveClock">03:25 PM IST</span>
         </span>
       </a>
 
       <!-- Floating Capsule Pill Navigation -->
       <nav class="capsule-nav">
-        <a href="#projects" class="capsule-item active">Selected Work</a>
+        <a href="#about" class="capsule-item active">About</a>
+        <a href="#projects" class="capsule-item">Selected Projects</a>
         <a href="#experience" class="capsule-item">Experience</a>
-        <a href="#leadership" class="capsule-item">Leadership</a>
-        <a href="#stack" class="capsule-item">Technical Stack</a>
-        <a href="#approach" class="capsule-item">Approach</a>
+        
+        
+        <a href="#stack" class="capsule-item">Skills</a>
         <a href="#contact" class="capsule-item">Contact</a>
       </nav>
 
       <div class="nav-right">
         <!-- Live Real-Time Viewer Metrics (Vercel & Global Telemetry) -->
-        <div id="navViewerBadge" class="nav-viewer-badge" tabindex="0" title="Live Vercel Edge Telemetry • Click to view">
-          <span class="live-dot-pulse"></span>
+        <div id="navViewerBadge" class="nav-viewer-badge"><button id="viewerToggle" class="viewer-trigger" aria-expanded="false" aria-controls="viewerPopover" aria-label="View site visits and technical details">
           <span class="viewer-count" id="navVisitorCount">—</span>
           <span class="viewer-tag">views</span>
-          <span class="viewer-sep">·</span>
+          <span class="viewer-sep">/</span>
           <span class="viewer-ping" id="navPingMs">—ms</span>
 
-          <!-- Real-Time Vercel & Engineering Telemetry Popover Detail Card -->
-          <div class="viewer-popover" id="viewerPopover">
+          </button><!-- Site statistics and browser details -->
+          <div class="viewer-popover" id="viewerPopover" hidden>
             <div class="popover-header">
-              <span class="popover-dot"></span>
-              <span class="popover-title">SYSTEM TELEMETRY &amp; LIVE OPS</span>
-              <span class="popover-status">LIVE</span>
+              <span class="popover-title">Site details</span>
+              <span class="popover-status" id="viewsDataStatus">Loading</span>
             </div>
             <div class="popover-metrics">
               <!-- Group 1: Vercel Edge & Visitor Runtime -->
               <div class="popover-group">
                 <div class="popover-group-title">
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 22 22 22"></polygon></svg>
-                  <span>EDGE &amp; VISITOR RUNTIME</span>
+                  <span>VISITS &amp; CONNECTION</span>
                 </div>
                 <div class="popover-row">
-                  <span class="popover-label">Verified Views:</span>
+                  <span class="popover-label">Total views:</span>
                   <span class="popover-val highlight-amber" id="popoverTotalViews">—</span>
                 </div>
                 <div class="popover-row">
-                  <span class="popover-label">Origin RTT Latency:</span>
+                  <span class="popover-label">Response time:</span>
                   <span class="popover-val highlight-emerald" id="popoverRtt">—ms</span>
                 </div>
                 <div class="popover-row">
@@ -77,7 +75,7 @@
                   <span class="popover-val" id="popoverEdge">Detecting Edge...</span>
                 </div>
                 <div class="popover-row">
-                  <span class="popover-label">Visitor Geolocation:</span>
+                  <span class="popover-label">Approx. location:</span>
                   <span class="popover-val" id="popoverVisitorLocation">Detecting City...</span>
                 </div>
                 <div class="popover-row">
@@ -90,18 +88,18 @@
               <div class="popover-group">
                 <div class="popover-group-title">
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                  <span>CLIENT HARDWARE &amp; GRAPHICS</span>
+                  <span>YOUR BROWSER</span>
                 </div>
                 <div class="popover-row">
                   <span class="popover-label">GPU Acceleration:</span>
                   <span class="popover-val popover-val-truncate" id="popoverGpu" title="Client GPU">WebGL Renderer</span>
                 </div>
                 <div class="popover-row">
-                  <span class="popover-label">Canvas Frame-Rate:</span>
+                  <span class="popover-label">Browser frame rate:</span>
                   <span class="popover-val highlight-sky" id="popoverFps">60.0 FPS</span>
                 </div>
                 <div class="popover-row">
-                  <span class="popover-label">Session Chronometer:</span>
+                  <span class="popover-label">Time on page:</span>
                   <span class="popover-val" id="popoverSession">00:00:00</span>
                 </div>
               </div>
@@ -110,7 +108,7 @@
               <div class="popover-group">
                 <div class="popover-group-title">
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                  <span>LIVE GITHUB PIPELINE</span>
+                  <span>GITHUB ACTIVITY</span>
                 </div>
                 <div class="popover-row">
                   <span class="popover-label">Latest Commit:</span>
@@ -130,15 +128,15 @@
               <div class="popover-group">
                 <div class="popover-group-title">
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                  <span>DELHI NCR TIME &amp; AVAILABILITY</span>
+                  <span>LOCAL TIME</span>
                 </div>
                 <div class="popover-row">
                   <span class="popover-label">Delhi Local Time:</span>
                   <span class="popover-val highlight-amber" id="popoverDelhiTime">03:25 PM IST</span>
                 </div>
                 <div class="popover-row">
-                  <span class="popover-label">Engineer Mode:</span>
-                  <span class="popover-val" id="popoverWorkMode">🟢 Available • Engineering</span>
+                  <span class="popover-label">Status:</span>
+                  <span class="popover-val" id="popoverWorkMode">Available // SDE &amp; Systems</span>
                 </div>
               </div>
             </div>
@@ -159,210 +157,189 @@
   </header>
 
   <!-- Hero Section: Editorial Statement & Verified Positioning (Uncluttered, Open Focus) -->
-  <section class="c4d-hero">
+  <section id="about" class="c4d-hero">
     <div class="hero-container hero-container-spacious">
       
       <!-- Left Editorial Statement (Spacious, Uncluttered) -->
       <div class="hero-editorial">
         <div class="tag-row">
-          <span class="palette-indicator"></span>
-          <span class="kicker-tag">SYSTEMS, AI &amp; VOICE ARCHITECT</span>
+          <span class="kicker-tag">[00 // HELLO, I’M JATIN]</span>
         </div>
         
-        <h1 class="c4d-main-headline">
-          Jatin Aggarwal
-        </h1>
-        <div class="hero-role-title">Software Engineer — Distributed Systems, AI &amp; Voice Engineering</div>
+        <h1 class="c4d-main-headline">Jatin Aggarwal<span class="hero-cursor" aria-hidden="true"></span></h1>
+        <div class="hero-role-title">Software Engineer</div>
 
         <p class="hero-subtext">
-          I design, build, and rigorously document production software systems across distributed consensus storage, high-throughput developer tooling, browser-based AI acceleration, and deterministic IVR voice architectures.
+          I create useful software—from AI tools and voice experiences to the systems that power them. Currently studying Computer Science at IILM University, Gurugram.
         </p>
 
         <div class="hero-badges-row">
           <div class="hero-edu-tag">
             <span>🎓 B.Tech. CSE (AI &amp; ML), 2023–2027 • IILM University, Gurugram · Delhi NCR, India</span>
           </div>
-          <div class="seeking-banner">
-            <span class="seeking-dot"></span>
-            <span>Open for Software Engineering, Distributed Systems, AI &amp; DevOps Internships</span>
+          <div class="seeking-banner"><span class="seeking-bracket">[STATUS]</span> <span>Open to software engineering internships</span>
           </div>
         </div>
 
         <div class="hero-button-group">
           <a href="#projects" class="btn-warm-primary">
-            <span>Explore Selected Work</span>
+            <span>View projects</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <button id="copyEmailHero" class="btn-warm-secondary" data-email="Jatin946work@yahoo.com">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>Copy Jatin946work@yahoo.com</span>
+            <span>Copy email</span>
           </button>
-          <a href="https://github.com/jatin946" target="_blank" rel="noopener" class="btn-hero-ghost">
+          <a href="https://github.com/Jatin2567" target="_blank" rel="noopener" class="btn-hero-ghost">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
             <span>GitHub</span>
           </a>
         </div>
       </div>
 
-    </div>
-
-    <!-- Elegant Subtle Hero Divider -->
+</div><!-- Elegant Subtle Hero Divider -->
     <div class="hero-proof-divider"></div>
 
     <!-- Full-Width 4-Column Proof Metrics Bar (Aspired Design) -->
     <div class="proof-bar-fullwidth">
       <div class="proof-card">
-        <span class="proof-card-title">DistributedKvServer</span>
-        <span class="proof-card-desc">Go · Raft Consensus · RocksDB · RPC</span>
+        <span class="proof-card-title">WeatherGPT</span>
+        <span class="proof-card-desc">Weather guidance through voice calls</span>
       </div>
       <div class="proof-card">
         <span class="proof-card-title">MariaDB-magics</span>
-        <span class="proof-card-desc">Top 59 Global Hackathon Winner Result</span>
+        <span class="proof-card-desc">Global hackathon · Top 59</span>
       </div>
       <div class="proof-card">
-        <span class="proof-card-title">28+ Shipped</span>
-        <span class="proof-card-desc">Web Deliverables &amp; Systems (Bluella)</span>
+        <span class="proof-card-title">28+ Web Deliverables</span>
+        <span class="proof-card-desc">Built during my internship at Bluella</span>
       </div>
       <div class="proof-card">
-        <span class="proof-card-title">Voice &amp; Edge AI</span>
-        <span class="proof-card-desc">Browser WebGPU &amp; Modular IVR Engine</span>
+        <span class="proof-card-title">Distributed KV Server</span>
+        <span class="proof-card-desc">A distributed storage project in Go</span>
       </div>
     </div>
   </section>
 
-  <!-- Selected Work (Verified Repositories, Prototypes & Architecture) -->
+  <!-- Selected Projects (Verified Repositories, Prototypes & Architecture) -->
   <section id="projects" class="showcase-section">
     <div class="section-wrap">
       
       <div class="section-title-box">
-        <span class="accent-sub">VERIFIED REPOSITORIES &amp; PROTOTYPES</span>
-        <h2 class="section-lead-title">Selected Work</h2>
-        <p class="section-lead-desc">Systems engineered with documented assumptions, verifiable code repositories, and rigorous scope definitions.</p>
+        <span class="accent-sub">01 // SELECTED PROJECTS</span>
+        <h2 class="section-lead-title">Selected Projects</h2>
+        <p class="section-lead-desc">Web applications, developer tools, and experiments in AI and distributed systems.</p>
       </div>
 
       <div class="projects-masonry">
 
-        <!-- 1. DistributedKvServer -->
-        <div class="card-item-warm">
+        <!-- 1. WeatherGPT (Broadened Two-Column Featured Project) -->
+        <div class="card-item-warm card-featured-broad">
           <div class="card-top-tag">
-            <span class="chip-warm chip-red">PUBLIC IMPLEMENTATION</span>
-            <span class="lang-code">Go · Raft · RocksDB · RPC</span>
-          </div>
-          <h3 class="card-headline">DistributedKvServer</h3>
-          <p class="card-body-text">
-            A distributed key-value store implementing:
-          </p>
-          <ul class="item-bullet-list">
-            <li>Leader election.</li>
-            <li>Replicated log handling.</li>
-            <li>Commit-state tracking.</li>
-            <li>Peer RPC communication.</li>
-            <li>RocksDB persistence.</li>
-            <li>In-memory storage fallback.</li>
-          </ul>
-          
-          <div class="project-meta-box">
-            <div class="meta-entry"><strong>Status:</strong> Public implementation.</div>
-            <div class="meta-entry"><strong>Evidence:</strong> Source code and repository documentation.</div>
-            <div class="meta-entry"><strong>Scope:</strong> Systems-learning and implementation project; performance and production-readiness claims are not made without benchmark evidence.</div>
+            <span class="chip-warm chip-amber">VOICE &amp; WEATHER</span>
+            <span class="lang-code">React · TypeScript · FastAPI · PostgreSQL · Docker</span>
           </div>
 
-          <div class="card-cta">
-            <a href="https://github.com/Jatin2567/DistributedKvServer" target="_blank" rel="noreferrer" class="warm-link">
-              <span>Inspect Go Source Code</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </a>
+          <div class="card-broad-grid">
+            <!-- Left Column: Architectural Breakdown & Technical Scope -->
+            <div class="broad-col-content">
+              <h3 class="card-headline">WeatherGPT</h3>
+              <p class="card-body-text">A multilingual voice platform prototype exploring weather advice and emergency broadcasts for farmers using basic phones and 2G networks.</p>
+              <ul class="item-bullet-list"><li>Keypad navigation and structured call flows for accessing weather information over basic phones.</li><li>Voice workflows in Hindi, Kannada, and English, using speech recognition and text-to-speech services.</li><li>Emergency-call workflows with retry handling and SMS fallbacks.</li><li>A React dashboard and FastAPI backend, with PostgreSQL and Docker for deployment.</li></ul>
+              
+              <div class="project-meta-box">
+                <div class="meta-entry"><strong>Status:</strong> Prototype with a hosted demo.</div>
+              </div>
+
+              <div class="card-cta">
+                <a href="https://weathergpt.duckdns.org" target="_blank" rel="noreferrer" class="warm-link">
+                  <span>View live project</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Column: Interactive Telephony & Analytics Dashboard Preview -->
+            <div class="broad-col-media">
+              <div class="preview-media-frame">
+                <a href="https://weathergpt.duckdns.org" target="_blank" rel="noreferrer" class="preview-media-link" title="Open WeatherGPT Telephony Dashboard">
+                  <img src="weathergpt_preview.png" alt="WeatherGPT Telephony &amp; Analytics Dashboard" class="broad-preview-img" />
+                  <div class="preview-media-overlay">
+                    <span class="preview-media-badge">
+                      <span>View dashboard</span>
+                    </span>
+                  </div>
+                </a>
+              </div>
+              <div class="preview-media-caption">
+                <span class="caption-title">Disaster IVR Telephony &amp; Analytics</span>
+                <span class="caption-sub">A preview of call activity, weather alerts, and the phone simulator.</span>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- 2. MariaDB-magics -->
         <div class="card-item-warm">
           <div class="card-top-tag">
-            <span class="chip-warm chip-amber">GLOBAL HACKATHON RESULT</span>
+            <span class="chip-warm chip-amber">DEVELOPER TOOL</span>
             <span class="lang-code">Python · Jupyter · MariaDB · Vector Search</span>
           </div>
           <h3 class="card-headline">MariaDB-magics</h3>
-          <p class="card-body-text">
-            A Jupyter extension that provides:
-          </p>
-          <ul class="item-bullet-list">
-            <li>SQL queries inside notebooks.</li>
-            <li>Dataframe-oriented workflows.</li>
-            <li>Time-based analysis utilities.</li>
-            <li>Sentence-transformer vector search.</li>
-            <li><code class="code-sm">%mariadb_vector</code>.</li>
-            <li><code class="code-sm">%mariadb_plot</code>.</li>
-          </ul>
+          <p class="card-body-text">A Jupyter extension for running SQL, working with dataframes, and finding related data with vector search.</p>
+          <ul class="item-bullet-list"><li>Run SQL queries from Jupyter notebooks and work with results as pandas DataFrames.</li><li>Explore similarity search using sentence embeddings and MariaDB vectors.</li><li>Create charts from query results with the <code>%mariadb_plot</code> command.</li></ul>
 
           <div class="project-meta-box">
-            <div class="meta-entry"><strong>Status:</strong> Public implementation.</div>
-            <div class="meta-entry"><strong>Recognition:</strong> MariaDB Global Hackathon result, where supported by official event evidence.</div>
+            <div class="meta-entry"><strong>Status:</strong> Public project · MariaDB Global Hackathon.</div>
           </div>
 
           <div class="card-cta">
             <a href="https://github.com/Jatin2567/MariaDB-magics" target="_blank" rel="noreferrer" class="warm-link">
-              <span>Inspect Repository</span>
+              <span>View on GitHub</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- 3. BHDesk -->
+        <!-- 3. Distributed KV Server -->
+        <div class="card-item-warm">
+          <div class="card-top-tag">
+            <span class="chip-warm chip-red">UNIVERSITY PROJECT</span>
+            <span class="lang-code">Go · Raft · RocksDB · RPC</span>
+          </div>
+          <h3 class="card-headline">Distributed KV Server</h3>
+          <p class="card-body-text">A key-value store built in Go, exploring how data stays consistent and available across multiple servers.</p>
+          <ul class="item-bullet-list"><li>Explore Raft leader election and replicated logs across a cluster of nodes.</li><li>Apply committed writes to a shared state model, with RocksDB for persistence.</li><li>Use RPC communication between nodes and an in-memory storage fallback.</li></ul>
+          
+          <div class="project-meta-box">
+            <div class="meta-entry"><strong>Status:</strong> Public university project.</div>
+          </div>
+
+          <div class="card-cta">
+            <a href="https://github.com/Jatin2567/DistributedKvServer" target="_blank" rel="noreferrer" class="warm-link">
+              <span>View on GitHub</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. BHDesk -->
         <div class="card-item-warm">
           <div class="card-top-tag">
             <span class="chip-warm chip-orange">PROTOTYPE</span>
             <span class="lang-code">JavaScript · Chrome Extension · Manifest V3 · Chrome Built-in AI</span>
           </div>
           <h3 class="card-headline">BHDesk</h3>
-          <p class="card-body-text">
-            A browser extension project exploring:
-          </p>
-          <ul class="item-bullet-list">
-            <li>Local browser-context processing.</li>
-            <li>On-device AI through supported Chrome AI APIs.</li>
-            <li>Hindi–English translation workflows.</li>
-            <li>Tab grouping and organization.</li>
-          </ul>
+          <p class="card-body-text">A Chrome extension prototype for organizing tabs, translating Hindi and English, and exploring AI features that run in the browser.</p>
+          <ul class="item-bullet-list"><li>Explore Chrome’s built-in AI features within a Manifest V3 extension.</li><li>Support Hindi–English translation and browser-context workflows.</li><li>Organize tabs into groups. AI features depend on browser and device support.</li></ul>
 
           <div class="project-meta-box">
             <div class="meta-entry"><strong>Status:</strong> Prototype.</div>
-            <div class="meta-entry"><strong>Scope:</strong> Browser-native AI exploration; behavior depends on supported Chrome versions and available device capabilities.</div>
           </div>
 
           <div class="card-cta">
             <a href="https://github.com/Jatin2567/BHDesk" target="_blank" rel="noreferrer" class="warm-link">
-              <span>Inspect Chrome Extension</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- 4. AI Data Readiness Pipeline -->
-        <div class="card-item-warm">
-          <div class="card-top-tag">
-            <span class="chip-warm chip-amber">PUBLIC IMPLEMENTATION</span>
-            <span class="lang-code">Python · Tabular Data · Data Validation</span>
-          </div>
-          <h3 class="card-headline">AI Data Readiness Pipeline</h3>
-          <p class="card-body-text">
-            A pipeline for:
-          </p>
-          <ul class="item-bullet-list">
-            <li>Inspecting CSV and XLSX datasets.</li>
-            <li>Checking structural suitability.</li>
-            <li>Detecting schema changes.</li>
-            <li>Standardizing supported inputs.</li>
-            <li>Producing validation and audit outputs.</li>
-          </ul>
-
-          <div class="project-meta-box">
-            <div class="meta-entry"><strong>Status:</strong> Public implementation.</div>
-            <div class="meta-entry"><strong>Scope:</strong> Produces a readiness assessment based on defined checks; it does not guarantee that a dataset is universally suitable for AI.</div>
-          </div>
-
-          <div class="card-cta">
-            <a href="https://github.com/Jatin2567/AI-Readiness-and-Data-Standardization-Pipeline" target="_blank" rel="noreferrer" class="warm-link">
-              <span>Inspect Pipeline Repo</span>
+              <span>View on GitHub</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
           </div>
@@ -371,167 +348,84 @@
         <!-- 5. AI-DevSecOps-Guardian -->
         <div class="card-item-warm">
           <div class="card-top-tag">
-            <span class="chip-warm chip-red">PREVIOUSLY WORKING</span>
+            <span class="chip-warm chip-red">PAST PROJECT</span>
             <span class="lang-code">Node.js · GitLab Webhooks · CI/CD</span>
           </div>
-          <h3 class="card-headline">AI-DevSecOps-Guardian</h3>
-          <p class="card-body-text">
-            An AI-assisted GitLab CI/CD diagnostics project that was implemented and working with the GitLab interfaces available during development:
-          </p>
-          <ul class="item-bullet-list">
-            <li>Processed GitLab webhook events.</li>
-            <li>Handled pipeline and job information.</li>
-            <li>Generated diagnostic context for failed jobs.</li>
-            <li>Explored security checks and remediation suggestions.</li>
-          </ul>
+          <h3 class="card-headline">AI DevSecOps Guardian</h3>
+          <p class="card-body-text">A GitLab integration that turns failed pipeline jobs into diagnostic context and suggested next steps.</p>
+          <ul class="item-bullet-list"><li>Process GitLab pipeline and job events through webhooks.</li><li>Collect failure context to help investigate unsuccessful jobs.</li><li>Explore diagnostic reports and remediation suggestions. Current GitLab compatibility needs revalidation.</li></ul>
 
           <div class="project-meta-box">
-            <div class="meta-entry"><strong>Status:</strong> Previously working implementation.</div>
-            <div class="meta-entry"><strong>Current note:</strong> GitLab APIs, webhook schemas, or platform features may have changed since development, so the project may require updates to work with current GitLab versions.</div>
+            <div class="meta-entry"><strong>Status:</strong> Past implementation · integration review needed.</div>
           </div>
 
           <div class="card-cta">
             <a href="https://github.com/Jatin2567/AI-DevSecOps-Guardian" target="_blank" rel="noreferrer" class="warm-link">
-              <span>Inspect Sentinel Repo</span>
+              <span>View on GitHub</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- 6. Stealth Architecture -->
-        <div class="card-item-warm">
-          <div class="card-top-tag">
-            <span class="chip-warm chip-deep">STEALTH PROJECT</span>
-            <span class="lang-code">Real-Time Collaborative System</span>
-          </div>
-          <h3 class="card-headline">Stealth Architecture</h3>
-          <p class="card-body-text">
-            A stealth project exploring:
-          </p>
-          <ul class="item-bullet-list">
-            <li>Real-time event synchronization.</li>
-            <li>Logical event ordering.</li>
-            <li>Conflict-resolution strategies.</li>
-            <li>Offline or local-network operation.</li>
-            <li>Resource-conscious browser rendering.</li>
-          </ul>
-
-          <div class="project-meta-box">
-            <div class="meta-entry"><strong>Status:</strong> Stealth project.</div>
-            <div class="meta-entry meta-note-italic">Implementation details are intentionally undisclosed.</div>
-          </div>
-        </div>
-
-        <!-- 7. IVR Systems Work -->
-        <div class="card-item-warm">
-          <div class="card-top-tag">
-            <span class="chip-warm chip-amber">PROTOTYPE / ARCHITECTURE</span>
-            <span class="lang-code">IVR Voice System</span>
-          </div>
-          <h3 class="card-headline">IVR Systems Work</h3>
-          <p class="card-body-text">
-            A project exploring telephone-based interaction through:
-          </p>
-          <ul class="item-bullet-list">
-            <li>IVR call flows.</li>
-            <li>DTMF input.</li>
-            <li>Speech-processing components.</li>
-            <li>Multilingual voice workflows.</li>
-            <li>Deterministic state transitions.</li>
-            <li>External data integration.</li>
-            <li>Failure and fallback handling.</li>
-          </ul>
-
-          <div class="project-meta-box">
-            <div class="meta-entry"><strong>Status:</strong> Prototype or architecture work, depending on the demonstrated implementation.</div>
-            <div class="meta-entry meta-note-italic">No unsupported claims are made about carrier scale, latency, or production operation.</div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Production Experience -->
-  <section id="trackrecord" class="section-wrap track-section">
+  <!-- Unified Experience Section (Production Work & Leadership) -->
+  <section id="experience" class="section-wrap track-section">
     <div class="section-title-box">
-      <span class="accent-sub">PRODUCTION EXPERIENCE</span>
-      <h2 class="section-lead-title">Production Experience</h2>
-      <p class="section-lead-desc">Real-world production engineering and client deliverables.</p>
+      <span class="accent-sub">02 // EXPERIENCE &amp; LEADERSHIP</span>
+      <h2 class="section-lead-title">Experience</h2>
+      <p class="section-lead-desc">Internship experience, student leadership, and community workshops.</p>
     </div>
 
     <div class="warm-timeline">
-      <!-- Bluella -->
+      <!-- 1. Bluella Private Limited -->
       <div class="timeline-row">
-        <div class="timeline-dot"></div>
         <div class="timeline-body">
           <div class="timeline-header">
-            <span class="comp-name">Bluella</span>
-            <span class="comp-date">May 2026 – July 2026 // Gurugram</span>
+            <span class="comp-name">Bluella Private Limited</span>
+            <span class="comp-date">May – July 2026 · Gurugram · On-site</span>
           </div>
-          <h4 class="job-title">Web Engineer Intern · Gurugram</h4>
-          <ul class="item-bullet-list">
-            <li>Built and deployed web deliverables for enterprise SaaS and healthcare-related portals.</li>
-            <li>Implemented responsive web interfaces.</li>
-            <li>Worked on frontend performance and layout stability.</li>
-            <li>Applied accessibility practices using WCAG and ARIA.</li>
-            <li>Delivered changes across 28+ reported web deliverables.</li>
-          </ul>
-          <div class="meta-entry meta-note-italic" style="margin-top: 0.5rem; color: #94A3B8;">
-            *Use specific performance figures only when supported by measurement records.
-          </div>
+          <h4 class="job-title">Web Engineer Intern</h4>
+          <p class="card-body-text" style="margin-bottom: 0.6rem; color: #CBD5E1;">
+            Built <strong>28+ web deliverables</strong> for SaaS and healthcare projects, including websites, landing pages, and email templates.
+          </p>
+          <ul class="item-bullet-list"><li>Developed responsive pages and a partner portal with theme switching and form validation.</li><li>Built landing pages for healthcare services and business software products.</li><li>Created HTML email templates and refined layouts for different screen sizes and email clients.</li><li>Worked on accessibility, loading performance, and reusable HTML, CSS, and JavaScript components.</li></ul>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Leadership -->
-  <section id="leadership" class="section-wrap track-section" style="padding-top: 2rem;">
-    <div class="section-title-box">
-      <span class="accent-sub">CAMPUS &amp; ENGINEERING LEADERSHIP</span>
-      <h2 class="section-lead-title">Leadership</h2>
-      <p class="section-lead-desc">Fostering engineering discipline, competitive programming, and hands-on developer workshops.</p>
-    </div>
-
-    <div class="warm-timeline">
-      <!-- ACM Student Chapter -->
+      <!-- 2. ACM Student Chapter, IILM University -->
       <div class="timeline-row">
-        <div class="timeline-dot"></div>
         <div class="timeline-body">
           <div class="timeline-header">
             <span class="comp-name">ACM Student Chapter, IILM University</span>
             <span class="comp-date">January 2026 – Present</span>
           </div>
           <h4 class="job-title">Chair</h4>
+          <p class="card-body-text" style="margin-bottom: 0.6rem; color: #CBD5E1;">
+            Lead chapter activities and help organize opportunities for students to build, learn, and present their work.
+          </p>
           <ul class="item-bullet-list">
-            <li>Direct chapter engineering initiatives.</li>
-            <li>Organize technical workshops.</li>
-            <li>Lead competitive-programming practice.</li>
-            <li>Support student project development.</li>
-            <li>Organized the “Build → Pitch → Win” hackathon marathon.</li>
+            <li>Organized <strong>Build → Pitch → Win</strong>, a web development event with the Centre of Excellence for Cybersecurity &amp; Digital Forensics.</li>
+            <li>Coordinated technical sessions, an expert talk, and a student startup pitch competition.</li>
           </ul>
         </div>
       </div>
 
-      <!-- AISyncTech Club -->
+      <!-- 3. Technical Workshop Lead -->
       <div class="timeline-row">
-        <div class="timeline-dot"></div>
         <div class="timeline-body">
           <div class="timeline-header">
-            <span class="comp-name">AISyncTech Club</span>
-            <span class="comp-date">Technical Workshop Lead</span>
+            <span class="comp-name">AISyncTech Club &amp; Campus Workshops</span>
+            <span class="comp-date">IILM University, Gurugram</span>
           </div>
           <h4 class="job-title">Technical Workshop Lead</h4>
-          <p class="card-body-text" style="margin-bottom: 0.4rem; color: #E2E8F0;">
-            Led practical workshops on:
+          <p class="card-body-text" style="margin-bottom: 0.6rem; color: #CBD5E1;">
+            Help students get started with practical software development tools and workflows.
           </p>
           <ul class="item-bullet-list">
-            <li>Linux administration.</li>
-            <li>Docker and virtual machines.</li>
-            <li>CLI automation.</li>
-            <li>PowerShell.</li>
-            <li>Full-stack development workflows.</li>
-            <li>Software development lifecycle practices.</li>
+            <li>Led hands-on sessions on the software development lifecycle, virtualization, command-line tools, PowerShell, and setting up virtual machines.</li>
           </ul>
         </div>
       </div>
@@ -539,214 +433,36 @@
   </section>
 
   <!-- Technical Stack Specification -->
-  <section id="stack" class="section-wrap" style="padding-top: 3.5rem;">
-    <div class="section-title-box">
-      <span class="accent-sub">SYSTEMS ARCHITECTURE // SPECIFICATION</span>
-      <h2 class="section-lead-title">Technical Stack</h2>
-      <p class="section-lead-desc">
-        Structured engineering competencies categorized by systems layer, operational role, and implementation scope.
-      </p>
-    </div>
-
-    <div class="stack-industry-grid">
-      
-      <!-- Tier 01: Distributed Systems Core -->
-      <div class="stack-doc-card">
-        <div class="doc-card-header">
-          <div class="doc-card-meta">
-            <span class="doc-index">TIER 01</span>
-            <span class="doc-badge-status">CONSENSUS &amp; STORAGE</span>
-          </div>
-          <h4 class="doc-card-title">Tier 01: Distributed Systems Core</h4>
-          <p class="doc-card-desc">
-            <strong>Role:</strong> Consensus, storage, communication, and state replication.
-          </p>
-        </div>
-
-        <div class="doc-layers-container">
-          <div class="doc-layer-block">
-            <div class="stack-badges">
-              <div class="stack-badge"><span class="badge-name">Go</span></div>
-              <div class="stack-badge"><span class="badge-name">Raft consensus</span></div>
-              <div class="stack-badge"><span class="badge-name">RocksDB</span></div>
-              <div class="stack-badge"><span class="badge-name">RPC</span></div>
-              <div class="stack-badge"><span class="badge-name">gRPC and Protocol Buffers</span></div>
-              <div class="stack-badge"><span class="badge-name">Replicated logs</span></div>
-              <div class="stack-badge"><span class="badge-name">State machines</span></div>
-              <div class="stack-badge"><span class="badge-name">Leader election</span></div>
-              <div class="stack-badge"><span class="badge-name">Commit-state handling</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tier 02: Edge and On-Device AI -->
-      <div class="stack-doc-card">
-        <div class="doc-card-header">
-          <div class="doc-card-meta">
-            <span class="doc-index">TIER 02</span>
-            <span class="doc-badge-status">INFERENCE &amp; EMBEDDINGS</span>
-          </div>
-          <h4 class="doc-card-title">Tier 02: Edge and On-Device AI</h4>
-          <p class="doc-card-desc">
-            <strong>Role:</strong> Local inference, browser intelligence, embeddings, and retrieval.
-          </p>
-        </div>
-
-        <div class="doc-layers-container">
-          <div class="doc-layer-block">
-            <div class="stack-badges">
-              <div class="stack-badge"><span class="badge-name">JavaScript</span></div>
-              <div class="stack-badge"><span class="badge-name">Chrome Built-in AI</span></div>
-              <div class="stack-badge"><span class="badge-name">Gemini Nano</span></div>
-              <div class="stack-badge"><span class="badge-name">Manifest V3</span></div>
-              <div class="stack-badge"><span class="badge-name">Sentence-transformers</span></div>
-              <div class="stack-badge"><span class="badge-name">Dense-vector similarity search</span></div>
-              <div class="stack-badge"><span class="badge-name">MariaDB Vector Engine</span></div>
-              <div class="stack-badge"><span class="badge-name">Local browser-context processing</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tier 03: Telecom, IVR and Voice -->
-      <div class="stack-doc-card">
-        <div class="doc-card-header">
-          <div class="doc-card-meta">
-            <span class="doc-index">TIER 03</span>
-            <span class="doc-badge-status">TELEPHONY &amp; SIGNALING</span>
-          </div>
-          <h4 class="doc-card-title">Tier 03: Telecom, IVR and Voice</h4>
-          <p class="doc-card-desc">
-            <strong>Role:</strong> Telephone access, voice interaction, signaling, and call-state handling.
-          </p>
-        </div>
-
-        <div class="doc-layers-container">
-          <div class="doc-layer-block">
-            <div class="stack-badges">
-              <div class="stack-badge"><span class="badge-name">Asterisk/SIP</span></div>
-              <div class="stack-badge"><span class="badge-name">IVR voice gateway</span></div>
-              <div class="stack-badge"><span class="badge-name">RFC 2833 DTMF</span></div>
-              <div class="stack-badge"><span class="badge-name">Speech recognition</span></div>
-              <div class="stack-badge"><span class="badge-name">Hindi, Kannada, and English voice workflows</span></div>
-              <div class="stack-badge"><span class="badge-name">ITU-T G.711</span></div>
-              <div class="stack-badge"><span class="badge-name">ESP32 telemetry</span></div>
-              <div class="stack-badge"><span class="badge-name">Deterministic finite-state machines</span></div>
-            </div>
-          </div>
-          <div class="meta-entry meta-note-italic" style="margin-top: 0.85rem; color: #94A3B8;">
-            *Include each component only if it was actually used in the implementation or prototype.
-          </div>
-        </div>
-      </div>
-
-      <!-- Tier 04: Full-Stack and Platform -->
-      <div class="stack-doc-card">
-        <div class="doc-card-header">
-          <div class="doc-card-meta">
-            <span class="doc-index">TIER 04</span>
-            <span class="doc-badge-status">APIS, CONTAINERS &amp; CI/CD</span>
-          </div>
-          <h4 class="doc-card-title">Tier 04: Full-Stack and Platform</h4>
-          <p class="doc-card-desc">
-            <strong>Role:</strong> APIs, interfaces, databases, containers, and development workflows.
-          </p>
-        </div>
-
-        <div class="doc-layers-container">
-          <div class="doc-layer-block">
-            <div class="stack-badges">
-              <div class="stack-badge"><span class="badge-name">React</span></div>
-              <div class="stack-badge"><span class="badge-name">JavaScript and TypeScript</span></div>
-              <div class="stack-badge"><span class="badge-name">Node.js</span></div>
-              <div class="stack-badge"><span class="badge-name">FastAPI</span></div>
-              <div class="stack-badge"><span class="badge-name">Python</span></div>
-              <div class="stack-badge"><span class="badge-name">REST APIs</span></div>
-              <div class="stack-badge"><span class="badge-name">Docker</span></div>
-              <div class="stack-badge"><span class="badge-name">Linux CLI</span></div>
-              <div class="stack-badge"><span class="badge-name">Git</span></div>
-              <div class="stack-badge"><span class="badge-name">GitLab CI/CD</span></div>
-              <div class="stack-badge"><span class="badge-name">MariaDB</span></div>
-              <div class="stack-badge"><span class="badge-name">PostgreSQL</span></div>
-              <div class="stack-badge"><span class="badge-name">Postman</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
+  <section id="stack" class="section-wrap skills-section"><div class="section-title-box"><span class="accent-sub">03 // TECHNICAL STACK</span><h2 class="section-lead-title">Skills &amp; Tools</h2><p class="section-lead-desc">Technologies I use to build interfaces, work with data, and bring projects to life.</p></div><ul class="skills-gallery" aria-label="Technologies and how I use them"><li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/html5.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">HTML5</span><span class="skill-use">Responsive web pages</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/css3.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">CSS3</span><span class="skill-use">Layouts & styling</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/javascript.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">JavaScript</span><span class="skill-use">Web interactions</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/typescript.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">TypeScript</span><span class="skill-use">Typed application code</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/react.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">React</span><span class="skill-use">Application interfaces</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/nodejs.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Node.js</span><span class="skill-use">Services & integrations</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/python.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Python</span><span class="skill-use">APIs & data tooling</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/go.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Go</span><span class="skill-use">Distributed storage</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/fastapi.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">FastAPI</span><span class="skill-use">Python web APIs</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/postgresql.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">PostgreSQL</span><span class="skill-use">Application data</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/mariadb.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">MariaDB</span><span class="skill-use">SQL & vector search</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/jupyter.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Jupyter</span><span class="skill-use">Notebooks & analysis</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/git.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Git</span><span class="skill-use">Version control</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/gitlab.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">GitLab</span><span class="skill-use">Pipelines & webhooks</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/docker.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Docker</span><span class="skill-use">Containerized deployment</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/linux.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Linux</span><span class="skill-use">Development environments</span></li></ul><p class="skills-context">My projects also explore vector search, browser-based AI, and multilingual voice interfaces.</p></section>
 
   <!-- Engineering Approach -->
-  <section id="approach" class="section-wrap" style="padding-top: 4.5rem; padding-bottom: 2rem;">
-    <div class="section-title-box">
-      <span class="accent-sub">SYSTEMS PHILOSOPHY</span>
-      <h2 class="section-lead-title">Engineering Approach</h2>
-      <p class="section-lead-desc">Core tenets guiding architecture decisions, verification discipline, and evidence-backed deliverables.</p>
-    </div>
-
-    <div class="approach-grid">
-      <div class="approach-card">
-        <div class="approach-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div class="approach-text">Prefer measurable behavior over exaggerated claims.</div>
-      </div>
-
-      <div class="approach-card">
-        <div class="approach-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
-        </div>
-        <div class="approach-text">Separate public implementations from prototypes and architecture work.</div>
-      </div>
-
-      <div class="approach-card">
-        <div class="approach-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <div class="approach-text">Record assumptions and limitations.</div>
-      </div>
-
-      <div class="approach-card">
-        <div class="approach-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <div class="approach-text">Design for failure and degraded connectivity.</div>
-      </div>
-
-      <div class="approach-card">
-        <div class="approach-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        </div>
-        <div class="approach-text">Test important system behavior.</div>
-      </div>
-
-      <div class="approach-card">
-        <div class="approach-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="approach-text">Document setup and reproducibility.</div>
-      </div>
-
-      <div class="approach-card">
-        <div class="approach-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-        </div>
-        <div class="approach-text">Update integrations when external APIs change.</div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- Contact & Direct Reach Footer -->
   <footer id="contact" class="footer-warm">
     <div class="section-wrap footer-inner">
-      <h2 class="footer-headline">Direct Engineering Inquiries</h2>
+      <span class="accent-sub">04 // GET IN TOUCH</span>
+      <h2 class="footer-headline">Let’s build something useful.</h2>
       <p class="footer-sub">
-        Technical collaborations, distributed systems discussions, and high-impact AI infrastructure architecture.
+        Have an internship opportunity or a project in mind? I’d love to hear from you.
       </p>
 
-      <div class="footer-actions">
+      <div class="footer-actions"><a href="mailto:Jatin946work@yahoo.com" class="btn-warm-outline">Send an email ↗</a>
         <button id="copyEmailFooter" class="btn-warm-cta" data-email="Jatin946work@yahoo.com">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           <span>Jatin946work@yahoo.com</span>
@@ -773,10 +489,10 @@
   <div id="yellowAgentContainer" class="yellow-agent-container">
     <!-- Speech Bubble Callout (Yellow.ai Style) -->
     <div class="yellow-speech-bubble" id="yellowSpeechBubble">
-      <span id="yellowSpeechText">Hi, I'm Jatin's AI guide. How can I help you today?</span>
+      <span id="yellowSpeechText">Hi, I’m Jatin’s portfolio guide. Ask me about my work.</span>
     </div>
 
-    <div id="yellowAgentBar" class="yellow-agent-bar aspired-dock">
+    <div id="yellowAgentBar" class="yellow-agent-bar aspired-dock agent-compact">
       <!-- Main Horizontal Capsule Dock -->
       <div class="yellow-dock-inner">
         <!-- Left: Video Avatar Box -->
@@ -784,14 +500,13 @@
           <video id="dockVideo" class="yellow-dock-video" playsinline muted loop autoplay poster="correct_video_preview.jpg">
             <source src="videos/correct_video.mp4" type="video/mp4">
           </video>
-          <span class="dock-green-dot"></span>
-        </div>
+          </div>
 
         <!-- Center & Right: Content Box -->
         <div class="yellow-content-box">
           <!-- Top: Input Field -->
           <div class="yellow-input-wrap">
-            <input type="text" id="yellowAgentInput" class="yellow-agent-input" placeholder="Talk to our agent Jatin" />
+            <input type="text" id="yellowAgentInput" class="yellow-agent-input" placeholder="Ask about projects, skills, or experience" />
           </div>
 
           <!-- Bottom: Action Controls -->
@@ -816,23 +531,13 @@
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
-
-      <!-- Compact Collapsed Tab (Visible when minimized) -->
-      <button id="yellowCompactPill" class="yellow-compact-pill" title="Reopen Jatin AI Guide">
-        <div class="compact-avatar-dot">
-          <img src="cartoon_avatar.jpg" alt="Jatin" />
-          <span class="compact-online"></span>
-        </div>
-        <span class="compact-label">Talk to Jatin</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="18 15 12 9 6 15"></polyline></svg>
-      </button>
     </div>
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="toast-warm">Copied to clipboard!</div>
+  <div id="toast" class="toast-warm" role="status">Copied to clipboard!</div>
 
-  <script src="three.min.js"></script>
-  <script src="app.js?v=zoom_v5"></script>
+
+  <script src="three.min.js"></script><script src="app.js?v=content_v5"></script><script src="studio.js?v=portfolio_v4"></script>
 </body>
 </html>

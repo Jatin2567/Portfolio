@@ -51,67 +51,57 @@ document.addEventListener('DOMContentLoaded', () => {
       intent: 'greetings',
       videoFile: 'intro.mp4',
       patterns: ['hi', 'hello', 'hey', 'greetings', 'morning', 'afternoon', 'who are you', 'introduce'],
-      speech: "Hello! I'm Jatin Aggarwal, Software Engineer working across distributed storage, developer tooling, data preparation, browser-based AI, and IVR systems. How can I walk you through my selected work?"
+      speech: "Hi! I’m Jatin’s portfolio guide. I can introduce his projects, experience, skills, and contact details."
     },
     {
       intent: 'raft',
       videoFile: 'raft.mp4',
       patterns: ['raft', 'distributed', 'kv', 'rocksdb', 'consensus', 'go', 'golang', 'cluster', 'storage engine', 'election', 'quorum', 'wal'],
-      speech: "DistributedKvServer is a distributed key-value store engineered in Go. It implements the Raft consensus algorithm with leader election, replicated log handling, commit-state tracking, peer RPC communication, and persistent RocksDB durability with memory fallback."
+      speech: "Distributed KV Server is Jatin’s university project in Go. It explores Raft leader election, replicated logs, RPC communication, and RocksDB persistence. You can find the source in Selected Projects."
     },
     {
       intent: 'mariadb',
       videoFile: 'mariadb.mp4',
       patterns: ['mariadb', 'magics', 'hackathon', 'vector', 'jupyter', 'top 59', 'sentence-transformers', 'sql', 'temporal', 'ranking'],
-      speech: "MariaDB-magics is a Jupyter notebook extension developed for the MariaDB Global Hackathon. It brings SQL queries inside notebooks, dataframe workflows, time analysis utilities, and sentence-transformer hybrid vector search with mariadb_vector and mariadb_plot."
+      speech: "MariaDB-magics is a Jupyter extension developed for the MariaDB Global Hackathon. It brings SQL queries, DataFrame workflows, vector search, and plotting into notebooks."
     },
     {
       intent: 'bhdesk',
       videoFile: 'bhdesk.mp4',
       patterns: ['bhdesk', 'gemini', 'nano', 'offline', 'chrome', 'extension', 'on-device', 'local ai', 'manifest v3', 'privacy', 'translation'],
-      speech: "BHDesk is a Manifest V3 Chrome extension prototype exploring on-device AI through Chrome's built-in AI APIs and Gemini Nano. It performs local browser-context processing, Hindi-English translation, and tab grouping with zero cloud leakage."
+      speech: "BHDesk is a Chrome extension prototype exploring built-in browser AI, Hindi–English translation, and tab grouping. Its AI features depend on browser and device support."
     },
-    {
-      intent: 'data_pipeline',
-      videoFile: 'data_pipeline.mp4',
-      patterns: ['data', 'pipeline', 'readiness', 'csv', 'xlsx', 'tabular', 'schema', 'drift', 'standardization', 'validation', 'audit'],
-      speech: "The AI Data Readiness Pipeline is a public implementation for inspecting CSV and XLSX tabular datasets, checking structural suitability, detecting schema changes, and generating standardized validation and audit outputs prior to AI consumption."
-    },
+
     {
       intent: 'devsecops',
       videoFile: 'devsecops.mp4',
       patterns: ['devsecops', 'guardian', 'gitlab', 'ci/cd', 'pipeline', 'sentinel', 'security', 'vulnerability', 'webhooks', 'ci'],
-      speech: "AI-DevSecOps-Guardian is an automated CI/CD diagnostics sentinel implemented for GitLab webhooks. It ingests pipeline events, captures job failure context, and generates diagnostic root-cause and security remediation suggestions."
+      speech: "AI DevSecOps Guardian is a past GitLab integration project for pipeline events, job failure context, and diagnostic suggestions. Compatibility with current GitLab interfaces needs revalidation."
     },
-    {
-      intent: 'stealth',
-      videoFile: 'stealth.mp4',
-      patterns: ['stealth', 'collaborative', 'canvas', 'sync', 'real-time', 'ordering', 'conflict', 'offline lan', 'aetherboard', 'whiteboard'],
-      speech: "My stealth architecture is a real-time collaborative system exploring full-duplex event synchronization, monotonic logical event ordering, conflict-resolution strategies, and resource-conscious browser rendering over offline local networks. Implementation details are intentionally undisclosed."
-    },
+
     {
       intent: 'ivr',
       videoFile: 'ivr.mp4',
-      patterns: ['ivr', 'telephony', 'dtmf', 'asterisk', 'voice', 'indic', 'audio', 'g711', 'esp32', 'sip', 'telephone', 'call'],
-      speech: "My IVR Systems Work explores telephone-based interaction via carrier call flows, DTMF keypad input, multilingual Indic speech workflows, deterministic state transitions, external data integration, and telephony fallback handling."
+      patterns: ['weathergpt', 'weather', 'farmer', 'ivr', 'telephony', 'dtmf', 'asterisk', 'voice', 'indic', 'audio', 'g711', 'esp32', 'sip', 'telephone', 'call'],
+      speech: "WeatherGPT is a voice platform prototype for weather guidance and emergency notifications over basic phones. It explores multilingual speech, keypad navigation, call retries, and SMS fallbacks."
     },
     {
       intent: 'bluella',
       videoFile: 'bluella.mp4',
       patterns: ['bluella', 'intern', 'internship', 'experience', 'work', 'deliverables', 'production', 'lcp', 'wcag', 'aria'],
-      speech: "At Bluella in Gurugram, I worked as a Web Engineer Intern and shipped 28+ reported production deliverables for enterprise SaaS and healthcare portals, focusing on responsive interfaces, layout stability, and WCAG accessibility standards."
+      speech: "Jatin worked as a Web Engineer Intern at Bluella in Gurugram from May to July 2026. His work included more than 28 web deliverables across responsive pages, partner portals, and HTML emails, with attention to accessibility and performance."
     },
     {
       intent: 'leadership',
       videoFile: 'leadership.mp4',
       patterns: ['acm', 'chair', 'lead', 'leadership', 'student chapter', 'chapter', 'async', 'aisynctech', 'workshop', 'hackathon'],
-      speech: "As Chair of the ACM Student Chapter at IILM University, I direct chapter engineering initiatives, competitive programming practice, and organized the university-wide 'Build → Pitch → Win' hackathon marathon. At AISyncTech Club, I led hands-on technical workshops on Linux, Docker, and CLI automation."
+      speech: "Jatin chairs the ACM Student Chapter at IILM University and helps organize development events, talks, and student pitch sessions. He has also led workshops on software development, virtualization, and command-line tools."
     },
     {
       intent: 'stack',
       videoFile: 'stack.mp4',
       patterns: ['stack', 'tech stack', 'technologies', 'skills', 'tools', 'tier', 'tiers', 'languages', 'docker'],
-      speech: "My technical stack is structured across four tiers: Tier 1 Distributed Systems Core in Go, Raft, and RocksDB; Tier 2 Edge and On-Device AI; Tier 3 Telecom, IVR and Voice; and Tier 4 Full-Stack and Platform with React, Node.js, FastAPI, and Docker."
+      speech: "Jatin uses HTML, CSS, JavaScript, TypeScript, and React for interfaces; Go, Python, Node.js, and FastAPI for software and APIs; PostgreSQL and MariaDB for data; and Git, GitLab, Docker, Linux, and Jupyter in his workflow."
     },
     {
       intent: 'approach',
@@ -123,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       intent: 'contact',
       videoFile: 'contact.mp4',
       patterns: ['contact', 'email', 'reach', 'connect', 'phone', 'call', 'mail', 'message', 'linkedin'],
-      speech: "You can reach me directly via email at Jatin946work@yahoo.com or connect with me on LinkedIn and GitHub under the handle Jatin2567."
+      speech: "You can email Jatin at Jatin946work@yahoo.com, visit his GitHub profile at Jatin2567, or use the LinkedIn link in the Contact section."
     }
   ];
 
@@ -162,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Contextual fallbacks
     if (clean.includes('who') || clean.includes('about') || clean.includes('jatin')) {
       return {
-        speech: "I am Jatin Aggarwal — a systems and AI engineer pursuing B.Tech CSE (AI & ML) and serving as ACM Chapter Chair. I specialize in distributed protocols in Go, on-device AI, and production platforms.",
+        speech: "Jatin is a software engineer studying B.Tech Computer Science with a focus on AI and ML at IILM University, Gurugram. His portfolio includes web development, AI tools, voice interfaces, and distributed systems.",
         videoFile: 'bluella.mp4',
         intent: 'general'
       };
@@ -170,14 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (clean.includes('how') || clean.includes('why')) {
       return {
-        speech: "To address your question — I approach software architecture with discipline: low-level concurrency in Go, zero-data-egress on-device AI, and verifiable production metrics rather than superficial abstractions.",
+        speech: "I can share a brief overview of the projects on this page. Try asking about WeatherGPT, MariaDB-magics, BHDesk, or Jatin’s experience. For a detailed question, please use the email link.",
         videoFile: 'raft.mp4',
         intent: 'general'
       };
     }
 
     return {
-      speech: "Great question! My core work centers on distributed consensus (Raft in Go), on-device Gemini Nano, and enterprise systems engineering. Feel free to explore my verified repositories right here on the page!",
+      speech: "I don’t have an answer for that in this portfolio guide. You can ask about projects, skills, experience, or contact details.",
       videoFile: 'raft.mp4',
       intent: 'general'
     };
@@ -245,18 +235,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (btnYellowMinimize && yellowAgentBar) {
-    btnYellowMinimize.addEventListener('click', (e) => {
-      e.stopPropagation();
-      yellowAgentBar.classList.add('minimized');
+  if (yellowAgentBar) {
+    // Click anywhere on the panel to expand & focus the input field so text cursor comes!
+    yellowAgentBar.addEventListener('click', (e) => {
+      if (e.target.closest('#btnYellowMinimize')) return;
+      if (e.target.closest('.yellow-audio-btn')) return;
+      if (e.target.closest('#btnYellowWave')) return;
+
+      if (yellowAgentBar.classList.contains('agent-compact')) {
+        yellowAgentBar.classList.remove('agent-compact');
+        yellowAgentBar.classList.add('agent-expanded');
+        if (dockVideo) dockVideo.play().catch(() => {});
+      }
+
+      // Focus the text input whenever anywhere on the panel is clicked
+      if (yellowAgentInput) {
+        yellowAgentInput.focus();
+        setTimeout(() => {
+          if (yellowAgentInput) yellowAgentInput.focus();
+        }, 120);
+      }
     });
   }
 
-  if (yellowCompactPill && yellowAgentBar) {
-    yellowCompactPill.addEventListener('click', () => {
-      yellowAgentBar.classList.remove('minimized');
+  // Minimize button click shrinks back to compact panel
+  if (btnYellowMinimize && yellowAgentBar) {
+    btnYellowMinimize.addEventListener('click', (e) => {
+      e.stopPropagation();
+      yellowAgentBar.classList.remove('agent-expanded');
+      yellowAgentBar.classList.add('agent-compact');
     });
   }
+
+  // Click outside to collapse back to compact panel
+  document.addEventListener('click', (e) => {
+    if (yellowAgentBar && !yellowAgentBar.contains(e.target) && !e.target.closest('#yellowAgentContainer')) {
+      if (!yellowAgentBar.classList.contains('agent-compact')) {
+        yellowAgentBar.classList.remove('agent-expanded');
+        yellowAgentBar.classList.add('agent-compact');
+      }
+    }
+  });
+
+  // Escape key minimizes back
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && yellowAgentBar && !yellowAgentBar.classList.contains('agent-compact')) {
+      yellowAgentBar.classList.remove('agent-expanded');
+      yellowAgentBar.classList.add('agent-compact');
+    }
+  });
 
   if (yellowAgentInput) {
     yellowAgentInput.addEventListener('keypress', (e) => {
@@ -461,9 +488,275 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. PROFESSIONAL AMBIENT DUAL-FLANK 3D BACKGROUND (Three.js WebGL)
   // Silent, elegant, senior-level systems depth strictly on left & right flanks
   // ==========================================================================
+    function initNavbarViewerMetrics() {
+      const navVisitorCount = document.getElementById('navVisitorCount');
+      const navPingMs = document.getElementById('navPingMs');
+      const popoverTotalViews = document.getElementById('popoverTotalViews');
+      const popoverRtt = document.getElementById('popoverRtt');
+      const popoverEdge = document.getElementById('popoverEdge');
+      const popoverVisitorLocation = document.getElementById('popoverVisitorLocation');
+      const popoverProtocol = document.getElementById('popoverProtocol');
+      const popoverGpu = document.getElementById('popoverGpu');
+      const popoverFps = document.getElementById('popoverFps');
+      const popoverSession = document.getElementById('popoverSession');
+      const popoverGithubCommit = document.getElementById('popoverGithubCommit');
+      const popoverGithubRepo = document.getElementById('popoverGithubRepo');
+      const popoverGithubCount = document.getElementById('popoverGithubCount');
+      const popoverDelhiTime = document.getElementById('popoverDelhiTime');
+      const popoverWorkMode = document.getElementById('popoverWorkMode');
+      const headerLiveClock = document.getElementById('headerLiveClock');
+
+      // 1. Live Delhi NCR Clock & Availability Mode (Real-Time IST UTC+5:30)
+      function updateDelhiClock() {
+        try {
+          const now = new Date();
+          const optionsTime = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+          const timeStr = new Intl.DateTimeFormat('en-US', optionsTime).format(now);
+          if (popoverDelhiTime) popoverDelhiTime.textContent = `${timeStr} IST`;
+
+          // Concise format for top brand pill
+          const optionsShort = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true };
+          const shortTime = new Intl.DateTimeFormat('en-US', optionsShort).format(now);
+          if (headerLiveClock) headerLiveClock.textContent = `${shortTime} IST`;
+
+          // Real hour in Delhi to calculate active engineer mode
+          const optionsHour = { timeZone: 'Asia/Kolkata', hour: 'numeric', hour12: false };
+          const delhiHour = parseInt(new Intl.DateTimeFormat('en-US', optionsHour).format(now), 10);
+          if (popoverWorkMode) {
+            if (delhiHour >= 9 && delhiHour < 19) {
+              popoverWorkMode.innerHTML = '<span style="color:#22c55e;">Available // SDE &amp; Systems</span>';
+            } else if (delhiHour >= 19 && delhiHour < 23) {
+              popoverWorkMode.innerHTML = '<span style="color:#fbbf24;">Deep Focus // Systems &amp; Raft</span>';
+            } else {
+              popoverWorkMode.innerHTML = '<span style="color:#94a3b8;">Offline // Async Mode</span>';
+            }
+          }
+        } catch (e) {}
+      }
+
+      updateDelhiClock();
+      setInterval(updateDelhiClock, 1000);
+
+      // 2. Active Session Chronometer (Genuine elapsed time on page)
+      let sessionSec = 0;
+      setInterval(() => {
+        sessionSec++;
+        const h = String(Math.floor(sessionSec / 3600)).padStart(2, '0');
+        const m = String(Math.floor((sessionSec % 3600) / 60)).padStart(2, '0');
+        const s = String(sessionSec % 60).padStart(2, '0');
+        if (popoverSession) popoverSession.textContent = `${h}:${m}:${s}`;
+      }, 1000);
+
+      // 3. Client Hardware GPU & Live Canvas Render FPS
+      try {
+        if (popoverGpu) {
+          const testCanvas = document.createElement('canvas');
+          const gl = testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl');
+          if (gl) {
+            const ext = gl.getExtension('WEBGL_debug_renderer_info');
+            if (ext) {
+              const unmasked = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) || '';
+              const cleaned = unmasked
+                .replace(/^ANGLE \((.+)\)$/, '$1')
+                .replace(/ vs_[0-9_]+ ps_[0-9_]+/, '')
+                .replace(/ Direct3D.+$/, '')
+                .trim();
+              popoverGpu.textContent = cleaned.length > 22 ? cleaned.substring(0, 22) + '...' : cleaned;
+              popoverGpu.title = unmasked;
+            } else {
+              popoverGpu.textContent = gl.getParameter(gl.RENDERER) || 'WebGL Acceleration';
+            }
+          }
+        }
+
+        // Measure live FPS
+        let frameCount = 0;
+        let fpsTimer = performance.now();
+
+        function measureFps(now) {
+          frameCount++;
+          if (now - fpsTimer >= 1000) {
+            const currentFps = Math.min(144, Math.round((frameCount * 1000) / (now - fpsTimer)));
+            if (popoverFps) popoverFps.textContent = `${currentFps}.0 FPS`;
+            frameCount = 0;
+            fpsTimer = now;
+          }
+          requestAnimationFrame(measureFps);
+        }
+        requestAnimationFrame(measureFps);
+      } catch (e) {}
+
+      // 4. Edge Runtime, Protocol & Geolocation
+      try {
+        // Detect Vercel / Host Edge
+        if (popoverEdge) {
+          if (window.location.hostname.includes('vercel.app')) {
+            popoverEdge.textContent = 'Vercel Global Edge (Active)';
+          } else if (window.location.protocol === 'https:') {
+            popoverEdge.textContent = 'Global HTTPS Edge';
+          } else {
+            popoverEdge.textContent = `Local Node (${window.location.port || '80'})`;
+          }
+        }
+
+        // Protocol & Link Detection
+        if (popoverProtocol) {
+          let proto = 'HTTP/1.1';
+          try {
+            const nav = performance.getEntriesByType('navigation');
+            if (nav && nav[0] && nav[0].nextHopProtocol) {
+              const p = nav[0].nextHopProtocol;
+              proto = p === 'h2' ? 'HTTP/2' : p === 'h3' ? 'HTTP/3 (QUIC)' : p.toUpperCase();
+            }
+          } catch (e) {}
+
+          const net = navigator.connection?.effectiveType ? ` • ${navigator.connection.effectiveType.toUpperCase()}` : '';
+          popoverProtocol.textContent = `${proto}${net}`;
+        }
+
+        // Geolocation via ipwho.is (CORS free, no auth) with timezone fallback
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Kolkata';
+        fetch('https://ipwho.is/')
+          .then(res => res.json())
+          .then(data => {
+            if (popoverVisitorLocation) {
+              if (data && data.success) {
+                const flag = data.flag?.emoji || '';
+                popoverVisitorLocation.textContent = `${data.city || 'Edge'}, ${data.country_code || ''} ${flag}`.trim();
+              } else {
+                popoverVisitorLocation.textContent = tz;
+              }
+            }
+          })
+          .catch(() => {
+            if (popoverVisitorLocation) popoverVisitorLocation.textContent = tz;
+          });
+      } catch (e) {}
+
+      // 5. True Origin RTT Latency Probe
+      function measureRtt() {
+        const start = performance.now();
+        fetch(window.location.href, { method: 'HEAD', cache: 'no-store' })
+          .then(() => {
+            const delta = Math.round(performance.now() - start);
+            if (navPingMs) navPingMs.textContent = `${delta}ms`;
+            if (popoverRtt) popoverRtt.textContent = `${delta}ms`;
+          })
+          .catch(() => {
+            try {
+              const navEntries = performance.getEntriesByType('navigation');
+              const rtt = navEntries && navEntries[0] ? Math.round(navEntries[0].responseEnd - navEntries[0].requestStart) : 18;
+              const finalMs = Math.max(12, rtt || 18);
+              if (navPingMs) navPingMs.textContent = `${finalMs}ms`;
+              if (popoverRtt) popoverRtt.textContent = `${finalMs}ms`;
+            } catch (err) {
+              if (navPingMs) navPingMs.textContent = '18ms';
+              if (popoverRtt) popoverRtt.textContent = '18ms';
+            }
+          });
+      }
+      measureRtt();
+      setInterval(measureRtt, 25000);
+
+      // 6. Live GitHub Engineering Activity (Direct GitHub API)
+      try {
+        const GH_CACHE_KEY = 'jatin_github_live_cache';
+        const cachedGh = sessionStorage.getItem(GH_CACHE_KEY);
+
+        if (cachedGh) {
+          const parsed = JSON.parse(cachedGh);
+          renderGh(parsed);
+        } else {
+          // Fetch latest commit from DistributedKvServer and total repos
+          Promise.all([
+            fetch('https://api.github.com/repos/Jatin2567/DistributedKvServer/commits?per_page=1').then(r => r.json()),
+            fetch('https://api.github.com/users/Jatin2567/repos?per_page=100').then(r => r.json())
+          ])
+            .then(([commits, repos]) => {
+              const commitMsg = commits && commits[0]?.commit?.message ? commits[0].commit.message.split('\n')[0] : 'Unavailable';
+              const repoCount = Array.isArray(repos) ? `${repos.length} Repositories` : 'Unavailable';
+              const ghData = { commitMsg, repoCount };
+              sessionStorage.setItem(GH_CACHE_KEY, JSON.stringify(ghData));
+              renderGh(ghData);
+            })
+            .catch(() => {
+              renderGh({ commitMsg: 'Unavailable', repoCount: 'Unavailable' });
+            });
+        }
+
+        function renderGh(data) {
+          if (popoverGithubCommit) {
+            popoverGithubCommit.textContent = data.commitMsg.length > 24 ? data.commitMsg.substring(0, 24) + '...' : data.commitMsg;
+            popoverGithubCommit.title = data.commitMsg;
+          }
+          if (popoverGithubCount) {
+            popoverGithubCount.textContent = data.repoCount;
+          }
+        }
+      } catch (e) {}
+
+      // 7. Genuine Live Real-Time View Counter (100% Real, Zero Demo/Seed Data)
+      const STORAGE_KEY = 'jatin_live_views_prod';
+      const SESSION_KEY = 'jatin_session_counted_prod';
+
+      function renderCount(num) {
+        if (typeof num !== 'number' || !Number.isFinite(num) || num < 0) return;
+        const status = document.getElementById('viewsDataStatus'); if (status) status.textContent = 'Updated';
+        const formatted = Number(num).toLocaleString('en-US');
+        if (navVisitorCount) navVisitorCount.textContent = formatted;
+        if (popoverTotalViews) popoverTotalViews.textContent = formatted;
+      }
+
+      // Show existing verified count from previous local session immediately if present
+      const cached = localStorage.getItem(STORAGE_KEY);
+      if (cached && !isNaN(parseInt(cached, 10))) {
+        renderCount(parseInt(cached, 10));
+      }
+
+      const isLocalPreview = ['localhost','127.0.0.1'].includes(location.hostname);
+      const isNewSession = !isLocalPreview && !sessionStorage.getItem(SESSION_KEY);
+      const endpoint = isNewSession
+        ? 'https://countapi.mileshilliard.com/api/v1/hit/jatin_aggarwal_portfolio_live'
+        : 'https://countapi.mileshilliard.com/api/v1/get/jatin_aggarwal_portfolio_live';
+
+      // Check Vercel edge endpoint first
+      (isLocalPreview ? Promise.reject(new Error('Local preview')) : fetch('/api/views'))
+        .then(res => {
+          if (!res.ok) throw new Error('Not on Vercel');
+          return res.json();
+        })
+        .then(data => {
+          if (data && typeof data.views === 'number') {
+            sessionStorage.setItem(SESSION_KEY, '1');
+            localStorage.setItem(STORAGE_KEY, data.views.toString());
+            renderCount(data.views);
+            if (popoverEdge && data.edgeRegion) {
+              popoverEdge.textContent = `Vercel Edge (${data.edgeRegion})`;
+            }
+          }
+        })
+        .catch(() => {
+          fetch(endpoint)
+            .then(res => res.json())
+            .then(data => {
+              if (data && typeof data.value === 'number') {
+                sessionStorage.setItem(SESSION_KEY, '1');
+                localStorage.setItem(STORAGE_KEY, data.value.toString());
+                renderCount(data.value);
+              }
+            })
+            .catch(() => {
+              if (!cached) { if (navVisitorCount) navVisitorCount.textContent = '—'; if (popoverTotalViews) popoverTotalViews.textContent = 'Unavailable'; }
+              const status = document.getElementById('viewsDataStatus'); if (status) status.textContent = cached ? 'Cached' : 'Offline';
+            });
+        });
+    }
+
+    initNavbarViewerMetrics();
+
   const techCanvas = document.getElementById('tech3dCanvas');
 
-  if (techCanvas && typeof THREE !== 'undefined') {
+  if (techCanvas && typeof THREE !== 'undefined' && !matchMedia('(prefers-reduced-motion: reduce)').matches && window.innerWidth > 760) {
     // 1. Scene, Camera, Fog & Renderer
     const scene = new THREE.Scene();
     scene.background = null;
@@ -720,6 +1013,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render3DBackground() {
       requestAnimationFrame(render3DBackground);
+      if (document.hidden || document.documentElement.dataset.motion === "paused") return;
 
       const elapsed = clock.getElapsedTime();
 
@@ -1155,268 +1449,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // REAL-TIME SYSTEM TELEMETRY, GITHUB PIPELINE & LIVE OPS SUITE
     // =========================================================================
-    function initNavbarViewerMetrics() {
-      const navVisitorCount = document.getElementById('navVisitorCount');
-      const navPingMs = document.getElementById('navPingMs');
-      const popoverTotalViews = document.getElementById('popoverTotalViews');
-      const popoverRtt = document.getElementById('popoverRtt');
-      const popoverEdge = document.getElementById('popoverEdge');
-      const popoverVisitorLocation = document.getElementById('popoverVisitorLocation');
-      const popoverProtocol = document.getElementById('popoverProtocol');
-      const popoverGpu = document.getElementById('popoverGpu');
-      const popoverFps = document.getElementById('popoverFps');
-      const popoverSession = document.getElementById('popoverSession');
-      const popoverGithubCommit = document.getElementById('popoverGithubCommit');
-      const popoverGithubRepo = document.getElementById('popoverGithubRepo');
-      const popoverGithubCount = document.getElementById('popoverGithubCount');
-      const popoverDelhiTime = document.getElementById('popoverDelhiTime');
-      const popoverWorkMode = document.getElementById('popoverWorkMode');
-      const headerLiveClock = document.getElementById('headerLiveClock');
 
-      // 1. Live Delhi NCR Clock & Availability Mode (Real-Time IST UTC+5:30)
-      function updateDelhiClock() {
-        try {
-          const now = new Date();
-          const optionsTime = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-          const timeStr = new Intl.DateTimeFormat('en-US', optionsTime).format(now);
-          if (popoverDelhiTime) popoverDelhiTime.textContent = `${timeStr} IST`;
-
-          // Concise format for top brand pill
-          const optionsShort = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true };
-          const shortTime = new Intl.DateTimeFormat('en-US', optionsShort).format(now);
-          if (headerLiveClock) headerLiveClock.textContent = `${shortTime} IST`;
-
-          // Real hour in Delhi to calculate active engineer mode
-          const optionsHour = { timeZone: 'Asia/Kolkata', hour: 'numeric', hour12: false };
-          const delhiHour = parseInt(new Intl.DateTimeFormat('en-US', optionsHour).format(now), 10);
-          if (popoverWorkMode) {
-            if (delhiHour >= 9 && delhiHour < 19) {
-              popoverWorkMode.innerHTML = '<span style="color:#22c55e;">🟢 Available • SDE / Systems</span>';
-            } else if (delhiHour >= 19 && delhiHour < 23) {
-              popoverWorkMode.innerHTML = '<span style="color:#fbbf24;">🟡 Deep Focus • Systems &amp; Raft</span>';
-            } else {
-              popoverWorkMode.innerHTML = '<span style="color:#94a3b8;">🌙 Offline • Async Mode</span>';
-            }
-          }
-        } catch (e) {}
-      }
-
-      updateDelhiClock();
-      setInterval(updateDelhiClock, 1000);
-
-      // 2. Active Session Chronometer (Genuine elapsed time on page)
-      let sessionSec = 0;
-      setInterval(() => {
-        sessionSec++;
-        const h = String(Math.floor(sessionSec / 3600)).padStart(2, '0');
-        const m = String(Math.floor((sessionSec % 3600) / 60)).padStart(2, '0');
-        const s = String(sessionSec % 60).padStart(2, '0');
-        if (popoverSession) popoverSession.textContent = `${h}:${m}:${s}`;
-      }, 1000);
-
-      // 3. Client Hardware GPU & Live Canvas Render FPS
-      try {
-        if (popoverGpu) {
-          const testCanvas = document.createElement('canvas');
-          const gl = testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl');
-          if (gl) {
-            const ext = gl.getExtension('WEBGL_debug_renderer_info');
-            if (ext) {
-              const unmasked = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) || '';
-              const cleaned = unmasked
-                .replace(/^ANGLE \((.+)\)$/, '$1')
-                .replace(/ vs_[0-9_]+ ps_[0-9_]+/, '')
-                .replace(/ Direct3D.+$/, '')
-                .trim();
-              popoverGpu.textContent = cleaned.length > 22 ? cleaned.substring(0, 22) + '...' : cleaned;
-              popoverGpu.title = unmasked;
-            } else {
-              popoverGpu.textContent = gl.getParameter(gl.RENDERER) || 'WebGL Acceleration';
-            }
-          }
-        }
-
-        // Measure live FPS
-        let frameCount = 0;
-        let fpsTimer = performance.now();
-
-        function measureFps(now) {
-          frameCount++;
-          if (now - fpsTimer >= 1000) {
-            const currentFps = Math.min(144, Math.round((frameCount * 1000) / (now - fpsTimer)));
-            if (popoverFps) popoverFps.textContent = `${currentFps}.0 FPS`;
-            frameCount = 0;
-            fpsTimer = now;
-          }
-          requestAnimationFrame(measureFps);
-        }
-        requestAnimationFrame(measureFps);
-      } catch (e) {}
-
-      // 4. Edge Runtime, Protocol & Geolocation
-      try {
-        // Detect Vercel / Host Edge
-        if (popoverEdge) {
-          if (window.location.hostname.includes('vercel.app')) {
-            popoverEdge.textContent = 'Vercel Global Edge (Active)';
-          } else if (window.location.protocol === 'https:') {
-            popoverEdge.textContent = 'Global HTTPS Edge';
-          } else {
-            popoverEdge.textContent = `Local Node (${window.location.port || '80'})`;
-          }
-        }
-
-        // Protocol & Link Detection
-        if (popoverProtocol) {
-          let proto = 'HTTP/1.1';
-          try {
-            const nav = performance.getEntriesByType('navigation');
-            if (nav && nav[0] && nav[0].nextHopProtocol) {
-              const p = nav[0].nextHopProtocol;
-              proto = p === 'h2' ? 'HTTP/2' : p === 'h3' ? 'HTTP/3 (QUIC)' : p.toUpperCase();
-            }
-          } catch (e) {}
-
-          const net = navigator.connection?.effectiveType ? ` • ${navigator.connection.effectiveType.toUpperCase()}` : '';
-          popoverProtocol.textContent = `${proto}${net}`;
-        }
-
-        // Geolocation via ipwho.is (CORS free, no auth) with timezone fallback
-        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Kolkata';
-        fetch('https://ipwho.is/')
-          .then(res => res.json())
-          .then(data => {
-            if (popoverVisitorLocation) {
-              if (data && data.success) {
-                const flag = data.flag?.emoji || '';
-                popoverVisitorLocation.textContent = `${data.city || 'Edge'}, ${data.country_code || ''} ${flag}`.trim();
-              } else {
-                popoverVisitorLocation.textContent = tz;
-              }
-            }
-          })
-          .catch(() => {
-            if (popoverVisitorLocation) popoverVisitorLocation.textContent = tz;
-          });
-      } catch (e) {}
-
-      // 5. True Origin RTT Latency Probe
-      function measureRtt() {
-        const start = performance.now();
-        fetch(window.location.href, { method: 'HEAD', cache: 'no-store' })
-          .then(() => {
-            const delta = Math.max(12, Math.round(performance.now() - start));
-            if (navPingMs) navPingMs.textContent = `${delta}ms`;
-            if (popoverRtt) popoverRtt.textContent = `${delta}ms`;
-          })
-          .catch(() => {
-            try {
-              const navEntries = performance.getEntriesByType('navigation');
-              const rtt = navEntries && navEntries[0] ? Math.round(navEntries[0].responseEnd - navEntries[0].requestStart) : 18;
-              const finalMs = Math.max(12, rtt || 18);
-              if (navPingMs) navPingMs.textContent = `${finalMs}ms`;
-              if (popoverRtt) popoverRtt.textContent = `${finalMs}ms`;
-            } catch (err) {
-              if (navPingMs) navPingMs.textContent = '18ms';
-              if (popoverRtt) popoverRtt.textContent = '18ms';
-            }
-          });
-      }
-      measureRtt();
-      setInterval(measureRtt, 25000);
-
-      // 6. Live GitHub Engineering Activity (Direct GitHub API)
-      try {
-        const GH_CACHE_KEY = 'jatin_github_live_cache';
-        const cachedGh = sessionStorage.getItem(GH_CACHE_KEY);
-
-        if (cachedGh) {
-          const parsed = JSON.parse(cachedGh);
-          renderGh(parsed);
-        } else {
-          // Fetch latest commit from DistributedKvServer and total repos
-          Promise.all([
-            fetch('https://api.github.com/repos/Jatin2567/DistributedKvServer/commits?per_page=1').then(r => r.json()),
-            fetch('https://api.github.com/users/Jatin2567/repos?per_page=100').then(r => r.json())
-          ])
-            .then(([commits, repos]) => {
-              const commitMsg = commits && commits[0]?.commit?.message ? commits[0].commit.message.split('\n')[0] : 'Raft Consensus bug fixed';
-              const repoCount = Array.isArray(repos) ? `${repos.length} Repositories` : '11 Repositories';
-              const ghData = { commitMsg, repoCount };
-              sessionStorage.setItem(GH_CACHE_KEY, JSON.stringify(ghData));
-              renderGh(ghData);
-            })
-            .catch(() => {
-              renderGh({ commitMsg: 'Raft Implementation verified', repoCount: '11 Repositories' });
-            });
-        }
-
-        function renderGh(data) {
-          if (popoverGithubCommit) {
-            popoverGithubCommit.textContent = data.commitMsg.length > 24 ? data.commitMsg.substring(0, 24) + '...' : data.commitMsg;
-            popoverGithubCommit.title = data.commitMsg;
-          }
-          if (popoverGithubCount) {
-            popoverGithubCount.textContent = data.repoCount;
-          }
-        }
-      } catch (e) {}
-
-      // 7. Genuine Live Real-Time View Counter (100% Real, Zero Demo/Seed Data)
-      const STORAGE_KEY = 'jatin_live_views_prod';
-      const SESSION_KEY = 'jatin_session_counted_prod';
-
-      function renderCount(num) {
-        if (typeof num !== 'number' || isNaN(num) || num < 1) return;
-        const formatted = Number(num).toLocaleString('en-US');
-        if (navVisitorCount) navVisitorCount.textContent = formatted;
-        if (popoverTotalViews) popoverTotalViews.textContent = formatted;
-      }
-
-      // Show existing verified count from previous local session immediately if present
-      const cached = localStorage.getItem(STORAGE_KEY);
-      if (cached && !isNaN(parseInt(cached, 10))) {
-        renderCount(parseInt(cached, 10));
-      }
-
-      const isNewSession = !sessionStorage.getItem(SESSION_KEY);
-      const endpoint = isNewSession
-        ? 'https://countapi.mileshilliard.com/api/v1/hit/jatin_aggarwal_portfolio_live'
-        : 'https://countapi.mileshilliard.com/api/v1/get/jatin_aggarwal_portfolio_live';
-
-      // Check Vercel edge endpoint first
-      fetch('/api/views')
-        .then(res => {
-          if (!res.ok) throw new Error('Not on Vercel');
-          return res.json();
-        })
-        .then(data => {
-          if (data && typeof data.views === 'number') {
-            sessionStorage.setItem(SESSION_KEY, '1');
-            localStorage.setItem(STORAGE_KEY, data.views.toString());
-            renderCount(data.views);
-            if (popoverEdge && data.edgeRegion) {
-              popoverEdge.textContent = `Vercel Edge (${data.edgeRegion})`;
-            }
-          }
-        })
-        .catch(() => {
-          fetch(endpoint)
-            .then(res => res.json())
-            .then(data => {
-              if (data && typeof data.value === 'number') {
-                sessionStorage.setItem(SESSION_KEY, '1');
-                localStorage.setItem(STORAGE_KEY, data.value.toString());
-                renderCount(data.value);
-              }
-            })
-            .catch(() => {
-              if (!cached) renderCount(1);
-            });
-        });
-    }
-
-    initNavbarViewerMetrics();
     initVisitorTelemetry();
 
     render3DBackground();

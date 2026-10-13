@@ -5,21 +5,23 @@ export default async function handler(req, res) {
     const response = await fetch('https://countapi.mileshilliard.com/api/v1/hit/jatin_aggarwal_portfolio_live', {
       headers: { 'User-Agent': 'Vercel-Edge-Visitor-Tracker/1.0' }
     });
+    if (!response.ok) throw new Error('Counter unavailable');
     const data = await response.json();
+    if (!Number.isFinite(data.value) || data.value < 0) throw new Error('Invalid count');
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     
     return res.status(200).json({
       success: true,
-      views: data.value || 1,
+      views: data.value,
       edgeRegion: req.headers['x-vercel-id'] || 'iad1',
       timestamp: Date.now()
     });
   } catch (error) {
-    return res.status(200).json({
+    return res.status(503).json({
       success: false,
-      views: 1,
+      views: null,
       edgeRegion: 'fallback',
       timestamp: Date.now()
     });
