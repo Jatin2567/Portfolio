@@ -545,6 +545,9 @@ body::before {
 }
 
 .pill-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(135deg, var(--color-terracotta), var(--color-ochre));
   color: #ffffff;
   border: none;
@@ -553,6 +556,7 @@ body::before {
   padding: 0.55rem 1.25rem;
   border-radius: 999px;
   cursor: pointer;
+  text-decoration: none;
   transition: var(--transition-smooth);
 }
 
@@ -1524,7 +1528,10 @@ body::before {
   margin-bottom: 7px;
   display: inline-flex;
   align-items: center;
-  white-space: nowrap;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
   animation: bubbleFloat 3s ease-in-out infinite alternate;
 }
 
@@ -1590,6 +1597,18 @@ body::before {
 }
 
 /* Left Integrated Video Avatar Box (Yellow.ai Exact Rectangular Ratio: 168px x 140px, ~1.2:1) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .yellow-avatar-box {
   position: relative;
   width: 168px;
@@ -1661,7 +1680,7 @@ body::before {
   width: 100%;
 }
 
-/* Right Animated Voice Waveform Button (Yellow.ai Exact Blue Square: 29px x 29px) */
+/* Guide question action in the page's warm accent. */
 .yellow-wave-btn {
   display: flex;
   align-items: center;
@@ -1669,17 +1688,17 @@ body::before {
   gap: 2.5px;
   width: 29px;
   height: 29px;
-  background: #2563eb;
+  background: #b6502e;
   border: none;
   border-radius: 7px;
   cursor: pointer;
-  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 3px 10px rgba(182, 80, 46, 0.22);
   transition: transform 0.18s ease, background-color 0.18s ease;
   flex-shrink: 0;
 }
 
 .yellow-wave-btn:hover {
-  background: #1d4ed8;
+  background: #984124;
   transform: scale(1.05);
 }
 
@@ -1741,6 +1760,40 @@ body::before {
 .yellow-audio-btn:hover {
   background: #e2e8f0;
   color: #0f172a;
+}
+
+.yellow-mic-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 29px;
+  height: 29px;
+  padding: 0;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  flex-shrink: 0;
+}
+
+.yellow-mic-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+.yellow-mic-btn.listening {
+  background: #fff1ed;
+  border-color: #f2a18a;
+  color: #bd4e35;
+  box-shadow: 0 0 0 3px rgba(220, 104, 75, 0.12);
+}
+
+.yellow-mic-btn:focus-visible {
+  outline: 2px solid #d98d62;
+  outline-offset: 2px;
 }
 
 /* Subtle Close / Minimize Button placed at top-right corner */
@@ -1984,7 +2037,7 @@ body::before {
   }
 
   .yellow-audio-btn {
-    display: none;
+    display: flex;
   }
 }
 
@@ -2238,6 +2291,43 @@ body::before {
   color: var(--text-dim);
 }
 
+.card-stack-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.65rem 0 1rem;
+}
+
+.card-stack-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.22rem 0.55rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: var(--text-muted);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.card-stack-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(232, 158, 70, 0.35);
+  color: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+.card-stack-pill img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  display: block;
+}
+
 .card-headline {
   font-size: 1.45rem;
   font-weight: 700;
@@ -2279,6 +2369,10 @@ body::before {
 }
 
 .card-cta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: 1.1rem;
 }
@@ -2597,6 +2691,45 @@ body::before {
   margin-bottom: 2.5rem;
 }
 
+.resume-download-card {
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(232, 158, 70, 0.2);
+  border-radius: 16px;
+}
+
+.resume-download-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.resume-download-copy strong {
+  color: #fff;
+  font-size: 0.96rem;
+}
+
+.resume-download-copy span {
+  color: var(--text-muted);
+  font-size: 0.84rem;
+}
+
+.resume-download-card .btn-warm-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
 .footer-actions {
   display: flex;
   justify-content: center;
@@ -2875,6 +3008,12 @@ body::before {
     align-items: stretch;
   }
 
+  .resume-download-card {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
   .btn-warm-cta,
   .btn-warm-outline {
     justify-content: center;
@@ -2997,7 +3136,14 @@ body::before {
   }
 
   .yellow-audio-btn {
-    display: none !important;
+    display: flex !important;
+    width: 27px;
+    height: 27px;
+  }
+
+  .yellow-mic-btn {
+    width: 27px;
+    height: 27px;
   }
 
   .yellow-speech-bubble {
@@ -3555,7 +3701,7 @@ body{background:#171310}
   display: none !important;
 }
 
-/* 2. Technical Blueprint Grid Canvas */
+/* A single soft background texture keeps the content in focus. */
 .studio-grid {
   display: block !important;
   position: fixed !important;
@@ -3563,19 +3709,20 @@ body{background:#171310}
   pointer-events: none !important;
   z-index: 1 !important;
   background-image: 
-    linear-gradient(to right, rgba(232, 164, 88, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(232, 164, 88, 0.045) 1px, transparent 1px) !important;
-  background-size: 38px 38px !important;
+    linear-gradient(to right, rgba(232, 164, 88, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(232, 164, 88, 0.035) 1px, transparent 1px) !important;
+  background-size: 64px 64px !important;
   mask-image: radial-gradient(ellipse 90% 85% at 50% 25%, #000 40%, rgba(0,0,0,0.3) 80%, transparent 100%) !important;
   -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 25%, #000 40%, rgba(0,0,0,0.3) 80%, transparent 100%) !important;
 }
 
 body {
   background-color: #14100e !important;
-  background-image: 
-    linear-gradient(to right, rgba(232, 164, 88, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(232, 164, 88, 0.035) 1px, transparent 1px) !important;
-  background-size: 38px 38px !important;
+  background-image: none !important;
+}
+
+body::before {
+  background-image: none;
 }
 
 /* 3. Section Monospace Grid Index Headers (like 01 // SELECTED PROJECTS) */
@@ -3916,6 +4063,7 @@ body {
 }
 
 .yellow-audio-btn,
+.yellow-mic-btn,
 .yellow-wave-btn,
 .yellow-min-btn {
   cursor: pointer !important;
@@ -3948,6 +4096,12 @@ body {
   box-shadow: none !important;
   border: none !important;
   border-bottom: none !important;
+}
+
+.yellow-content-box:has(.yellow-agent-input:focus-visible) {
+  outline: 2px solid #e7b47d;
+  outline-offset: 3px;
+  border-radius: 10px;
 }
 
 /* White Hero Headline Cursor after 'l' */

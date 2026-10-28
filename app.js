@@ -57,13 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
       intent: 'raft',
       videoFile: 'raft.mp4',
       patterns: ['raft', 'distributed', 'kv', 'rocksdb', 'consensus', 'go', 'golang', 'cluster', 'storage engine', 'election', 'quorum', 'wal'],
-      speech: "Distributed KV Server is Jatin’s university project in Go. It explores Raft leader election, replicated logs, RPC communication, and RocksDB persistence. You can find the source in Selected Projects."
+      speech: "Distributed KV Server is Jatin’s university prototype in Go, with three configured nodes for exploring Raft elections, replicated logs, and RPC. Its key-value state currently uses memory; the RocksDB adapter is a placeholder. You can find the source in Selected Projects."
+    },
+    {
+      intent: 'voiceops',
+      videoFile: 'intro.mp4',
+      patterns: ['voiceops', 'voice ai', 'pipecat', 'ttfa', 'time to first audio', 'latency', 'guardrails', 'voice pipeline', 'groq whisper', 'observability', 'streamlit'],
+      speech: "VoiceOps Enterprise is Jatin’s Voice AI benchmarking and observability platform deployed on Render. It quantifies sub-second Time-to-First-Audio latency across Cascade and Hybrid pipelines using Pipecat DAGs, FastAPI, Redis, and Supabase."
     },
     {
       intent: 'mariadb',
       videoFile: 'mariadb.mp4',
-      patterns: ['mariadb', 'magics', 'hackathon', 'vector', 'jupyter', 'top 59', 'sentence-transformers', 'sql', 'temporal', 'ranking'],
-      speech: "MariaDB-magics is a Jupyter extension developed for the MariaDB Global Hackathon. It brings SQL queries, DataFrame workflows, vector search, and plotting into notebooks."
+      patterns: ['mariadb', 'magics', 'studio', 'hackathon', 'vector', 'jupyter', 'top 59', 'sentence-transformers', 'sql', 'temporal', 'ranking', 'system versioning'],
+      speech: "MariaDB Magics is a Top 59 Global Hackathon project featuring both a Jupyter extension and a live interactive web studio deployed on Render. It brings SQL queries, MariaDB 11.8 LTS vector similarity search, system-versioned temporal analytics, and plotting into a clean workspace."
     },
     {
       intent: 'bhdesk',
@@ -182,9 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const indicatorStatus = document.getElementById('indicatorStatus');
   const speechQuote = document.getElementById('speechQuoteText');
   const qChips = document.querySelectorAll('.q-chip[data-topic]');
-  const questionInput = document.getElementById('avatarQuestionInput');
-  const btnAsk = document.getElementById('btnAskAvatar');
-  const btnMic = document.getElementById('btnVoiceInput');
+  const btnMic = document.getElementById('btnYellowMic');
 
   // Start video autoplay
   if (heroVideo) heroVideo.play().catch(() => {});
@@ -214,23 +218,59 @@ document.addEventListener('DOMContentLoaded', () => {
   const dockVolIcon = document.getElementById('dockVolIcon');
   const btnYellowMinimize = document.getElementById('btnYellowMinimize');
   const yellowCompactPill = document.getElementById('yellowCompactPill');
+  let spokenRepliesEnabled = true;
+  let speechRequestId = 0;
+  const voiceStatus = document.getElementById('yellowVoiceStatus');
+
+  function setVoiceStatus(message) {
+    if (voiceStatus) voiceStatus.textContent = message;
+  }
+
+  function setSpeakingState(isSpeaking) {
+    if (videoContainer) videoContainer.classList.toggle('speaking', isSpeaking);
+    if (card) card.classList.toggle('speaking', isSpeaking);
+    if (indicatorStatus) indicatorStatus.textContent = isSpeaking ? 'Guide speaking' : 'Portfolio guide';
+  }
+
+  function expandGuide() {
+    if (!yellowAgentBar) return;
+    yellowAgentBar.classList.remove('agent-compact');
+    yellowAgentBar.classList.add('agent-expanded');
+  }
 
   if (dockVideo) {
+    // The avatar stays muted so its prerecorded voice can never override the selected guide voice.
+    dockVideo.defaultMuted = true;
     dockVideo.muted = true;
     dockVideo.play().catch(() => {});
   }
 
-  if (btnYellowAudioToggle && dockVideo) {
+  function updateVoiceToggle() {
+    if (!btnYellowAudioToggle) return;
+    const label = spokenRepliesEnabled ? 'Mute spoken replies' : 'Enable spoken replies';
+    btnYellowAudioToggle.title = label;
+    btnYellowAudioToggle.setAttribute('aria-label', label);
+    btnYellowAudioToggle.setAttribute('aria-pressed', String(spokenRepliesEnabled));
+    if (dockVolIcon) {
+      dockVolIcon.innerHTML = spokenRepliesEnabled
+        ? '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"></path>'
+        : '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>';
+    }
+  }
+
+  if (btnYellowAudioToggle) {
+    updateVoiceToggle();
     btnYellowAudioToggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      dockVideo.muted = !dockVideo.muted;
-      if (dockVideo.muted) {
-        if (dockVolIcon) dockVolIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>';
-        btnYellowAudioToggle.title = "Unmute Audio";
+      spokenRepliesEnabled = !spokenRepliesEnabled;
+      updateVoiceToggle();
+      speechRequestId += 1;
+      if (!spokenRepliesEnabled) {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        setSpeakingState(false);
+        setVoiceStatus('Spoken replies are muted. Answers remain available as text.');
       } else {
-        if (dockVolIcon) dockVolIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>';
-        btnYellowAudioToggle.title = "Mute Audio";
-        dockVideo.play().catch(() => {});
+        setVoiceStatus('Spoken replies are on. The guide uses a recognized masculine English voice when available.');
       }
     });
   }
@@ -240,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
     yellowAgentBar.addEventListener('click', (e) => {
       if (e.target.closest('#btnYellowMinimize')) return;
       if (e.target.closest('.yellow-audio-btn')) return;
+      if (e.target.closest('#btnYellowMic')) return;
       if (e.target.closest('#btnYellowWave')) return;
 
       if (yellowAgentBar.classList.contains('agent-compact')) {
@@ -285,19 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  if (yellowAgentInput) {
-    yellowAgentInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        const val = yellowAgentInput.value.trim();
-        if (val) {
-          handleQuery(val);
-          yellowAgentInput.value = '';
-          yellowAgentInput.placeholder = "Answer playing... Ask another question";
-        }
-      }
-    });
-  }
-
   if (btnYellowWave) {
     btnYellowWave.addEventListener('click', () => {
       const val = yellowAgentInput ? yellowAgentInput.value.trim() : '';
@@ -305,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
         handleQuery(val);
         if (yellowAgentInput) {
           yellowAgentInput.value = '';
-          yellowAgentInput.placeholder = "Answer playing... Ask another question";
+          yellowAgentInput.placeholder = "Answer ready. Ask another question";
         }
       } else {
         handleQuery("explain Raft consensus");
@@ -322,12 +350,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (bar) bar.classList.remove('minimized');
       if (input) {
         input.focus();
-        input.placeholder = "Ask Jatin about Raft, RocksDB, or experience...";
+        input.placeholder = "Ask Jatin about Raft, projects, or experience...";
       }
     });
   }
 
   function triggerResponse(responseObj) {
+    expandGuide();
     if (speechQuote) {
       speechQuote.textContent = responseObj.speech;
     }
@@ -335,36 +364,82 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yellowSpeech) {
       yellowSpeech.textContent = responseObj.speech;
     }
+    setVoiceStatus(spokenRepliesEnabled ? 'Finding a masculine English voice for this reply.' : 'Spoken replies are muted. This answer is shown as text.');
     playAudioVoice(responseObj.speech);
   }
 
   function playAudioVoice(text) {
-    if (videoContainer) videoContainer.classList.add('speaking');
-    if (card) card.classList.add('speaking');
-    if (indicatorStatus) indicatorStatus.textContent = "AI Guide Speaking";
+    const requestId = ++speechRequestId;
+    setSpeakingState(false);
+    if (!spokenRepliesEnabled) return;
 
+    if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') {
+      setVoiceStatus('Spoken replies are unavailable in this browser. The answer is shown as text.');
+      return;
+    }
     window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 1.0;
-    utterance.pitch = 0.98;
 
-    const voices = window.speechSynthesis.getVoices();
-    const voice = voices.find(v => v.lang.includes('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('David') || v.name.includes('Guy')));
-    if (voice) utterance.voice = voice;
+    const masculineName = /\b(david|mark|guy|ryan|brian|daniel|christopher|eric|alex|fred|lee|tom|aaron|andrew|james|jason|michael|samuel|henry|thomas|stephen|steffan|liam|william|robert|arthur|male)(?:\b|(?=neural|online|desktop|natural))/i;
+    const feminineName = /\b(female|woman|zira|aria|jenny|samantha|victoria|susan|karen|ava)(?:\b|(?=neural|online|desktop|natural))/i;
+    const localeRank = (lang) => (/^en-US\b/i.test(lang) ? 0 : /^en-GB\b/i.test(lang) ? 1 : /^en(-|_)/i.test(lang) ? 2 : 3);
 
-    utterance.onend = () => {
-      if (videoContainer) videoContainer.classList.remove('speaking');
-      if (card) card.classList.remove('speaking');
-      if (indicatorStatus) indicatorStatus.textContent = "Neural Video Agent";
+    function findMasculineEnglishVoice() {
+      return window.speechSynthesis.getVoices()
+        .filter(voice => /^en(-|_)/i.test(voice.lang) && masculineName.test(voice.name) && !feminineName.test(voice.name))
+        .sort((a, b) => localeRank(a.lang) - localeRank(b.lang))[0] || null;
+    }
+
+    function speakWithSelectedVoice() {
+      if (requestId !== speechRequestId || !spokenRepliesEnabled) return;
+      const voice = findMasculineEnglishVoice();
+      if (!voice) {
+        setSpeakingState(false);
+        const message = 'No recognized masculine English voice is installed. Your answer is shown as text; install a masculine English voice in your device settings to hear it.';
+        setVoiceStatus(message);
+        showToast('No masculine English voice is installed. The answer is shown as text.');
+        return;
+      }
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.voice = voice;
+      utterance.lang = voice.lang;
+      utterance.rate = 0.96;
+      utterance.pitch = 0.92;
+      utterance.onstart = () => {
+        if (requestId !== speechRequestId) return;
+        setSpeakingState(true);
+        setVoiceStatus(`Speaking with ${voice.name}.`);
+      };
+      utterance.onend = () => {
+        if (requestId !== speechRequestId) return;
+        setSpeakingState(false);
+        setVoiceStatus('Reply finished.');
+      };
+      utterance.onerror = () => {
+        if (requestId !== speechRequestId) return;
+        setSpeakingState(false);
+        setVoiceStatus('Voice playback did not start. Your answer is shown as text.');
+      };
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Some browsers populate their voice list after the page has loaded.
+    if (window.speechSynthesis.getVoices().length) {
+      speakWithSelectedVoice();
+      return;
+    }
+
+    let settled = false;
+    const finishVoiceLookup = () => {
+      if (settled) return;
+      settled = true;
+      window.speechSynthesis.removeEventListener?.('voiceschanged', finishVoiceLookup);
+      clearTimeout(voiceLookupTimeout);
+      speakWithSelectedVoice();
     };
-
-    utterance.onerror = () => {
-      if (videoContainer) videoContainer.classList.remove('speaking');
-      if (card) card.classList.remove('speaking');
-      if (indicatorStatus) indicatorStatus.textContent = "Neural Video Agent";
-    };
-
-    window.speechSynthesis.speak(utterance);
+    const voiceLookupTimeout = setTimeout(finishVoiceLookup, 1200);
+    window.speechSynthesis.addEventListener?.('voiceschanged', finishVoiceLookup, { once: true });
   }
 
   function handleQuery(text) {
@@ -386,69 +461,114 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Text input submission
-  if (btnAsk && questionInput) {
-    btnAsk.addEventListener('click', () => {
-      const q = questionInput.value;
-      if (q) {
-        handleQuery(q);
-        questionInput.value = '';
-      }
-    });
-
-    questionInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        const q = questionInput.value;
-        if (q) {
-          handleQuery(q);
-          questionInput.value = '';
-        }
+  // 5. Voice questions use the browser's speech recognition, then the existing guide reply.
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (yellowAgentInput) {
+    yellowAgentInput.addEventListener('focus', expandGuide);
+    yellowAgentInput.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' || event.isComposing || event.repeat) return;
+      event.preventDefault();
+      const question = yellowAgentInput.value.trim();
+      if (question) {
+        handleQuery(question);
+        yellowAgentInput.value = '';
+        yellowAgentInput.placeholder = 'Answer ready. Ask another question';
       }
     });
   }
 
-  // 5. Microphone Voice-to-Text Input (SpeechRecognition API)
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (SpeechRecognition && btnMic) {
-    const recognition = new SpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.lang = 'en-US';
+  if (btnMic) {
+    if (!SpeechRecognition) {
+      btnMic.addEventListener('click', () => {
+        setVoiceStatus('Voice input is not available in this browser. Type your question instead.');
+        showToast('Voice input is not available here. You can type your question.');
+      });
+    } else {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+      let isListening = false;
+      let receivedFinalResult = false;
 
-    recognition.onstart = () => {
-      btnMic.classList.add('listening');
-      btnMic.querySelector('.mic-label').textContent = 'Listening...';
-    };
+      const resetMicButton = () => {
+        isListening = false;
+        btnMic.classList.remove('listening');
+        btnMic.setAttribute('aria-pressed', 'false');
+        btnMic.setAttribute('aria-label', 'Ask by voice');
+        btnMic.title = 'Ask by voice';
+      };
 
-    recognition.onresult = (event) => {
-      const transcript = event.results[0][0].transcript;
-      questionInput.value = transcript;
-      handleQuery(transcript);
-    };
+      recognition.onstart = () => {
+        isListening = true;
+        receivedFinalResult = false;
+        btnMic.classList.add('listening');
+        btnMic.setAttribute('aria-pressed', 'true');
+        btnMic.setAttribute('aria-label', 'Stop listening');
+        btnMic.title = 'Stop listening';
+        yellowAgentInput.placeholder = 'Listening… ask your question';
+        setVoiceStatus('Listening. Ask your question, then pause.');
+      };
 
-    recognition.onerror = () => {
-      btnMic.classList.remove('listening');
-      btnMic.querySelector('.mic-label').textContent = 'Speak';
-    };
+      recognition.onresult = (event) => {
+        let transcript = '';
+        for (let index = 0; index < event.results.length; index += 1) {
+          transcript += event.results[index][0].transcript;
+        }
+        transcript = transcript.trim();
+        if (transcript) yellowAgentInput.value = transcript;
 
-    recognition.onend = () => {
-      btnMic.classList.remove('listening');
-      btnMic.querySelector('.mic-label').textContent = 'Speak';
-    };
+        const lastResult = event.results[event.results.length - 1];
+        if (lastResult?.isFinal && transcript) {
+          receivedFinalResult = true;
+          handleQuery(transcript);
+          yellowAgentInput.placeholder = 'Answer ready. Ask another question';
+        }
+      };
 
-    btnMic.addEventListener('click', () => {
-      try {
-        recognition.start();
-      } catch (e) {
-        recognition.stop();
-      }
-    });
+      recognition.onerror = (event) => {
+        resetMicButton();
+        yellowAgentInput.placeholder = 'Ask about projects, skills, or experience';
+        const message = event.error === 'not-allowed' || event.error === 'service-not-allowed'
+          ? 'Microphone access was blocked. Allow it in your browser or type your question.'
+          : event.error === 'no-speech'
+            ? 'No speech was heard. Tap the microphone and try again.'
+            : 'Voice input stopped. You can type your question instead.';
+        setVoiceStatus(message);
+        showToast(message);
+      };
+
+      recognition.onend = () => {
+        resetMicButton();
+        if (!receivedFinalResult && yellowAgentInput.placeholder.startsWith('Listening')) {
+          yellowAgentInput.placeholder = 'Ask about projects, skills, or experience';
+          setVoiceStatus('Listening ended. Tap the microphone to try again, or type your question.');
+        }
+      };
+
+      btnMic.addEventListener('click', () => {
+        if (isListening) {
+          recognition.stop();
+          return;
+        }
+        try {
+          receivedFinalResult = false;
+          // Stop the guide's reply so the microphone cannot transcribe it.
+          speechRequestId += 1;
+          if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+          setSpeakingState(false);
+          expandGuide();
+          recognition.start();
+        } catch (error) {
+          setVoiceStatus('The microphone is busy. Wait a moment and try again.');
+        }
+      });
+    }
   }
 
   // 6. Contact email copy functionality
   const toast = document.getElementById('toast');
   const copyBtns = [
-    document.getElementById('copyEmailTop'),
     document.getElementById('copyEmailHero'),
     document.getElementById('copyEmailFooter')
   ];
