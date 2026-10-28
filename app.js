@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
       intent: 'raft',
       videoFile: 'raft.mp4',
       patterns: ['raft', 'distributed', 'kv', 'rocksdb', 'consensus', 'go', 'golang', 'cluster', 'storage engine', 'election', 'quorum', 'wal'],
-      speech: "Distributed KV Server is Jatin’s university prototype in Go, with three configured nodes for exploring Raft elections, replicated logs, and RPC. Its key-value state currently uses memory; the RocksDB adapter is a placeholder. You can find the source in Selected Projects."
+      speech: "Distributed KV Server is Jatin’s distributed systems project in Go, featuring a live 3-node web playground on Render and exploring Raft elections, replicated logs, and distributed consensus."
     },
     {
       intent: 'voiceops',

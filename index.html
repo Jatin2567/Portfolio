@@ -215,8 +215,8 @@
         <span class="proof-card-desc">Voice AI latency &amp; guardrail telemetry</span>
       </div>
       <div class="proof-card">
-        <span class="proof-card-title">28+ Web Deliverables</span>
-        <span class="proof-card-desc">Built during my internship at Bluella</span>
+        <span class="proof-card-title">Distributed KV</span>
+        <span class="proof-card-desc">Live 3-node Raft consensus playground</span>
       </div>
     </div>
   </section>
@@ -426,11 +426,11 @@
           </div>
         </div>
 
-        <!-- 4. Distributed KV Server -->
-        <div class="card-item-warm">
+        <!-- 4. Distributed KV Server (Broadened Two-Column Featured Project) -->
+        <div class="card-item-warm card-featured-broad">
           <div class="card-top-tag">
-            <span class="chip-warm chip-red">DISTRIBUTED SYSTEMS</span>
-            <span class="lang-code">Go · Raft · RPC · Docker Compose</span>
+            <span class="chip-warm chip-red">DISTRIBUTED SYSTEMS &amp; LIVE CONSOLE</span>
+            <span class="lang-code">Go · Raft · RPC · Docker Compose · Live Web Console</span>
           </div>
 
           <div class="card-stack-row">
@@ -439,24 +439,52 @@
             <span class="card-stack-pill"><img src="assets/skills/linux.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Linux</span>
           </div>
 
-          <h3 class="card-headline">Distributed KV Server</h3>
-          <p class="card-body-text">A Go university prototype exploring leader election and replicated key-value writes across a configured three-node cluster.</p>
-          <ul class="item-bullet-list">
-            <li>The repository includes a three-node Docker Compose configuration.</li>
-            <li>Raft elections and replicated log entries are the project’s core learning focus.</li>
-            <li>Committed key-value state currently lives in memory; the RocksDB adapter is a placeholder.</li>
-          </ul>
-          
-          <div class="project-meta-box">
-            <div class="meta-entry"><strong>Project outcome:</strong> A concrete cluster prototype for exploring how Raft coordinates writes.</div>
-            <div class="meta-entry"><strong>Status:</strong> Public university prototype · persistent storage is not implemented.</div>
-          </div>
+          <div class="card-broad-grid">
+            <!-- Left Column: Architectural Breakdown & Technical Scope -->
+            <div class="broad-col-content">
+              <h3 class="card-headline">Distributed KV Server</h3>
+              <p class="card-body-text">An interactive exploration of distributed consensus and leader elections in Go, featuring a live web playground simulating a replicated 3-node Raft key-value cluster.</p>
+              <ul class="item-bullet-list">
+                <li>Independent 3-node cluster architecture demonstrating Raft leader election, heartbeat quorums, and RPC communication.</li>
+                <li>Replicated log consensus where write commands are proposed by the leader and committed once acknowledged by a majority.</li>
+                <li>Interactive live web console playground enabling real-time key-value writes, state reads, and cluster telemetry observation.</li>
+                <li>Containerized multi-node environment configured with Docker Compose for local cluster deployment.</li>
+              </ul>
+              
+              <div class="project-meta-box">
+                <div class="meta-entry"><strong>Status:</strong> Live Console on Render · Open Source on GitHub.</div>
+                <div class="meta-entry"><strong>Project outcome:</strong> A concrete cluster prototype and interactive web playground for exploring how Raft coordinates distributed state.</div>
+              </div>
 
-          <div class="card-cta">
-            <a href="https://github.com/Jatin2567/DistributedKvServer" target="_blank" rel="noreferrer" class="warm-link">
-              <span>View on GitHub</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </a>
+              <div class="card-cta">
+                <a href="https://distributed-kv-console.onrender.com/" target="_blank" rel="noreferrer" class="warm-link">
+                  <span>View live console</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+                <a href="https://github.com/Jatin2567/DistributedKvServer" target="_blank" rel="noreferrer" class="warm-link">
+                  <span>View on GitHub</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Column: Real Live Workspace Screenshot Preview -->
+            <div class="broad-col-media">
+              <div class="preview-media-frame">
+                <a href="https://distributed-kv-console.onrender.com/" target="_blank" rel="noreferrer" class="preview-media-link" title="Open Distributed KV Console">
+                  <img src="distributed_kv_screenshot.png" alt="Distributed KV Live Web Console Screenshot" class="broad-preview-img" loading="lazy" decoding="async" />
+                  <div class="preview-media-overlay">
+                    <span class="preview-media-badge">
+                      <span>Live console</span>
+                    </span>
+                  </div>
+                </a>
+              </div>
+              <div class="preview-media-caption">
+                <span class="caption-title">Distributed KV · Consensus Playground</span>
+                <span class="caption-sub">Real interface showing 3-node cluster telemetry, consensus visualization, and interactive operations.</span>
+              </div>
+            </div>
           </div>
         </div>
 
