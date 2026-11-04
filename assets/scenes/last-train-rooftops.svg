@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720">
+  <title>A water tank and aerial on the rooftops</title>
+  <defs>
+    <linearGradient id="tank" x2="1" y2=".11">
+      <stop stop-color="#243549"/><stop offset=".25" stop-color="#192b3c"/>
+      <stop offset=".7" stop-color="#102131"/><stop offset="1" stop-color="#0b1928"/>
+    </linearGradient>
+  </defs>
+  <!-- Aerial and a few draped utility wires on the roof, seen from below. -->
+  <g fill="none" stroke-linecap="round">
+    <path stroke="#192638" stroke-width="1.9" d="M-10 495q107 62 207 38m1 0q146 94 311 74m0 0q190 93 409 18"/>
+    <path stroke="#29374a" stroke-width="1" d="M-10 485q100 60 207 45m1 0q141 82 312 73"/>
+    <path stroke="#0c1929" stroke-width="5" d="M191 631l8-133"/>
+    <path stroke="#324155" stroke-width="1.3" d="M190 631l8-133"/>
+    <path stroke="#101e2e" stroke-width="2.8" d="M159 507l84-9m-67-10 8 33m5-37 7 34m7-38 7 37m7-38 6 33m6-34 5 27m-32-2-8 10"/>
+    <path stroke="#152334" stroke-width="1.55" d="M196 520q7 49 27 88m-26-77-35 85"/>
+  </g>
+  <path fill="#132235" d="M0 626l79-3v-11l47-2 9 5v14l90-3 16 4 67-2 3 6 66-2 5 4v51H0Z"/>
+  <path fill="#354355" d="M0 623l79-3 46-2 10 4-56 1L0 627Zm135 3 90-3 16 4-106 3Z"/>
+  <path fill="#0d1c2c" d="M0 649l121-2 2-12 53-1 8 4v11l93-3 4-7 48-1 11 4v9l57-2v6l83-1v11h125v12h73v13h104v30H0Z"/>
+  <path fill="#2b3949" d="M0 647l115-2v4L0 652zm184 1 94-4 4 2-98 5zm145-11 11 3v3l-11-2-48 1v-3z"/>
+  <path fill="#081523" d="M0 682l131-7 74 2 13 7 121-3 12 5 82-1v3l133-1 28 4h117l17 2 121-2 29 3 100-4 16 3h125l31-6 90 1 25-5 95 1 22-5 99 1 35-7 83 3v89H0Z"/>
+  <!-- A ribbed polyethylene tank with a lid, service pipe, and a steel support frame. -->
+  <g transform="translate(1278 466)">
+    <path fill="#122133" d="m-32 158 20-7h172l21 7-5 4H-31z"/>
+    <g fill="none" stroke-linecap="square">
+      <path stroke="#0b1827" stroke-width="6" d="M0 111l-9 43m25-42 5 41m92-41 9 41m-26-42-1 41"/>
+      <path stroke="#263447" stroke-width="2" d="m-6 148 21-33m-16 1 20 31m81 2 13-33m-17-1 21 32"/>
+    </g>
+    <path fill="#0d1b2a" d="m-7 109 126-2 10 5-1 5-135 1-5-4Z"/>
+    <path fill="url(#tank)" d="M0 25C0 14 12 10 25 6l2-3h54l2 3c17 2 28 6 32 16l5 16 1 60q0 10-9 12c-30 6-68 6-99 2-9-1-13-4-13-11Z"/>
+    <path fill="#354457" d="M10 14c12-6 29-9 46-9 24 0 41 3 50 8-25-6-66-7-96 1Z"/>
+    <path fill="#172838" stroke="#344558" stroke-width="1.1" d="M36 2V0q20-3 36 0v2q-17 3-36 0Z"/>
+    <g fill="none" stroke="#324255" stroke-width="1.35" opacity=".83">
+      <path d="M3 25q55 9 111-1M1 38q59 9 116-1M1 51q58 9 117 0M1 64q59 9 118 0M1 77q59 9 118 0M2 91q58 9 117 0M4 104q56 8 113 0"/>
+    </g>
+    <g fill="none" stroke="#091726" stroke-width="2">
+      <path d="M2 28q56 9 113-1M1 41q58 9 116-1M1 54q58 9 117 0M1 67q59 9 118 0M1 80q59 9 118 0M2 94q58 9 117 0"/>
+    </g>
+    <path fill="none" stroke="#243547" stroke-width="4" d="M116 90h10q6 0 6 6v35q0 8 9 8h20v17"/>
+  </g>
+  <path fill="#0b1828" d="M1009 680v-18l66-1v-7l91-2v-13l67-2v-11l68-2v-4l122-1 8-4v-29l56-3v-16l74-2 39 5v195H996Z"/>
+  <path fill="#26364a" d="m1166 638 67-3v3l-67 4zm67-14 68-2 4 2-72 3zm68-6 121-2 9 2-130 4zm130-34 56-3v3l-56 4zm56-18 74-3 39 5v4l-39-5-74 3z"/>
+  <path fill="#081523" d="M1132 690v-13l61-1v-12l122-2 20 4 72-2v-20l126-5 16-4 51 2v83h-468Z"/>
+</svg>

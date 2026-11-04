@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720">
+  <title>Last train over the city</title>
+  <desc>Night settles over Delhi rooftops. A train crosses the far skyline while a water tank and television aerial frame the evening sky.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#0b162b"/><stop offset=".49" stop-color="#192e4c"/>
+      <stop offset=".72" stop-color="#344d67"/><stop offset=".84" stop-color="#76686c"/>
+      <stop offset=".94" stop-color="#ab806d"/><stop offset="1" stop-color="#56596a"/>
+    </linearGradient>
+    <radialGradient id="last-light" cx=".67" cy=".85" r=".57">
+      <stop stop-color="#ffba79" stop-opacity=".29"/><stop offset=".5" stop-color="#d39684" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#d39684" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tank" x2="1" y2=".11">
+      <stop stop-color="#243549"/><stop offset=".25" stop-color="#192b3c"/>
+      <stop offset=".7" stop-color="#102131"/><stop offset="1" stop-color="#0b1928"/>
+    </linearGradient>
+    <linearGradient id="cloud" x2="1" y2="0">
+      <stop stop-color="#bda8a4" stop-opacity="0"/><stop offset=".54" stop-color="#bda8a4" stop-opacity=".19"/>
+      <stop offset="1" stop-color="#bda8a4" stop-opacity="0"/>
+    </linearGradient>
+    <g id="pin">
+      <circle r="1.4" fill="#d7dddf" opacity=".63"/>
+      <circle cx="17" cy="-8" r=".72" fill="#d7dddf" opacity=".44"/>
+    </g>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h1600v720H0z"/>
+  <path fill="url(#last-light)" d="M0 0h1600v720H0z"/>
+  <!-- Tiny stars retain a broad area of uninterrupted sky behind the contact copy. -->
+  <g fill="#c9d4de" opacity=".5">
+    <circle cx="109" cy="145" r="1"/><circle cx="287" cy="229" r=".9"/>
+    <circle cx="617" cy="173" r=".8"/><circle cx="782" cy="252" r=".84"/>
+    <circle cx="1036" cy="125" r=".95"/><circle cx="1230" cy="108" r=".85"/>
+    <circle cx="1503" cy="271" r="1.1"/><circle cx="1412" cy="173" r=".8"/>
+  </g>
+  <use href="#pin" x="459" y="111"/><use href="#pin" x="1270" y="244"/>
+  <path fill="#f0dfc1" d="M1185 222a16 16 0 0 0 24.1 19.4 15.3 15.3 0 0 1-24.1-19.4Z"/>
+  <g fill="url(#cloud)">
+    <path d="M11 453c81-5 147-7 196-10 57-5 83-3 118-1l72-5c37-2 73-3 111-3-37 3-85 8-123 10-117 7-242 12-374 9Z"/>
+    <path d="M828 484c73-3 162-10 245-10l62-5 69-2 54-4 73 1c-97 10-199 14-282 15-77 3-154 8-221 5Z"/>
+    <path d="M1120 393c80-2 128-8 172-8 36-1 48 2 77 0 65-5 114-8 174-7-65 6-130 11-182 12-76 1-132 6-241 3Z"/>
+  </g>
+  <!-- A sun-warmed trace of the Aravalli horizon behind the built-up city. -->
+  <path fill="#616474" d="M0 574c74-15 105-23 149-20l69 5 94-9c43-4 54-1 85 0l83-8 71 7 71-5 67-8 62 4 61-4 73-8c44-4 91 4 116 2l82-5 57-6 49 5 105-7 61 5 44-3 51 5 56-4 94-8v143H0Z"/>
+  <path fill="#515969" d="M0 579l52-1 31 2 42-5 47 2 33-6 44 2 49-7 58 4 28-3 34 3 49-5 44 2 35-4 38 1 41-3 39 2 42-5 38 1 42-2 46 3 44-4 70 1 29-2 41 1 69-3 46 2 56-5 81-2 45 2 44-5 59 2 38-3 57 2 68-7v129H0Z"/>
+  <path fill="#414e61" d="M0 582h34v-11h15v9h13v-18h9v-4h6v5h8v21h12v-10h25v6h15v-17h8v-8h5v7h14v18h25v-9h14v6h22v-13h27v9h13v-19h17v16h24v6h21v-8h13v-16h20v18h10v6h13v-6h23v7h13v-22h6v-5h13v5h4v22h20v-12h36v10h17v-18h17v13h15v-17h28v-10h9v-8h4v8h7v26h10v-5h14v6h31v-10h15v6h9v-15h14v14h18v-10h33v8h17v-19h13v-3h9v22h19v-7h31v7h12v-12h22v-12h15v19h15v4h22v-15h13v11h21v-9h31v8h12v-19h22v18h16v-17h13v12h16v-7h24v9h7v-16h6v-6h3v5h14v15h20v-12h22v8h14v-19h22v16h15v7h17v-13h25v8h16v-4h23v-9h13v-5h4v4h11v16h12v-11h15v6h20v-20h21v21h12v-7h23v5h17v-15h17v11h33v-9h20v4h13v-12h13v6h23v-13h22v15h30v-11h23v9h15v-21h11v19h25v-3h23v-6h21v8h17v-12h27v4h18v-9h33v10h27v-6h30v64H0Z"/>
+  <g fill="#ffd49f" opacity=".66">
+    <path d="M212 575h3v1h-3z M345 568h2v1h-2z M477 562h4v1h-4z M483 562h2v1h-2z M606 556h3v1h-3z M768 558h2v1h-2z M791 555h4v1h-4z M938 556h3v1h-3z M1076 541h2v1h-2z M1207 546h4v1h-4z M1221 547h2v1h-2z M1455 532h3v1h-3z"/>
+  </g>
+  <path fill="#344458" d="M0 603l19-5h24v-11h40v9h23v-6h45v7l26-2 12-6 35 1 16-4 21 3 19-5h31v-9h16v-3h24v10h32l19-4h18v6h16l25-8h25l13 2 21-4h24v-5h22v3h12v7h21l12-3 24 1 5-4h38l15-3h26l9-2 22 1 14-5h22l12 4 16-3 19 2h26l31-5h33l17-6h33l13 3 11-2 26 1 16-3 14-5 18 2 23-4 11 4 15-2h20l17-8h21l9 5 14-4h27l8-4h42v-6h22v7l20-4h26l17-4h26l14-4 41-1 17-2 18 3 20-6 29-1 22-1 19-4 16 2 18-2 7-2 20 1 21-3h35l11-4h27l15-4h29l13 4 21-4 22-1 18-2 23 1v106H0Z"/>
+  <!-- Silver train against the shadowed viaduct, its windows catching the last light. -->
+  <g transform="translate(395 577) rotate(-2.2)">
+    <path fill="#a5a6a8" d="M0 1q1-4 5-4h39l2 2h2l1-2h40l1 2h2l1-2h35q5 1 8 5v3H0Z"/>
+    <path fill="#464e5b" d="M0 2h136v2H0z"/>
+    <path fill="#ebc69c" d="M5-1h6v2H5zm9 0h7v2h-7zm10 0h5v2h-5zm10 0h7v2h-7zm16 0h7v2h-7zm11 0h6v2h-6zm9 0h7v2h-7zm11 0h6v2h-6zm13 0h5v2h-5zm9 0h7v2h-7zm11 0h6v2h-6zm10 0h5l3 2h-8z"/>
+    <path stroke="#7e838a" stroke-width=".8" d="M45-2v5m46-5v5"/>
+    <circle cx="134" cy="2" r="1.1" fill="#ffdfb2"/>
+  </g>
+  <path fill="#2b3a4e" d="M0 596c221-6 508-21 722-27 317-11 694-27 878-37v7c-188 10-557 26-878 38-230 7-484 20-722 26Z"/>
+  <path fill="none" stroke="#afa198" stroke-width="1" opacity=".6" d="M0 596c221-6 508-21 722-27 317-11 694-27 878-37"/>
+  <path fill="#2e3c50" d="M80 600h10l-2 31h-5zm185-8h10l-2 31h-5zm173-8h9l-2 30h-5zm151-6h9l-2 27h-5zm141-5h8l-2 23h-4zm138-5h8l-2 24h-4zm142-6h7l-1 22h-5zm136-5h7l-2 21h-4zm123-5h7l-2 20h-4zm121-6h6l-1 19h-4zm120-4h6l-2 20h-4z"/>
+  <path fill="#233349" d="M0 634v-24h40v-5h8v-13h13v-3h9v4h8v12h30v8h23v-12h32v4h31v-8h11v-8h7v8h20v-4h27v9h42v4h22v-13h11v-5h22v4h13v13h21v-10h49v-2h16v-14h12v-12h5v12h23v17h13v-8h22v10h28v-5h19v-8h36v9h25v-13h30v-8h19v4h9v13h27v-8h36v-7h18v2h27v10h22v-7h33v-2h11v-8h8v-3h9v3h8v9h19v-5h21v-7h30v4h13v6h20v-4h17v-7h38v7h18v-11h27v-12h9v-3h12v3h8v11h21v7h29v-13h20v8h20v-3h26v-8h51v4h13v-4h17v-9h17v-12h7v-2h13v2h9v6h24v10h27v-8h18v6h36v-6h19v5h28v-10h25v-6h37v8h19v-4h16v-10h19v6h17v-9h24v6h16v-14h32v3h17v9h19v-5h28v-11h22v9h26v94H0Z"/>
+  <g fill="#eac59b">
+    <path opacity=".8" d="M54 615h5v2h-5z M68 612h3v3h-3z M177 609h4v2h-4z M337 604h4v2h-4z M343 604h5v2h-5z M463 599h3v2h-3z M498 605h6v2h-6z M602 598h4v2h-4z M730 590h4v2h-4z M750 593h5v2h-5z M879 589h7v2h-7z M959 584h3v2h-3z M1035 585h7v2h-7z M1149 574h4v2h-4z M1234 572h6v2h-6z M1266 568h3v3h-3z M1464 557h5v2h-5z"/>
+    <path opacity=".47" d="M147 612h3v2h-3z M222 606h5v2h-5z M378 610h5v2h-5z M452 598h3v2h-3z M669 598h4v2h-4z M864 593h4v2h-4z M977 586h3v2h-3z M1131 578h4v2h-4z M1347 569h6v2h-6z M1417 560h3v2h-3z"/>
+  </g>
+  <path fill="#172739" d="M0 639l32-8h65l20-4 27 1 18-6h39l20 4h21l17 3h30l18-5h35l13-5 28 2 22-5h17l29 1 23-5h21l10 3 13-5h18l21-3 22 4 14-4 26-1 19-5 14-1 7 3 23-3 18-3 24 1 17-3 28 3 11-5 16-2 16 4 12-2 14 2 21-7 17 2 18-1 22-5 20 1h25l16 3 19-7 20-3 19 1 22-6h22l27 2 12-4h23l14-5 14 1 16-5h27l12-4h20l13 3 21-6 29 3 18-5h23l15-7 20 1 16-2 24 1 26-8h26l29-5 15 2 22-5 17 1 22-8h28l12-4 34-3 27 1 20-4 16 3h20l17-4h21v149H0Z"/>
+  <!-- Aerial and a few draped utility wires on the roof, seen from below. -->
+  <g fill="none" stroke-linecap="round">
+    <path stroke="#192638" stroke-width="1.9" d="M-10 495q107 62 207 38m1 0q146 94 311 74m0 0q190 93 409 18"/>
+    <path stroke="#29374a" stroke-width="1" d="M-10 485q100 60 207 45m1 0q141 82 312 73"/>
+    <path stroke="#0c1929" stroke-width="5" d="M191 631l8-133"/>
+    <path stroke="#324155" stroke-width="1.3" d="M190 631l8-133"/>
+    <path stroke="#101e2e" stroke-width="2.8" d="M159 507l84-9m-67-10 8 33m5-37 7 34m7-38 7 37m7-38 6 33m6-34 5 27m-32-2-8 10"/>
+    <path stroke="#152334" stroke-width="1.55" d="M196 520q7 49 27 88m-26-77-35 85"/>
+  </g>
+  <path fill="#132235" d="M0 626l79-3v-11l47-2 9 5v14l90-3 16 4 67-2 3 6 66-2 5 4v51H0Z"/>
+  <path fill="#354355" d="M0 623l79-3 46-2 10 4-56 1L0 627Zm135 3 90-3 16 4-106 3Z"/>
+  <path fill="#0d1c2c" d="M0 649l121-2 2-12 53-1 8 4v11l93-3 4-7 48-1 11 4v9l57-2v6l83-1v11h125v12h73v13h104v30H0Z"/>
+  <path fill="#2b3949" d="M0 647l115-2v4L0 652zm184 1 94-4 4 2-98 5zm145-11 11 3v3l-11-2-48 1v-3z"/>
+  <path fill="#081523" d="M0 682l131-7 74 2 13 7 121-3 12 5 82-1v3l133-1 28 4h117l17 2 121-2 29 3 100-4 16 3h125l31-6 90 1 25-5 95 1 22-5 99 1 35-7 83 3v89H0Z"/>
+  <!-- A ribbed polyethylene tank with a lid, service pipe, and a steel support frame. -->
+  <g transform="translate(1278 466)">
+    <path fill="#122133" d="m-32 158 20-7h172l21 7-5 4H-31z"/>
+    <g fill="none" stroke-linecap="square">
+      <path stroke="#0b1827" stroke-width="6" d="M0 111l-9 43m25-42 5 41m92-41 9 41m-26-42-1 41"/>
+      <path stroke="#263447" stroke-width="2" d="m-6 148 21-33m-16 1 20 31m81 2 13-33m-17-1 21 32"/>
+    </g>
+    <path fill="#0d1b2a" d="m-7 109 126-2 10 5-1 5-135 1-5-4Z"/>
+    <path fill="url(#tank)" d="M0 25C0 14 12 10 25 6l2-3h54l2 3c17 2 28 6 32 16l5 16 1 60q0 10-9 12c-30 6-68 6-99 2-9-1-13-4-13-11Z"/>
+    <path fill="#354457" d="M10 14c12-6 29-9 46-9 24 0 41 3 50 8-25-6-66-7-96 1Z"/>
+    <path fill="#172838" stroke="#344558" stroke-width="1.1" d="M36 2V0q20-3 36 0v2q-17 3-36 0Z"/>
+    <g fill="none" stroke="#324255" stroke-width="1.35" opacity=".83">
+      <path d="M3 25q55 9 111-1M1 38q59 9 116-1M1 51q58 9 117 0M1 64q59 9 118 0M1 77q59 9 118 0M2 91q58 9 117 0M4 104q56 8 113 0"/>
+    </g>
+    <g fill="none" stroke="#091726" stroke-width="2">
+      <path d="M2 28q56 9 113-1M1 41q58 9 116-1M1 54q58 9 117 0M1 67q59 9 118 0M1 80q59 9 118 0M2 94q58 9 117 0"/>
+    </g>
+    <path fill="none" stroke="#243547" stroke-width="4" d="M116 90h10q6 0 6 6v35q0 8 9 8h20v17"/>
+  </g>
+  <path fill="#0b1828" d="M1009 680v-18l66-1v-7l91-2v-13l67-2v-11l68-2v-4l122-1 8-4v-29l56-3v-16l74-2 39 5v195H996Z"/>
+  <path fill="#26364a" d="m1166 638 67-3v3l-67 4zm67-14 68-2 4 2-72 3zm68-6 121-2 9 2-130 4zm130-34 56-3v3l-56 4zm56-18 74-3 39 5v4l-39-5-74 3z"/>
+  <path fill="#081523" d="M1132 690v-13l61-1v-12l122-2 20 4 72-2v-20l126-5 16-4 51 2v83h-468Z"/>
+</svg>

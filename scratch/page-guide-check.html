@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Local page guide — independent host checks</title>
+  <style>
+    :root { color-scheme: light; font: 16px/1.6 system-ui,sans-serif; color: #20332d; background: #f3f3ed; }
+    body { max-width: 880px; margin: 0 auto; padding: 32px 22px 260px; }
+    h1 { font-size: 1.7rem; line-height: 1.25; } h2 { font-size: 1.25rem; }
+    header, section, aside { margin-bottom: 24px; } section { padding: 18px 22px; background: white; border: 1px solid #ccd6cb; border-radius: 8px; }
+    a { color: #145b4a; } .private-note { background: #fae8de; padding: 10px; font-size: .85rem; }
+    #summary { padding: 12px 16px; border-radius: 6px; background: #dee5e0; font-weight: 650; }
+    #summary[data-state="pass"] { color: #174c35; background: #dceee2; }
+    #summary[data-state="fail"] { color: #78342b; background: #f5dfda; }
+    #results { padding-left: 24px; } #results li { margin-bottom: 8px; }
+    .pass { color: #225c3c; } .fail { color: #9a3027; font-weight: 650; }
+    .fixture-exclude { border-left: 3px solid #bc6548; padding-left: 10px; }
+    form { padding: 12px; background: #eee; } input { max-width: 100%; }
+    .css-hidden { display: none; } code { font-size: .85em; }
+  </style>
+  <script defer src="../page-knowledge.js?v=editorial1"></script>
+  <script defer src="../local-guide-voice.js?v=conversation3"></script>
+  <script defer src="../page-guide.js?v=conversation3"></script>
+</head>
+<body>
+  <header>
+    <h1>Parcel &amp; Pine — independent guide host</h1>
+    <p>This synthetic shop has no portfolio content. Only the two labelled Shipping and Returns sections are shared with its guide. Every private value below is fictional test data.</p>
+  </header>
+
+  <aside id="unshared-surroundings">
+    <h2>Not shared with the guide</h2>
+    <p>Our wholesale allocation password is OUTSIDE-ORCHID-731.</p>
+  </aside>
+
+  <main>
+    <section id="shipping" data-guide-source="Shipping">
+      <h2>Shipping</h2>
+      <article id="parcel-delivery" data-guide-item>
+        <h3>Parcel delivery</h3>
+        <p id="delivery-fact">Orders leave our workshop within two business days. Standard delivery takes five business days.</p>
+        <p>Weekend dispatches are not offered. Collection is available on weekdays.</p>
+        <a href="#shipping">Read shipping terms</a>
+        <div data-guide-private class="private-note"><p>Warehouse override token: PRIVATE-CEDAR-937.</p></div>
+        <div data-private><p>Staff ledger phrase: LEDGER-FERN-204.</p></div>
+        <p hidden>Hidden label code: HIDDEN-LARCH-382.</p>
+        <p aria-hidden="true">Decorative access phrase: ARIA-MOSS-265.</p>
+        <p class="css-hidden">Unrendered invoice code: CSS-BIRCH-614.</p>
+        <p data-check-exclude class="fixture-exclude">Excluded contractor token: EXCLUDED-ELM-527.</p>
+        <form aria-label="Private account form" data-guide-private>
+          <label>Account PIN <input name="pin" value="FORM-WILLOW-816" autocomplete="off"></label>
+          <textarea name="internalNotes" aria-label="Private internal notes">TEXTAREA-ASH-493</textarea>
+        </form>
+      </article>
+    </section>
+
+    <section id="returns" data-guide-source="Returns">
+      <h2>Returns</h2>
+      <article id="return-window" data-guide-item>
+        <h3>Return window</h3>
+        <p>Unworn items can be returned within fourteen days of delivery. Original packaging is required.</p>
+        <p>Send the parcel with its receipt. Refunds go back to the original payment method.</p>
+        <a href="#returns">Read return terms</a>
+      </article>
+    </section>
+  </main>
+
+  <section aria-labelledby="check-title">
+    <h2 id="check-title">Regression results</h2>
+    <p>Checks run automatically using local scripts. The guide is muted before UI checks; microphone capture is never requested. A source link is followed as part of the interaction check.</p>
+    <p id="summary" role="status" data-state="running">Running checks…</p>
+    <ol id="results"></ol>
+  </section>
+
+  <local-page-guide id="testGuide"></local-page-guide>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      'use strict';
+      const outcomes = [];
+      window.pageGuideCheckResults = { complete: false, outcomes };
+      const output = document.getElementById('results');
+      const summary = document.getElementById('summary');
+      const shipping = document.getElementById('shipping');
+      const returns = document.getElementById('returns');
+      const fact = document.getElementById('delivery-fact');
+      const initialFact = fact.textContent;
+      const originalUrl = location.href;
+      const marker = shipping.getAttribute('data-guide-source');
+      const exclusion = '[data-check-exclude]';
+      const secretMarkers = [
+        'OUTSIDE-ORCHID-731', 'PRIVATE-CEDAR-937', 'LEDGER-FERN-204',
+        'HIDDEN-LARCH-382', 'ARIA-MOSS-265', 'CSS-BIRCH-614',
+        'EXCLUDED-ELM-527', 'FORM-WILLOW-816', 'TEXTAREA-ASH-493'
+      ];
+      const assert = (condition, message) => { if (!condition) throw new Error(message); };
+      const noSecrets = value => secretMarkers.every(marker => !JSON.stringify(value).includes(marker));
+      function assertOverviewEvidence(result, permittedRoots) {
+        assert(result.matched === true, 'The overview was refused despite readable public evidence.');
+        assert(/five business days|two business days|fourteen days|original packaging/i.test(result.text), 'The overview did not contain an actual public shop fact.');
+        assert(result.sources?.length > 0, 'The overview did not cite a public source.');
+        assert(result.sources.every(source => {
+          if (!source.href || !source.label) return false;
+          const url = new URL(source.href, document.baseURI);
+          if (url.origin !== location.origin || url.pathname !== location.pathname || !url.hash) return false;
+          const node = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+          return node && permittedRoots.some(root => root.contains(node)) &&
+            !node.closest('[data-private],[data-guide-private],[hidden],[aria-hidden="true"],.css-hidden,[data-check-exclude],form');
+        }), 'An overview source is invalid, ungranted, or excluded.');
+        assert(noSecrets(result), 'The overview exposed excluded fixture information.');
+        assert(!/Jatin|WeatherGPT|MariaDB|VoiceOps/i.test(result.text), 'The unrelated host received portfolio-specific content.');
+      }
+      function assertPublicAnswer(result, permittedRoots) {
+        assert(result.matched && result.context && result.text?.trim(), 'The suggested question did not produce a grounded answer.');
+        assert(result.sources?.length > 0, 'The suggested answer has no citation.');
+        assert(result.sources.every(source => {
+          const url = new URL(source.href, document.baseURI);
+          if (!source.label || url.origin !== location.origin || url.pathname !== location.pathname || !url.hash) return false;
+          const node = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+          return node && permittedRoots.some(root => root.contains(node)) &&
+            !node.closest('[data-private],[data-guide-private],[hidden],[aria-hidden="true"],.css-hidden,[data-check-exclude],form');
+        }), 'A suggested answer cites an invalid or forbidden target.');
+        assert(noSecrets(result), 'A suggested question or answer exposed excluded information.');
+        // Local file citations legitimately contain the Windows account name.
+        // Check visitor-facing content; source destinations are validated above.
+        assert(!/Jatin|WeatherGPT|MariaDB|VoiceOps/i.test([result.text, ...result.sources.map(source => source.label)].join(' ')), 'Suggestions or answers are hard-coded to the portfolio.');
+      }
+      function visibleTurnResult(turn) {
+        return {
+          matched: true,
+          context: {},
+          text: turn?.querySelector('.answer')?.textContent || '',
+          sources: Array.from(turn?.querySelectorAll('.sources a') || []).map(link => ({ label: link.textContent, href: link.href }))
+        };
+      }
+      const index = roots => window.PageKnowledge.create({ roots, exclude: exclusion });
+      const currentGrants = () => Array.from(document.querySelectorAll('[data-guide-source]'));
+      const pause = () => new Promise(resolve => setTimeout(resolve, 20));
+      async function waitFor(predicate, message) {
+        const limit = performance.now() + 1800;
+        while (!predicate()) {
+          if (performance.now() > limit) throw new Error(message);
+          await pause();
+        }
+      }
+      async function check(name, action) {
+        const row = document.createElement('li');
+        output.append(row);
+        try {
+          await action();
+          outcomes.push({ name, pass: true });
+          row.className = 'pass';
+          row.textContent = 'PASS — ' + name;
+        } catch (error) {
+          const message = error?.message || String(error);
+          outcomes.push({ name, pass: false, message });
+          row.className = 'fail';
+          row.textContent = 'FAIL — ' + name + ': ' + message;
+        }
+      }
+
+      try {
+        await check('Public API is available on an unrelated host', () => {
+          assert(typeof window.PageKnowledge?.create === 'function', 'PageKnowledge.create was not loaded.');
+        });
+
+        let delivery;
+        await check('An allowed detail is answered with structured context', () => {
+          delivery = index([shipping, returns]).ask('Tell me about Parcel delivery');
+          assert(delivery.matched === true, 'The public delivery item was not matched.');
+          assert(/five business days/i.test(delivery.text), 'The answer omitted the stated delivery time.');
+          assert(delivery.context && typeof delivery.context === 'object', 'The answer has no reusable context.');
+          assert(Array.isArray(delivery.sources), 'The answer has no source collection.');
+          assert(noSecrets(delivery), 'An answer or its metadata contains forbidden fixture text.');
+        });
+
+        await check('A grounded source resolves inside a permitted section', () => {
+          assert(delivery?.sources?.length > 0, 'The public answer has no source.');
+          assert(delivery.sources.some(source => {
+            if (!source.href?.startsWith('#') || !source.label) return false;
+            const node = document.getElementById(decodeURIComponent(source.href.slice(1)));
+            return node && (shipping.contains(node) || returns.contains(node));
+          }), 'No source resolves to a current permitted DOM target.');
+        });
+
+        await check('The typed overview suggestion text uses public evidence', () => {
+          const result = index([shipping, returns]).ask('Give me an overview');
+          assertOverviewEvidence(result, [shipping, returns]);
+        });
+
+        await check('An editorial About heading is never presented as the author’s name', () => {
+          const about = document.createElement('section');
+          about.id = 'editorial-intro';
+          about.setAttribute('data-guide-source', 'About');
+          about.innerHTML = '<h1><span>From the</span> <span>workshop.</span></h1><p>I repair wooden furniture and teach visitors how to care for it.</p>';
+          document.body.append(about);
+          try {
+            const reader = index([about]);
+            for (const result of [reader.overview(), reader.ask('Who is behind this portfolio?')]) {
+              assert(result.matched && result.text.startsWith('I repair wooden furniture'), 'The guide must use the introduction without inventing an author.');
+              assert(result.sources.some(source => source.href === '#editorial-intro'), 'The guide should cite the About section.');
+            }
+          } finally { about.remove(); }
+        });
+
+        await check('A polite spoken-transcription summary uses public evidence', () => {
+          // Recognition delivers ordinary text to the same API; no microphone is needed here.
+          const transcript = 'Could you please give me a brief summary of this page?';
+          const result = index([shipping, returns]).ask(transcript);
+          assertOverviewEvidence(result, [shipping, returns]);
+        });
+
+        await check('An overview refuses sections explicitly withheld by the host', () => {
+          const withheld = window.PageKnowledge.create({ roots: [shipping, returns], exclude: '[data-guide-source]' });
+          const result = withheld.ask('Give me an overview');
+          assert(!result.matched && !result.sources.length && result.context === null, 'Withheld overview grants still produced an answer or source.');
+          assert(!/five business days|fourteen days/i.test(result.text) && noSecrets(result), 'A withheld overview disclosed shop content.');
+        });
+
+        await check('An overview with empty grants does not discover page content', () => {
+          const result = index([]).ask('Could you please give me a brief summary of this page?');
+          assert(!result.matched && !result.sources.length && result.context === null, 'An empty-grant overview returned an answer or source.');
+          assert(!/five business days|fourteen days/i.test(result.text) && noSecrets(result), 'An empty-grant overview disclosed shop content.');
+        });
+
+        await check('Follow-up context stays with the current public topic', () => {
+          const result = index([shipping, returns]).ask('Tell me more', { previous: delivery?.context });
+          assert(result.matched && result.context?.topic === delivery?.context?.topic, 'The follow-up lost or switched its topic.');
+          assert(/collection|weekend/i.test(result.text), 'The follow-up did not use another stated detail.');
+          assert(noSecrets(result), 'Follow-up context exposed excluded information.');
+        });
+
+        await check('A longer topic name outranks an overlapping one-word skill', () => {
+          const heading = document.querySelector('#parcel-delivery h3');
+          const originalTitle = heading.textContent;
+          const tools = document.createElement('section');
+          tools.id = 'fixture-tools';
+          tools.dataset.guideSource = 'Skills';
+          tools.innerHTML = '<h2>Skills</h2><article id="fixture-parcel-tool"><h3>Parcel</h3><p>Parcel is a packaging tool used in web projects.</p></article>';
+          try {
+            heading.textContent = 'Parcel delivery · Studio';
+            document.querySelector('main').append(tools);
+            const local = window.PageKnowledge.create({ roots: [shipping, returns, tools], exclude: exclusion });
+            const answer = local.ask('What is Parcel delivery?');
+            assert(answer.matched && answer.context?.topic === 'parcel-delivery', 'The partial multiword name resolved to its overlapping skill instead.');
+            assert(/five business days/i.test(answer.text), 'The answer did not describe the named delivery topic.');
+          } finally { heading.textContent = originalTitle; tools.remove(); }
+        });
+
+        await check('Capability questions about a demo use facts rather than link lookup', () => {
+          const shared = document.createElement('section');
+          shared.id = 'fixture-demo-projects';
+          shared.dataset.guideSource = 'Projects';
+          shared.innerHTML = '<h2>Projects</h2><article id="fixture-parcel-demo"><h3>Parcel demo studio</h3><p>The public demo uses sample data. Vector search requires a live database connection.</p><a href="#fixture-parcel-demo">Open demo</a></article>';
+          try {
+            document.querySelector('main').append(shared);
+            const local = window.PageKnowledge.create({ roots: [shared] });
+            const answer = local.ask('Does the Parcel demo support vector search?');
+            assert(answer.matched && answer.context?.topic === 'fixture-parcel-demo', 'The capability question did not identify its project.');
+            assert(/vector search/i.test(answer.text) && /requires a live database/i.test(answer.text), 'The stated demo limitation was replaced with a link answer.');
+            const link = local.ask('Is there a demo for Parcel demo studio?');
+            assert(link.matched && link.context?.action === 'demo' && link.sources.some(source => /demo/i.test(source.label)), 'An actual demo-link question stopped working.');
+            assert(!local.ask('Does the Parcel demo support quantum teleportation?').matched, 'A capability absent from the shared facts was inferred.');
+          } finally { shared.remove(); }
+        });
+
+        await check('A natural language-support question selects only public language evidence', () => {
+          const publicFact = document.createElement('p');
+          publicFact.textContent = 'The delivery help line supports English and Spanish.';
+          const privateFact = document.createElement('p');
+          privateFact.dataset.guidePrivate = '';
+          privateFact.textContent = 'A private test offers Japanese assistance. PRIVATE-CEDAR-937';
+          const item = document.getElementById('parcel-delivery');
+          try {
+            item.append(publicFact, privateFact);
+            const answer = index([shipping, returns]).ask('Which languages does Parcel delivery support?');
+            assert(answer.matched && /English/i.test(answer.text) && /Spanish/i.test(answer.text), 'The natural language question missed the explicit public language names.');
+            assert(!/Japanese/i.test(answer.text) && noSecrets(answer), 'Language matching used private evidence.');
+            assert(!index([shipping, returns]).ask('Does Parcel delivery support Korean?').matched, 'An unsupported language was inferred from unrelated language evidence.');
+          } finally { publicFact.remove(); privateFact.remove(); }
+        });
+
+        await check('Non-overview starters are generic, public and answerable', () => {
+          const local = index([shipping, returns]);
+          assert(typeof local.starters === 'function', 'The public starters API is missing.');
+          const starters = local.starters();
+          assert(Array.isArray(starters) && starters.length > 0 && starters.every(question => typeof question === 'string' && question.trim()), 'The starter API did not return usable question strings.');
+          const specific = starters.filter(question => !/overview|summary/i.test(question));
+          assert(specific.length > 0, 'No topic-specific starter was generated.');
+          assert(noSecrets(starters) && !/Jatin|WeatherGPT|MariaDB|VoiceOps/i.test(starters.join(' ')), 'The starter questions contain private or portfolio-specific text.');
+          for (const question of specific) assertPublicAnswer(local.ask(question), [shipping, returns]);
+        });
+
+        await check('Generated follow-ups resolve from the matched public context', () => {
+          const local = index([shipping, returns]);
+          const first = local.ask('Tell me about Parcel delivery');
+          assert(typeof local.followUps === 'function', 'The public followUps API is missing.');
+          const choices = local.followUps(first.context);
+          assert(Array.isArray(choices) && choices.length > 0 && choices.every(question => typeof question === 'string' && question.trim()), 'The matched topic did not offer usable next questions.');
+          assert(noSecrets(choices), 'Suggested follow-ups contain excluded information.');
+          for (const question of choices) assertPublicAnswer(local.ask(question, { previous: first.context }), [shipping, returns]);
+        });
+
+        await check('More advances through new public facts and then reports exhaustion', () => {
+          const local = index([shipping, returns]);
+          let previous = local.ask('Tell me about Parcel delivery');
+          const factUnits = ['two business days', 'five business days', 'weekend dispatches are not offered', 'collection is available on weekdays'];
+          const seen = new Set(factUnits.filter(unit => previous.text.toLowerCase().includes(unit)));
+          let advanced = false;
+          let exhausted = false;
+          for (let attempt = 0; attempt < 6; attempt += 1) {
+            const next = local.ask('Tell me more', { previous: previous.context });
+            assertPublicAnswer(next, [shipping, returns]);
+            const lower = next.text.toLowerCase();
+            const repeated = Array.from(seen).filter(unit => lower.includes(unit));
+            assert(!repeated.length, 'More repeated an already supplied fact: ' + repeated.join(', '));
+            const newFacts = factUnits.filter(unit => lower.includes(unit) && !seen.has(unit));
+            if (next.context.exhausted === true || /last detail|no (?:more|further|additional)|nothing (?:more|else)|all (?:the )?(?:details|facts).*(?:covered|shared)/i.test(next.text)) {
+              assert(!newFacts.length, 'The exhaustion notice unexpectedly introduced a fact.');
+              assert(!local.followUps(next.context).some(question => /^tell me more$/i.test(question)), 'The exhausted topic still promotes another More question.');
+              exhausted = true;
+              break;
+            }
+            assert(newFacts.length > 0, 'More neither added a known public fact nor explained exhaustion.');
+            newFacts.forEach(unit => seen.add(unit));
+            advanced = true;
+            previous = next;
+          }
+          assert(advanced && exhausted, 'The short fixture did not advance and finish within its available details.');
+        });
+
+        const deniedQuestions = [
+          ['surrounding ungranted content', 'What is the wholesale allocation password?'],
+          ['a nested private subtree', 'What is the warehouse override token?'],
+          ['a generic private subtree', 'What is the staff ledger phrase?'],
+          ['a hidden attribute', 'What is the hidden label code?'],
+          ['aria-hidden content', 'What is the decorative access phrase?'],
+          ['CSS-hidden content', 'What is the unrendered invoice code?'],
+          ['the caller exclusion selector', 'What is the excluded contractor token?'],
+          ['private form values', 'What is the account PIN?'],
+          ['private textarea values', 'What are the private internal notes?']
+        ];
+        for (const [label, question] of deniedQuestions) {
+          await check('Refuses ' + label, () => {
+            const result = index([shipping, returns]).ask(question);
+            assert(result.matched === false, 'A question supported only by forbidden text was treated as answerable.');
+            assert(!result.sources.length && result.context === null, 'Refusal retained sources or conversation context.');
+            assert(noSecrets(result), 'Refusal disclosed a forbidden marker.');
+          });
+        }
+
+        await check('Empty grants do not discover public content automatically', () => {
+          const result = index([]).ask('Tell me about Parcel delivery');
+          assert(!result.matched && !result.sources.length && result.context === null, 'Empty grants still produced a grounded answer.');
+          assert(noSecrets(result), 'Empty grants returned fixture secrets.');
+        });
+
+        await check('A fresh query uses edited public content', () => {
+          try {
+            fact.textContent = 'Orders leave our workshop within four business days. Standard delivery takes seven business days.';
+            const result = index(currentGrants()).ask('Tell me about Parcel delivery');
+            assert(result.matched && /seven business days/i.test(result.text), 'The current public edit was not reflected.');
+            assert(!/five business days/i.test(result.text), 'The old delivery fact survived a fresh query.');
+          } finally { fact.textContent = initialFact; }
+        });
+
+        await check('Revoked grants reject a previous topic on requery', () => {
+          try {
+            shipping.removeAttribute('data-guide-source');
+            const result = index(currentGrants()).ask('Tell me about Parcel delivery', { previous: delivery?.context });
+            assert(!result.matched && !result.sources.length && result.context === null, 'A revoked section remained answerable through prior context.');
+          } finally { shipping.setAttribute('data-guide-source', marker); }
+        });
+
+        let shadow;
+        let send;
+        await check('The original guide mounts with typed controls and is muted', async () => {
+          await waitFor(() => !!customElements.get('local-page-guide'), 'The local-page-guide component was not registered.');
+          await customElements.whenDefined('local-page-guide');
+          const guide = document.getElementById('testGuide');
+          await waitFor(() => !!guide.shadowRoot?.querySelector('form input'), 'The mounted guide has no composer.');
+          shadow = guide.shadowRoot;
+          const sound = shadow.querySelector('.sound');
+          assert(sound && shadow.querySelector('.mic'), 'The original voice controls are missing.');
+          if (sound.getAttribute('aria-pressed') === 'true') sound.click();
+          assert(sound.getAttribute('aria-pressed') === 'false', 'The fixture could not mute spoken replies.');
+          send = question => {
+            const input = shadow.querySelector('form input');
+            input.value = question;
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            shadow.querySelector('form').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+          };
+        });
+
+        await check('A first-time non-overview starter works in the mounted guide', async () => {
+          assert(shadow, 'The guide has not mounted.');
+          try {
+            shadow.querySelector('.close').click();
+            shadow.querySelector('.avatar').click();
+            assert(!shadow.querySelector('.intro').hidden && !shadow.querySelector('.turns > article'), 'The starter check did not begin with a fresh conversation.');
+            const starter = Array.from(shadow.querySelectorAll('.suggestions button')).find(button => !/overview|summary/i.test(button.textContent));
+            assert(starter, 'The empty guide has no non-overview starter.');
+            assertPublicAnswer(index([shipping, returns]).ask(starter.textContent), [shipping, returns]);
+            starter.click();
+            await waitFor(() => shadow.querySelectorAll('.turns > article').length === 1, 'The first-time starter did not produce exactly one turn.');
+            assertPublicAnswer(visibleTurnResult(shadow.querySelector('.turns > article')), [shipping, returns]);
+          } finally {
+            if (!shadow.querySelector('.reset').hidden) shadow.querySelector('.reset').click();
+            shadow.querySelector('.close').click();
+            await pause();
+          }
+        });
+
+        await check('Matched answers offer grounded, clickable follow-up controls', async () => {
+          assert(send, 'The guide composer is not available.');
+          try {
+            send('Tell me about Parcel delivery');
+            await waitFor(() => !!shadow.querySelector('.turns > article'), 'The matched turn was not rendered.');
+            const first = shadow.querySelector('.turns > article .answer').textContent;
+            const local = index([shipping, returns]);
+            const expected = local.ask('Tell me about Parcel delivery');
+            const allowed = local.followUps(expected.context);
+            const choices = Array.from(shadow.querySelectorAll('.followups button'));
+            assert(!shadow.querySelector('.next').hidden && choices.length > 0, 'The matched answer has no visible next-question controls.');
+            for (const button of choices) {
+              assert(allowed.includes(button.textContent), 'The UI offered a question not grounded in the matched context.');
+              assertPublicAnswer(local.ask(button.textContent, { previous: expected.context }), [shipping, returns]);
+            }
+            const more = choices.find(button => /^tell me more$/i.test(button.textContent));
+            assert(more, 'The fixture still has an unread detail but offers no More control.');
+            more.click();
+            await waitFor(() => shadow.querySelectorAll('.turns > article').length === 2, 'Clicking the follow-up did not append one turn.');
+            const latest = visibleTurnResult(shadow.querySelector('.turns > article:last-child'));
+            assertPublicAnswer(latest, [shipping, returns]);
+            assert(latest.text !== first && /weekend|collection/i.test(latest.text) && !/five business days/i.test(latest.text), 'The actionable follow-up repeated the summary instead of another public detail.');
+          } finally {
+            if (!shadow.querySelector('.reset').hidden) shadow.querySelector('.reset').click();
+            shadow.querySelector('.close').click();
+            await pause();
+          }
+        });
+
+        await check('An unknown question offers a safe, working recovery question', async () => {
+          assert(send, 'The guide composer is not available.');
+          try {
+            const local = index([shipping, returns]);
+            assert(local.ask('Explain Jupiter banking passwords').matched === false, 'The recovery scenario is not actually an unknown question.');
+            send('Explain Jupiter banking passwords');
+            await waitFor(() => shadow.querySelectorAll('.turns > article').length === 1, 'The unknown question did not receive one response.');
+            const refusal = shadow.querySelector('.turns > article');
+            assert(!refusal.querySelector('.sources a') && noSecrets(refusal.textContent), 'The unknown response cited or disclosed forbidden content.');
+            const recovery = shadow.querySelector('.followups button');
+            assert(recovery && !shadow.querySelector('.next').hidden, 'The unknown answer left the visitor without a recovery prompt.');
+            assertPublicAnswer(local.ask(recovery.textContent), [shipping, returns]);
+            recovery.click();
+            await waitFor(() => shadow.querySelectorAll('.turns > article').length === 2, 'Clicking recovery did not add a fresh grounded turn.');
+            assertPublicAnswer(visibleTurnResult(shadow.querySelector('.turns > article:last-child')), [shipping, returns]);
+          } finally {
+            if (!shadow.querySelector('.reset').hidden) shadow.querySelector('.reset').click();
+            shadow.querySelector('.close').click();
+            await pause();
+          }
+        });
+
+        await check('The actual overview suggestion works in a freshly opened muted guide', async () => {
+          assert(shadow, 'The guide has not mounted.');
+          try {
+            shadow.querySelector('.close').click();
+            shadow.querySelector('.avatar').click();
+            assert(shadow.querySelector('.sound').getAttribute('aria-pressed') === 'false', 'The suggestion check would enable spoken replies.');
+            assert(shadow.querySelectorAll('.turns > article').length === 0, 'The suggestion check did not begin with an empty conversation.');
+            const suggestion = Array.from(shadow.querySelectorAll('.suggestions button'))
+              .find(button => /give me an overview/i.test(button.textContent));
+            assert(suggestion, 'The actual overview suggestion button is missing.');
+            suggestion.click();
+            await waitFor(() => shadow.querySelectorAll('.turns > article').length === 1, 'Clicking the suggestion did not produce exactly one answer.');
+            const turn = shadow.querySelector('.turns > article');
+            assertOverviewEvidence({
+              matched: true,
+              text: turn.querySelector('.answer').textContent,
+              sources: Array.from(turn.querySelectorAll('.sources a')).map(link => ({ label: link.textContent, href: link.href }))
+            }, [shipping, returns]);
+          } finally {
+            if (!shadow.querySelector('.reset').hidden) shadow.querySelector('.reset').click();
+            shadow.querySelector('.close').click();
+            await pause();
+          }
+        });
+
+        await check('A polite typed summary passes through the real composer', async () => {
+          assert(send, 'The guide composer is not available.');
+          try {
+            send('Could you please give me a brief summary of this page?');
+            await waitFor(() => shadow.querySelectorAll('.turns > article').length === 1, 'The polite typed summary did not produce exactly one answer.');
+            const turn = shadow.querySelector('.turns > article');
+            assertOverviewEvidence({
+              matched: true,
+              text: turn.querySelector('.answer').textContent,
+              sources: Array.from(turn.querySelectorAll('.sources a')).map(link => ({ label: link.textContent, href: link.href }))
+            }, [shipping, returns]);
+          } finally {
+            if (!shadow.querySelector('.reset').hidden) shadow.querySelector('.reset').click();
+            shadow.querySelector('.close').click();
+            await pause();
+          }
+        });
+
+        await check('A typed UI question produces an answer and source link', async () => {
+          assert(send, 'The guide composer is not available.');
+          send('Tell me about Parcel delivery');
+          await waitFor(() => shadow.querySelectorAll('.turns > article').length === 1, 'The typed question did not produce exactly one turn.');
+          assert(/five business days/i.test(shadow.querySelector('.answer').textContent), 'The visible answer did not use the public fact.');
+          const source = shadow.querySelector('.sources a');
+          assert(source && source.hash, 'The visible answer has no on-page source link.');
+          const node = document.getElementById(decodeURIComponent(source.hash.slice(1)));
+          assert(node && shipping.contains(node), 'The visible source is outside Shipping.');
+          assert(!source.target, 'An on-page citation unexpectedly opens another tab.');
+          assert(noSecrets(shadow.querySelector('.turns').textContent), 'The visible conversation contains secret fixture text.');
+        });
+
+        await check('A source can be followed, then another typed turn submitted', async () => {
+          const source = shadow?.querySelector('.sources a');
+          assert(source, 'No source link is available to follow.');
+          source.click();
+          await pause();
+          assert(shadow.querySelector('.panel').hidden, 'Following the on-page source did not close the guide.');
+          send('Tell me about Return window');
+          await waitFor(() => shadow.querySelectorAll('.turns > article').length === 2, 'The next question did not append a second turn.');
+          const latest = shadow.querySelector('.turns > article:last-child');
+          assert(/fourteen days/i.test(latest.querySelector('.answer').textContent), 'The next turn reused the previous topic instead of Returns.');
+          assert(latest.querySelector('.sources a'), 'The next turn has no independent source.');
+        });
+
+        await check('The mounted guide re-reads edits before answering', async () => {
+          assert(send, 'The guide composer is not available.');
+          fact.textContent = 'Orders leave our workshop within four business days. Standard delivery takes seven business days.';
+          send('Tell me about Parcel delivery');
+          await waitFor(() => /seven business days/i.test(shadow.querySelector('.turns > article:last-child .answer')?.textContent || ''), 'The UI answer still uses an outdated public fact.');
+          assert(!/five business days/i.test(shadow.querySelector('.turns > article:last-child .answer').textContent), 'The UI answer combines old and new delivery facts.');
+        });
+
+        await check('Revoking access clears history and blocks a new UI query', async () => {
+          assert(send, 'The guide composer is not available.');
+          shipping.removeAttribute('data-guide-source');
+          await waitFor(() => shadow.querySelectorAll('.turns > article').length === 0, 'Revocation left previous Shipping turns visible.');
+          assert(!shadow.querySelector('.sources a') && !shadow.querySelector('.followups button') && shadow.querySelector('.next').hidden, 'Revocation left old citations or next-question controls available.');
+          send('Tell me about Parcel delivery');
+          await waitFor(() => shadow.querySelectorAll('.turns > article').length === 1, 'The revoked question did not receive a visible refusal.');
+          const latest = shadow.querySelector('.turns > article:last-child');
+          assert(!latest.querySelector('.sources a'), 'The revoked Shipping section still has an answer source.');
+          assert(!/five business days|seven business days/i.test(latest.querySelector('.answer').textContent), 'Revoked facts remained in the visible answer.');
+        });
+
+        await check('Clear chat removes turns, sources and composer text', async () => {
+          const reset = shadow?.querySelector('.reset');
+          assert(reset && !reset.hidden, 'Clear chat is not available after a turn.');
+          reset.click();
+          await pause();
+          assert(shadow.querySelectorAll('.turns > article, .turns .sources a').length === 0, 'Clear chat retained a turn or source link.');
+          assert(!shadow.querySelector('.followups button') && shadow.querySelector('.next').hidden, 'Clear chat retained next-question controls from the previous answer.');
+          assert(shadow.querySelector('form input').value === '', 'Clear chat retained composer text.');
+          assert(!shadow.querySelector('.intro').hidden && reset.hidden, 'Clear chat did not restore the empty conversation state.');
+        });
+      } catch (error) {
+        await check('Fixture completed without an uncaught setup error', () => { throw error; });
+      } finally {
+        fact.textContent = initialFact;
+        shipping.setAttribute('data-guide-source', marker);
+        try { history.replaceState(null, '', originalUrl); } catch { /* Some file: hosts disallow history edits. */ }
+        const shadow = document.getElementById('testGuide').shadowRoot;
+        shadow?.querySelector('.close')?.click();
+        const passed = outcomes.filter(result => result.pass).length;
+        const failed = outcomes.length - passed;
+        summary.dataset.state = failed ? 'fail' : 'pass';
+        summary.textContent = passed + ' passed, ' + failed + ' failed. No microphone request was made.';
+        document.body.dataset.checks = 'complete';
+        window.pageGuideCheckResults = { complete: true, passed, failed, outcomes };
+      }
+    });
+  </script>
+</body>
+</html>

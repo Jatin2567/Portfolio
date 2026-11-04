@@ -3,37 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jatin Aggarwal — Software Engineer</title>
-  <meta name="description" content="Jatin Aggarwal’s portfolio: web development, AI tools, voice interfaces, and distributed systems. Explore selected projects, experience, and skills.">
+  <title>Engineering for people — Software portfolio</title>
+  <meta name="description" content="Software engineering work in voice interfaces and developer tools. Explore crop advisories by phone, SQL in Jupyter notebooks, and a three-node database experiment.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css?v=content_v12">
+  <link rel="preload" href="assets/scenes/blue-hour.svg?v=depth1" as="image" type="image/svg+xml">
+  <link rel="stylesheet" href="atmosphere.css?v=release3d1">
+  <link rel="stylesheet" href="work.css?v=depth1">
 </head>
 <body class="palette-warm"><a class="skip-link" href="#projects">Skip to selected work</a>
-  <!-- Interactive 3D WebGL Background Canvas with Soft Focus -->
-  <canvas id="tech3dCanvas" class="tech-3d-canvas" aria-hidden="true"></canvas><div class="studio-grid" aria-hidden="true"></div>
-
-  <!-- Organic Warm Gradients for Visual Depth -->
-  <div class="warm-glow glow-top"></div>
-  <div class="warm-glow glow-bottom"></div>
 
   <!-- Editorial Top Navigation -->
   <header class="top-nav">
     <div class="nav-inner">
-      <a href="#" class="brand-logotype">
-        <span class="brand-initial">Jatin Aggarwal</span>
-        <span class="brand-status" id="brandStatusBadge" title="Live Delhi NCR Availability Clock">
-          <span id="headerLiveClock">03:25 PM IST</span>
+      <a href="#about" class="brand-logotype" aria-label="Portfolio home">
+        <svg class="brand-mark" viewBox="0 0 32 32" width="31" height="31" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="7" fill="currentColor"/><path d="M5 21h3c2.8 0 4-1 5-4l3-9h3l-3.8 11.4C13.7 23.3 11.9 25 8 25H4zm10.5 4L22 9h3l2.8 16h-3.6l-.9-5.3h-2.8l-2 5.3z" fill="#102023"/></svg>
+        <span class="brand-initial">Portfolio</span>
+        <span class="brand-status" id="brandStatusBadge" title="Local time in Delhi NCR">
+          <span id="headerLiveClock">Delhi NCR</span>
         </span>
       </a>
 
       <!-- Floating Capsule Pill Navigation -->
-      <nav class="capsule-nav">
+      <nav class="capsule-nav" aria-label="Portfolio sections">
         <a href="#about" class="capsule-item active">About</a>
-        <a href="#projects" class="capsule-item">Selected Projects</a>
+        <a href="#projects" class="capsule-item">Projects</a>
         <a href="#experience" class="capsule-item">Experience</a>
         
         
@@ -112,19 +110,19 @@
                 </div>
                 <div class="popover-row">
                   <span class="popover-label">Latest Commit:</span>
-                  <a href="https://github.com/Jatin2567/DistributedKvServer" target="_blank" rel="noreferrer" class="popover-val popover-link" id="popoverGithubCommit" title="Raft Leader Election">Raft Consensus verified</a>
+                  <a href="https://github.com/Jatin2567/DistributedKvServer" target="_blank" rel="noreferrer" class="popover-val popover-link" id="popoverGithubCommit">View repository</a>
                 </div>
                 <div class="popover-row">
-                  <span class="popover-label">Active Repository:</span>
+                  <span class="popover-label">Featured repository:</span>
                   <span class="popover-val" id="popoverGithubRepo">DistributedKvServer (Go)</span>
                 </div>
                 <div class="popover-row">
                   <span class="popover-label">Public Repositories:</span>
-                  <span class="popover-val" id="popoverGithubCount">11 Repositories</span>
+                  <span class="popover-val" id="popoverGithubCount">—</span>
                 </div>
               </div>
 
-              <!-- Group 4: Jatin's Delhi Clock & Status -->
+              <!-- Local time and internship availability -->
               <div class="popover-group">
                 <div class="popover-group-title">
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -132,11 +130,11 @@
                 </div>
                 <div class="popover-row">
                   <span class="popover-label">Delhi Local Time:</span>
-                  <span class="popover-val highlight-amber" id="popoverDelhiTime">03:25 PM IST</span>
+                  <span class="popover-val highlight-amber" id="popoverDelhiTime">—</span>
                 </div>
                 <div class="popover-row">
-                  <span class="popover-label">Status:</span>
-                  <span class="popover-val" id="popoverWorkMode">Available // SDE &amp; Systems</span>
+                  <span class="popover-label">Opportunities:</span>
+                  <span class="popover-val">Software engineering internships</span>
                 </div>
               </div>
             </div>
@@ -156,28 +154,28 @@
     </div>
   </header>
 
-  <!-- Hero Section: Editorial Statement & Verified Positioning (Uncluttered, Open Focus) -->
-  <section id="about" class="c4d-hero">
+  <main>
+  <section id="about" data-guide-source="About" class="c4d-hero">
+    <div class="hero-spread">
+    <div class="hero-scene" aria-hidden="true">
+      <div class="hero-landscape"></div>
+      <div class="hero-metro"></div>
+      <p class="scene-credit"><span>Fig. 01</span> Delhi NCR, blue hour</p>
+    </div>
     <div class="hero-container hero-container-spacious">
-      
-      <!-- Left Editorial Statement (Spacious, Uncluttered) -->
       <div class="hero-editorial">
         <div class="tag-row">
-          <span class="kicker-tag">[00 // HELLO, I’M JATIN]</span>
+          <span class="kicker-tag">Software engineer <span aria-hidden="true">/</span> Delhi NCR</span>
         </div>
         
-        <h1 class="c4d-main-headline">Jatin Aggarwal<span class="hero-cursor" aria-hidden="true"></span></h1>
-        <div class="hero-role-title">Software Engineer</div>
+        <h1 class="c4d-main-headline"><span class="hero-title-line">Engineering</span> <span class="hero-title-line hero-title-accent">for people<span class="name-stop">.</span></span></h1>
 
         <p class="hero-subtext">
-          I create useful software—from AI tools and voice experiences to the systems that power them. Currently studying Computer Science at IILM University, Gurugram.
+          I build voice interfaces and developer tools. In WeatherGPT, farmers can use a phone menu for local forecasts and crop advice. On the other side of the call, operators can see which areas a warning covers and track call outcomes.
         </p>
 
         <div class="hero-badges-row">
-          <div class="hero-edu-tag">
-            <span>🎓 B.Tech. CSE (AI &amp; ML), 2023–2027 • IILM University, Gurugram · Delhi NCR, India</span>
-          </div>
-          <div class="seeking-banner"><span class="seeking-bracket">[STATUS]</span> <span>Open to software engineering internships</span>
+          <div class="seeking-banner"><span>Open to software engineering internships</span>
           </div>
         </div>
 
@@ -197,77 +195,88 @@
         </div>
       </div>
 
-</div><!-- Elegant Subtle Hero Divider -->
-    <div class="hero-proof-divider"></div>
-
-    <!-- Full-Width 4-Column Proof Metrics Bar (Aspired Design) -->
-    <div class="proof-bar-fullwidth">
-      <div class="proof-card">
-        <span class="proof-card-title">WeatherGPT</span>
-        <span class="proof-card-desc">Weather guidance through voice calls</span>
-      </div>
-      <div class="proof-card">
-        <span class="proof-card-title">MariaDB Magics · Studio</span>
-        <span class="proof-card-desc">Live Studio &amp; Vectors · Top 59 Hackathon</span>
-      </div>
-      <div class="proof-card">
-        <span class="proof-card-title">VoiceOps</span>
-        <span class="proof-card-desc">Voice AI latency &amp; guardrail telemetry</span>
-      </div>
-      <div class="proof-card">
-        <span class="proof-card-title">Distributed KV</span>
-        <span class="proof-card-desc">Live 3-node Raft consensus playground</span>
-      </div>
     </div>
+    </div>
+    <nav class="proof-bar-fullwidth" aria-label="Featured project shortcuts">
+      <a class="proof-card" href="#weather">
+        <span class="proof-card-title">WeatherGPT</span>
+        <span class="proof-card-desc">Crop advice and weather alerts</span>
+      </a>
+      <a class="proof-card" href="#mariadb">
+        <span class="proof-card-title">MariaDB Magics</span>
+        <span class="proof-card-desc">SQL in a notebook</span>
+      </a>
+      <a class="proof-card" href="#voiceops">
+        <span class="proof-card-title">VoiceOps</span>
+        <span class="proof-card-desc">Comparing voice pipelines</span>
+      </a>
+      <a class="proof-card" href="#distributed-kv">
+        <span class="proof-card-title">Distributed KV</span>
+        <span class="proof-card-desc">How a write is replicated</span>
+      </a>
+    </nav>
   </section>
 
   <!-- Selected Projects (Verified Repositories, Prototypes & Architecture) -->
-  <section id="projects" class="showcase-section">
+  <section id="projects" data-guide-source="Projects" class="showcase-section">
     <div class="section-wrap">
       
       <div class="section-title-box">
-        <span class="accent-sub">01 // SELECTED PROJECTS</span>
-        <h2 class="section-lead-title">Selected Projects</h2>
-        <p class="section-lead-desc">Web applications, developer tools, and experiments in AI and distributed systems.</p>
+        <span class="accent-sub">01 / Portfolio</span>
+        <h2 class="section-lead-title">Selected work</h2>
+        <p class="section-lead-desc">Six projects, from a phone service for farmers to a console that shows how three database nodes agree on a write. Each entry includes a demo, source code or both.</p>
       </div>
+
+      <nav class="work-reader" aria-label="Jump to a project">
+        <span class="reader-label">Project index</span>
+        <div class="reader-links">
+          <a href="#weather">WeatherGPT</a>
+          <a href="#mariadb">MariaDB</a>
+          <a href="#voiceops">VoiceOps</a>
+          <a href="#distributed-kv">Distributed KV</a>
+          <a href="#bhdesk">BHDesk</a>
+          <a href="#guardian">Guardian</a>
+        </div>
+      </nav>
 
       <div class="projects-masonry">
 
         <!-- 1. WeatherGPT (Broadened Two-Column Featured Project) -->
-        <div class="card-item-warm card-featured-broad">
+        <div id="weather" class="card-item-warm card-featured-broad">
           <div class="card-top-tag">
-            <span class="chip-warm chip-amber">VOICE &amp; WEATHER</span>
-            <span class="lang-code">React · TypeScript · FastAPI · PostgreSQL · Docker</span>
-          </div>
-
-          <div class="card-stack-row">
-            <span class="card-stack-pill"><img src="assets/skills/react.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> React</span>
-            <span class="card-stack-pill"><img src="assets/skills/typescript.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> TypeScript</span>
-            <span class="card-stack-pill"><img src="assets/skills/fastapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> FastAPI</span>
-            <span class="card-stack-pill"><img src="assets/skills/postgresql.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> PostgreSQL</span>
-            <span class="card-stack-pill"><img src="assets/skills/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Docker</span>
+            <span class="chip-warm chip-amber">Voice &amp; weather</span>
           </div>
 
           <div class="card-broad-grid">
             <!-- Left Column: Architectural Breakdown & Technical Scope -->
             <div class="broad-col-content">
               <h3 class="card-headline">WeatherGPT</h3>
-              <p class="card-body-text">A multilingual voice platform prototype exploring weather advice and emergency broadcasts for farmers using basic phones and 2G networks.</p>
-              <ul class="item-bullet-list">
-                <li>Keypad navigation and structured call flows for accessing weather information over basic phones.</li>
-                <li>Voice workflows in Hindi, Kannada, and English, using speech recognition and text-to-speech services.</li>
-                <li>Emergency-call workflows with retry handling and SMS fallbacks.</li>
-                <li>A React dashboard and FastAPI backend, with PostgreSQL and Docker for deployment.</li>
-              </ul>
-              
+              <p class="card-body-text">WeatherGPT connects farmers with local forecasts, crop advice and weather warnings by phone. A new caller chooses Hindi, English or Kannada and enters a six-digit postal code. Operators use a dashboard to manage warnings for the affected areas.</p>
+              <div class="card-stack-row">
+                <span class="card-stack-pill"><img src="assets/skills/react.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> React</span>
+                <span class="card-stack-pill"><img src="assets/skills/typescript.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> TypeScript</span>
+                <span class="card-stack-pill"><img src="assets/skills/fastapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> FastAPI</span>
+                <span class="card-stack-pill"><img src="assets/skills/postgresql.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> PostgreSQL</span>
+                <span class="card-stack-pill"><img src="assets/skills/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Docker</span>
+              </div>
+              <details class="project-details">
+                <summary>Project details</summary>
+                <ul class="item-bullet-list">
+                  <li>The keypad menu offers today’s weather, crop advice and a seven-day forecast. Weather lookups use Open-Meteo.</li>
+                  <li>The advisory uses the selected crop and local weather to suggest when to irrigate or spray.</li>
+                  <li>A separate, PIN-protected voice assistant takes spoken questions about weather and farming.</li>
+                  <li>Operators can target alerts by postal code. Outbound calls and SMS are simulated unless live delivery is configured and enabled.</li>
+                </ul>
+              </details>
+
               <div class="project-meta-box">
-                <div class="meta-entry"><strong>Status:</strong> Prototype with a hosted demo.</div>
-                <div class="meta-entry"><strong>Project outcome:</strong> A voice-first weather call flow paired with an operator dashboard and phone simulator.</div>
+                <div class="meta-entry"><strong>Status:</strong> Public dashboard. Starting the phone simulator requires an access PIN.</div>
+
               </div>
 
               <div class="card-cta">
                 <a href="https://weathergpt.duckdns.org" target="_blank" rel="noreferrer" class="warm-link">
-                  <span>View live project</span>
+                  <span>Open demo dashboard</span>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                 </a>
               </div>
@@ -277,7 +286,7 @@
             <div class="broad-col-media">
               <div class="preview-media-frame">
                 <a href="https://weathergpt.duckdns.org" target="_blank" rel="noreferrer" class="preview-media-link" title="Open WeatherGPT Telephony Dashboard">
-                  <img src="weathergpt_preview.png" alt="WeatherGPT Telephony &amp; Analytics Dashboard" class="broad-preview-img" loading="lazy" decoding="async" />
+                  <img src="weathergpt_preview.png" width="1024" height="549" alt="WeatherGPT Telephony &amp; Analytics Dashboard" class="broad-preview-img" loading="lazy" decoding="async" />
                   <div class="preview-media-overlay">
                     <span class="preview-media-badge">
                       <span>View dashboard</span>
@@ -286,43 +295,45 @@
                 </a>
               </div>
               <div class="preview-media-caption">
-                <span class="caption-title">Disaster IVR Telephony &amp; Analytics</span>
-                <span class="caption-sub">A preview of call activity, weather alerts, and the phone simulator.</span>
+                <span class="caption-title">Inside the call dashboard</span>
+                <span class="caption-sub">Call activity and the phone simulator share the operator’s dashboard.</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 2. MariaDB Magics · Studio (Broadened Two-Column Featured Project) -->
-        <div class="card-item-warm card-featured-broad">
+        <div id="mariadb" class="card-item-warm card-featured-broad">
           <div class="card-top-tag">
-            <span class="chip-warm chip-amber">DEVELOPER TOOL &amp; STUDIO</span>
-            <span class="lang-code">Python · Flask · Jupyter · MariaDB 11.8 LTS · Vector Search · Docker</span>
-          </div>
-
-          <div class="card-stack-row">
-            <span class="card-stack-pill"><img src="assets/skills/mariadb.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> MariaDB 11.8</span>
-            <span class="card-stack-pill"><img src="assets/skills/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Python</span>
-            <span class="card-stack-pill"><img src="assets/skills/jupyter.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Jupyter</span>
-            <span class="card-stack-pill"><img src="assets/skills/flask.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Flask</span>
-            <span class="card-stack-pill"><img src="assets/skills/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Docker</span>
+            <span class="chip-warm chip-amber">Data tools</span>
           </div>
 
           <div class="card-broad-grid">
             <!-- Left Column: Architectural Breakdown & Technical Scope -->
             <div class="broad-col-content">
               <h3 class="card-headline">MariaDB Magics · Studio</h3>
-              <p class="card-body-text">A developer toolkit and standalone web studio bringing MariaDB directly into analytical workflows — combining SQL execution, MariaDB 11.8 LTS vector similarity search, system-versioned temporal analytics, and interactive visualizations.</p>
-              <ul class="item-bullet-list">
-                <li>Interactive web studio workspace with visual SQL querying, schema browsing, CSV data exports, and in-browser saved queries.</li>
-                <li>Vector similarity search using embedding models integrated directly with MariaDB native vector functions.</li>
-                <li>System-versioned temporal querying (AS OF TIMESTAMP) to explore historical database snapshots and audit trails.</li>
-                <li>Four notebook magic commands (%mariadb, %mariadb_plot, %mariadb_time, %mariadb_vector) for seamless Jupyter workflows.</li>
-              </ul>
+              <p class="card-body-text">MariaDB Magics lets you run SQL and plot the results inside a Jupyter notebook. The browser studio lets you try those queries on sample data. Vector search and historical queries need a connected MariaDB database.</p>
+              <div class="card-stack-row">
+                <span class="card-stack-pill"><img src="assets/skills/mariadb.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> MariaDB 11.8</span>
+                <span class="card-stack-pill"><img src="assets/skills/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Python</span>
+                <span class="card-stack-pill"><img src="assets/skills/jupyter.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Jupyter</span>
+                <span class="card-stack-pill"><img src="assets/skills/flask.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Flask</span>
+                <span class="card-stack-pill"><img src="assets/skills/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Docker</span>
+              </div>
+              <details class="project-details">
+                <summary>Project details</summary>
+                <ul class="item-bullet-list">
+                  <li>The public studio runs SQL and charts against an in-memory SQLite sample dataset. You can browse the schema, export CSV results and save queries in your browser.</li>
+                  <li>With a live MariaDB connection, the studio uses native vector functions to find similar records. These operations are unavailable in sample-data mode.</li>
+                  <li>Historical queries use a system-versioned table and FOR SYSTEM_TIME AS OF TIMESTAMP. The setup guide explains how to run this mode with your own database.</li>
+                  <li>The original Jupyter extension provides four commands: %mariadb, %mariadb_plot, %mariadb_time and %mariadb_vector, covering SQL, charts, time-based analysis and vector search.</li>
+                </ul>
+              </details>
 
               <div class="project-meta-box">
-                <div class="meta-entry"><strong>Status:</strong> Live Studio on Render · Top 59 MariaDB Global Hackathon.</div>
-                <div class="meta-entry"><strong>Project outcome:</strong> Unified dual-surface interface (browser Studio &amp; Jupyter extension) for analytics, embeddings, and time-travel querying.</div>
+                <div class="meta-entry"><strong>Status:</strong> Sample-data web demo · Live database setup documented.</div>
+                <div class="meta-entry"><strong>Recognition:</strong> The original notebook project reached the top 59 of 4,000+ teams in the MariaDB Python Hackathon 2025.</div>
+
               </div>
 
               <div class="card-cta">
@@ -345,7 +356,7 @@
             <div class="broad-col-media">
               <div class="preview-media-frame">
                 <a href="https://mariadb-magics-studio.onrender.com/" target="_blank" rel="noreferrer" class="preview-media-link" title="Open MariaDB Magics Studio">
-                  <img src="mariadb_studio_screenshot.png" alt="MariaDB Magics Studio Web Interface Live Screenshot" class="broad-preview-img" loading="lazy" decoding="async" />
+                  <img src="mariadb_studio_screenshot.png" width="764" height="485" alt="MariaDB Magics Studio browser workspace" class="broad-preview-img" loading="lazy" decoding="async" />
                   <div class="preview-media-overlay">
                     <span class="preview-media-badge">
                       <span>Live studio</span>
@@ -354,53 +365,52 @@
                 </a>
               </div>
               <div class="preview-media-caption">
-                <span class="caption-title">MariaDB Magics Studio · Web Workspace</span>
-                <span class="caption-sub">Real interface featuring visual SQL querying, vector search nearest neighbors, and temporal analysis.</span>
+                <span class="caption-title">Inside the database studio</span>
+                <span class="caption-sub">Browse the sample schema and query results. Vector search and historical views require live MariaDB mode.</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 3. VoiceOps Enterprise (Broadened Two-Column Featured Project) -->
-        <div class="card-item-warm card-featured-broad">
+        <!-- 3. VoiceOps -->
+        <div id="voiceops" class="card-item-warm card-featured-broad">
           <div class="card-top-tag">
-            <span class="chip-warm chip-amber">VOICE AI &amp; OBSERVABILITY</span>
-            <span class="lang-code">Python · Streamlit · FastAPI · Pipecat · Redis · Supabase · Docker</span>
-          </div>
-
-          <div class="card-stack-row">
-            <span class="card-stack-pill"><img src="assets/skills/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Python</span>
-            <span class="card-stack-pill"><img src="assets/skills/streamlit.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Streamlit</span>
-            <span class="card-stack-pill"><img src="assets/skills/fastapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> FastAPI</span>
-            <span class="card-stack-pill"><img src="assets/skills/redis.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Redis</span>
-            <span class="card-stack-pill"><img src="assets/skills/supabase.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Supabase</span>
-            <span class="card-stack-pill"><img src="assets/skills/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Docker</span>
+            <span class="chip-warm chip-amber">Voice AI</span>
           </div>
 
           <div class="card-broad-grid">
             <!-- Left Column: Architectural Breakdown & Technical Scope -->
             <div class="broad-col-content">
-              <h3 class="card-headline">VoiceOps Enterprise</h3>
-              <p class="card-body-text">A modular Voice AI benchmarking and observability platform designed to quantify Time-to-First-Audio (TTFA) latency and validate deterministic policy guardrails across Cascade and Hybrid voice pipelines.</p>
-              <ul class="item-bullet-list">
-                <li>Quantifies sub-second Time-to-First-Audio (TTFA) latency breakdowns across STT, LLM reasoning, and chunked TTS streaming.</li>
-                <li>Real-time audio streaming architecture built with Pipecat-AI frame-processor DAGs and FastAPI WebSockets.</li>
-                <li>Deterministic safety and policy guardrail validation using an Upstash Redis outbox queue and Supabase PostgreSQL persistence.</li>
-                <li>Interactive Streamlit workspace with live mic streaming, latency waterfall charts, and compliance audit logging.</li>
-              </ul>
+              <h3 class="card-headline">VoiceOps</h3>
+              <p class="card-body-text">VoiceOps compares up to five ways to answer the same recording. Some wait for the full reply. Others start speaking as soon as a sentence is ready. You can listen to the results and compare when playback starts.</p>
+              <div class="card-stack-row">
+                <span class="card-stack-pill"><img src="assets/skills/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Python</span>
+                <span class="card-stack-pill"><img src="assets/skills/javascript.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> JavaScript</span>
+                <span class="card-stack-pill"><img src="assets/skills/fastapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> FastAPI</span>
+                <span class="card-stack-pill"><img src="assets/skills/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Docker</span>
+              </div>
+              <details class="project-details">
+                <summary>Project details</summary>
+                <ul class="item-bullet-list">
+                  <li>Each path uses the same recording, prompt and providers. Two paths change just one step so you can isolate the wait for text or for audio.</li>
+                  <li>The timing report separates events on the server from the moment the browser schedules the first audio for playback.</li>
+                  <li>You can check whether a reply contains an expected fact or JSON field, or whether it requested an allowed simulated action.</li>
+                  <li>Export a comparison as JSON or CSV. In the conversation view, you can ask a follow-up or interrupt a reply.</li>
+                </ul>
+              </details>
 
               <div class="project-meta-box">
-                <div class="meta-entry"><strong>Status:</strong> Live on Render · Open Source on GitHub.</div>
-                <div class="meta-entry"><strong>Project outcome:</strong> Full-stack voice AI benchmarking workspace delivering verifiable latency telemetry and automated guardrail audits.</div>
+                <div class="meta-entry"><strong>Status:</strong> Prototype with five comparison paths and exportable reports. Public runs share provider and hosting limits.</div>
+
               </div>
 
               <div class="card-cta">
                 <a href="https://voiceops-s2e4.onrender.com/" target="_blank" rel="noreferrer" class="warm-link">
-                  <span>View live project</span>
+                  <span>Open live lab</span>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                 </a>
-                <a href="https://github.com/Jatin2567/VoiceOps" target="_blank" rel="noreferrer" class="warm-link">
-                  <span>View on GitHub</span>
+                <a href="https://github.com/Jatin2567/VoiceOps/tree/codex/render-deploy" target="_blank" rel="noreferrer" class="warm-link" aria-label="View the current VoiceOps architecture lab source on GitHub">
+                  <span>View current source</span>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                 </a>
               </div>
@@ -409,51 +419,52 @@
             <!-- Right Column: Real Live Workspace Screenshot Preview -->
             <div class="broad-col-media">
               <div class="preview-media-frame">
-                <a href="https://voiceops-s2e4.onrender.com/" target="_blank" rel="noreferrer" class="preview-media-link" title="Open VoiceOps Workspace">
-                  <img src="voiceops_screenshot.png" alt="VoiceOps Voice Intelligence Workspace Live Screenshot" class="broad-preview-img" loading="lazy" decoding="async" />
+                <a href="https://voiceops-s2e4.onrender.com/" target="_blank" rel="noreferrer" class="preview-media-link" title="Open the VoiceOps Architecture Lab">
+                  <img src="voiceops-lab-preview.jpg" width="1265" height="791" alt="VoiceOps Architecture Lab with recording input, five response paths and comparison controls" class="broad-preview-img" loading="lazy" decoding="async" />
                   <div class="preview-media-overlay">
                     <span class="preview-media-badge">
-                      <span>Live workspace</span>
+                      <span>Open live lab</span>
                     </span>
                   </div>
                 </a>
               </div>
               <div class="preview-media-caption">
-                <span class="caption-title">VoiceOps · Voice Intelligence Workspace</span>
-                <span class="caption-sub">Real interface showing pipeline selection (Cascade vs. Hybrid), latency telemetry, and guardrail controls.</span>
+                <span class="caption-title">Compare how a voice reply is built</span>
+                <span class="caption-sub">Choose a recording and compare what changes when a pipeline starts playing audio sooner.</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 4. Distributed KV Server (Broadened Two-Column Featured Project) -->
-        <div class="card-item-warm card-featured-broad">
+        <div id="distributed-kv" class="card-item-warm card-featured-broad">
           <div class="card-top-tag">
-            <span class="chip-warm chip-red">DISTRIBUTED SYSTEMS &amp; LIVE CONSOLE</span>
-            <span class="lang-code">Go · Raft · RPC · Docker Compose · Live Web Console</span>
-          </div>
-
-          <div class="card-stack-row">
-            <span class="card-stack-pill"><img src="assets/skills/go.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Go</span>
-            <span class="card-stack-pill"><img src="assets/skills/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Docker</span>
-            <span class="card-stack-pill"><img src="assets/skills/linux.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Linux</span>
+            <span class="chip-warm chip-red">Distributed systems</span>
           </div>
 
           <div class="card-broad-grid">
             <!-- Left Column: Architectural Breakdown & Technical Scope -->
             <div class="broad-col-content">
               <h3 class="card-headline">Distributed KV Server</h3>
-              <p class="card-body-text">An interactive exploration of distributed consensus and leader elections in Go, featuring a live web playground simulating a replicated 3-node Raft key-value cluster.</p>
-              <ul class="item-bullet-list">
-                <li>Independent 3-node cluster architecture demonstrating Raft leader election, heartbeat quorums, and RPC communication.</li>
-                <li>Replicated log consensus where write commands are proposed by the leader and committed once acknowledged by a majority.</li>
-                <li>Interactive live web console playground enabling real-time key-value writes, state reads, and cluster telemetry observation.</li>
-                <li>Containerized multi-node environment configured with Docker Compose for local cluster deployment.</li>
-              </ul>
-              
+              <p class="card-body-text">This Go experiment shows how three nodes agree on a change. Write a sample value in the console, then compare what each node has committed. You can read the value back or delete it from the same page.</p>
+              <div class="card-stack-row">
+                <span class="card-stack-pill"><img src="assets/skills/go.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Go</span>
+                <span class="card-stack-pill"><img src="assets/skills/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Docker</span>
+                <span class="card-stack-pill"><img src="assets/skills/linux.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Linux</span>
+              </div>
+              <details class="project-details">
+                <summary>Project details</summary>
+                <ul class="item-bullet-list">
+                  <li>All three Raft nodes run in one process. A write succeeds once a majority has copied the change and the leader has applied it.</li>
+                  <li>The console refreshes every second, showing each node’s role, election term, log length and counts of committed and applied changes.</li>
+                  <li>The repository includes a separate command for running nodes individually and a test that stops a leader to check that another is elected.</li>
+                  <li>Everyone shares the same sample data. Values reset on restart, and reads from the leader can be stale if the nodes lose contact.</li>
+                </ul>
+              </details>
+
               <div class="project-meta-box">
-                <div class="meta-entry"><strong>Status:</strong> Live Console on Render · Open Source on GitHub.</div>
-                <div class="meta-entry"><strong>Project outcome:</strong> A concrete cluster prototype and interactive web playground for exploring how Raft coordinates distributed state.</div>
+                <div class="meta-entry"><strong>Status:</strong> Shared learning demo · State resets on restart.</div>
+
               </div>
 
               <div class="card-cta">
@@ -472,7 +483,7 @@
             <div class="broad-col-media">
               <div class="preview-media-frame">
                 <a href="https://distributed-kv-console.onrender.com/" target="_blank" rel="noreferrer" class="preview-media-link" title="Open Distributed KV Console">
-                  <img src="distributed_kv_screenshot.png" alt="Distributed KV Live Web Console Screenshot" class="broad-preview-img" loading="lazy" decoding="async" />
+                  <img src="distributed_kv_screenshot.png" width="1280" height="800" alt="Distributed KV console with node status and key-value operations" class="broad-preview-img" loading="lazy" decoding="async" />
                   <div class="preview-media-overlay">
                     <span class="preview-media-badge">
                       <span>Live console</span>
@@ -481,37 +492,39 @@
                 </a>
               </div>
               <div class="preview-media-caption">
-                <span class="caption-title">Distributed KV · Consensus Playground</span>
-                <span class="caption-sub">Real interface showing 3-node cluster telemetry, consensus visualization, and interactive operations.</span>
+                <span class="caption-title">Follow a replicated write</span>
+                <span class="caption-sub">Compare the three nodes’ committed and applied counts as you change a sample value.</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 5. BHDesk -->
-        <div class="card-item-warm">
+        <div id="bhdesk" class="card-item-warm">
           <div class="card-top-tag">
-            <span class="chip-warm chip-orange">BROWSER AI EXTENSION</span>
-            <span class="lang-code">JavaScript · Chrome Built-in AI · MV3</span>
+            <span class="chip-warm chip-orange">Browser extension</span>
           </div>
 
+          <h3 class="card-headline">BHDesk</h3>
+          <p class="card-body-text">BHDesk keeps notes from different tabs together in a Chrome side panel. Highlight a passage to save a summary or translate Hindi into English. Its tab organizer groups open pages by topic.</p>
           <div class="card-stack-row">
             <span class="card-stack-pill"><img src="assets/skills/javascript.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> JavaScript</span>
             <span class="card-stack-pill"><img src="assets/skills/html5.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> HTML5</span>
             <span class="card-stack-pill"><img src="assets/skills/css3.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> CSS3</span>
           </div>
-
-          <h3 class="card-headline">BHDesk</h3>
-          <p class="card-body-text">A Chrome extension prototype for organizing tabs, translating Hindi and English, and exploring AI features that run in the browser.</p>
-          <ul class="item-bullet-list">
-            <li>Explore Chrome’s built-in AI features within a Manifest V3 extension.</li>
-            <li>Support Hindi–English translation and browser-context workflows.</li>
-            <li>Organize tabs into groups. AI features depend on browser and device support.</li>
-          </ul>
+          <details class="project-details">
+            <summary>Project details</summary>
+            <ul class="item-bullet-list">
+              <li>Quick Notes keeps summaries and translations in Chrome’s local storage so you can revisit them.</li>
+              <li>The tab organizer uses titles and URLs to group open tabs by topic.</li>
+              <li>These features use Chrome’s built-in AI APIs. A compatible browser and device may need to download the models first.</li>
+            </ul>
+            <div class="meta-entry"><strong>Try it:</strong> Unzip the demo, then use Chrome’s “Load unpacked” option to select the Project folder.</div>
+          </details>
 
           <div class="project-meta-box">
-            <div class="meta-entry"><strong>Project outcome:</strong> Demo package and setup steps for notes, translation, tab grouping, and suggestions.</div>
-            <div class="meta-entry"><strong>Status:</strong> Prototype · AI features depend on Chrome and device support.</div>
+
+            <div class="meta-entry"><strong>Status:</strong> Packaged Chrome extension prototype.</div>
           </div>
 
           <div class="card-cta">
@@ -527,29 +540,29 @@
         </div>
 
         <!-- 6. AI-DevSecOps-Guardian -->
-        <div class="card-item-warm">
+        <div id="guardian" class="card-item-warm">
           <div class="card-top-tag">
-            <span class="chip-warm chip-red">CI/CD SECURITY</span>
-            <span class="lang-code">Node.js · GitLab Webhooks · CI/CD</span>
-          </div>
-
-          <div class="card-stack-row">
-            <span class="card-stack-pill"><img src="assets/skills/nodejs.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Node.js</span>
-            <span class="card-stack-pill"><img src="assets/skills/gitlab.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> GitLab</span>
-            <span class="card-stack-pill"><img src="assets/skills/docker.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Docker</span>
+            <span class="chip-warm chip-red">Build tools</span>
           </div>
 
           <h3 class="card-headline">AI DevSecOps Guardian</h3>
-          <p class="card-body-text">A GitLab integration that turns failed pipeline jobs into diagnostic context and suggested next steps.</p>
-          <ul class="item-bullet-list">
-            <li>Process GitLab pipeline and job events through webhooks.</li>
-            <li>Collect failure context to help investigate unsuccessful jobs.</li>
-            <li>Explore diagnostic reports and remediation suggestions. Current GitLab compatibility needs revalidation.</li>
-          </ul>
+          <p class="card-body-text">When a GitLab build fails, Guardian asks a model to read the job log and suggest a fix. It can open an issue for a developer to review, or add a note when the same failure recurs.</p>
+          <div class="card-stack-row">
+            <span class="card-stack-pill"><img src="assets/skills/nodejs.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Node.js</span>
+            <span class="card-stack-pill"><img src="assets/skills/gitlab.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> GitLab</span>
+          </div>
+          <details class="project-details">
+            <summary>Project details</summary>
+            <ul class="item-bullet-list">
+              <li>A GitLab job event triggers a log lookup. Guardian sends the tail of a failed job’s log to a model hosted by Groq for a possible cause and suggested next step.</li>
+              <li>Rules can flag a successful job for analysis too. For example, the log may mention a deprecated dependency or repeated warnings.</li>
+              <li>Guardian uses SQLite to recognize repeat findings and link them to an existing GitLab issue. A developer reviews the suggestion and makes any code changes.</li>
+            </ul>
+          </details>
 
           <div class="project-meta-box">
-            <div class="meta-entry"><strong>Project output:</strong> Failure trace to diagnosis, suggested fix, and audit record.</div>
-            <div class="meta-entry"><strong>Status:</strong> Past implementation · current GitLab compatibility needs revalidation.</div>
+
+            <div class="meta-entry"><strong>Status:</strong> Source prototype. Groq retired the default model. Running it today requires a supported model and a fresh GitLab test.</div>
           </div>
 
           <div class="card-cta">
@@ -565,11 +578,20 @@
   </section>
 
   <!-- Unified Experience Section (Production Work & Leadership) -->
-  <section id="experience" class="section-wrap track-section">
+  <div class="chapter-seam" aria-hidden="true">
+    <svg viewBox="0 0 1440 106" preserveAspectRatio="none" focusable="false">
+      <path fill="#dbdfd0" d="M0 52C91 43 160 56 249 47S394 31 484 39C590 48 647 25 725 27S858 38 938 24C1028 10 1083 22 1164 16S1316 7 1440 15V106H0Z"/>
+      <path fill="#a7b7a9" d="M0 65C90 58 155 70 246 63S396 48 494 55C629 68 689 42 791 47S963 36 1055 40C1175 47 1232 22 1314 29S1391 25 1440 29V106H0Z"/>
+      <g fill="#879e90"><path d="M972 41v-4h9v-3h14v3h7v-2h10v6zm201-3v-5h10v-2h8v7z"/><path d="M1003 35v-8h1v8zm181-2v-7h1v7z"/></g>
+      <path fill="#607d73" d="M0 75C98 67 146 80 240 77S374 64 480 74C594 84 690 60 788 66S934 53 1027 59C1123 66 1214 48 1302 49S1378 51 1440 43V106H0Z"/>
+      <path fill="#122c32" d="M0 84C107 78 178 95 279 89S410 80 515 88C642 98 712 82 819 85S962 72 1058 77C1161 83 1242 63 1323 65S1400 65 1440 60V106H0Z"/>
+    </svg>
+  </div>
+  <section id="experience" data-guide-source="Experience" class="section-wrap track-section">
     <div class="section-title-box">
-      <span class="accent-sub">02 // EXPERIENCE &amp; LEADERSHIP</span>
+      <span class="accent-sub">02 / Work &amp; teaching</span>
       <h2 class="section-lead-title">Experience</h2>
-      <p class="section-lead-desc">Internship experience, student leadership, and community workshops.</p>
+      <p class="section-lead-desc">At Bluella, I built for browsers and inboxes. At IILM, I chair the ACM student chapter and led a workshop on the tools students use to start a project.</p>
     </div>
 
     <div class="warm-timeline">
@@ -580,11 +602,11 @@
             <span class="comp-name">Bluella Private Limited</span>
             <span class="comp-date">May – July 2026 · Gurugram · On-site</span>
           </div>
-          <h4 class="job-title">Web Engineer Intern</h4>
+          <h3 class="job-title">Web Engineer Intern</h3>
           <p class="card-body-text" style="margin-bottom: 0.6rem; color: #CBD5E1;">
-            Built <strong>28+ web deliverables</strong> for SaaS and healthcare projects, including websites, landing pages, and email templates.
+            I worked on <strong>28+ websites, landing pages and email templates</strong> across healthcare and business software projects.
           </p>
-          <ul class="item-bullet-list"><li>Developed responsive pages and a partner portal with theme switching and form validation.</li><li>Built landing pages for healthcare services and business software products.</li><li>Created HTML email templates and refined layouts for different screen sizes and email clients.</li><li>Worked on accessibility, loading performance, and reusable HTML, CSS, and JavaScript components.</li></ul>
+          <ul class="item-bullet-list"><li>For a partner portal, I built forms that checked entries before submission and added a choice of themes.</li><li>For email, I adapted layouts to different screen sizes and email clients.</li></ul>
         </div>
       </div>
 
@@ -595,9 +617,9 @@
             <span class="comp-name">ACM Student Chapter, IILM University</span>
             <span class="comp-date">January 2026 – Present</span>
           </div>
-          <h4 class="job-title">Chair</h4>
+          <h3 class="job-title">Chair</h3>
           <p class="card-body-text" style="margin-bottom: 0.6rem; color: #CBD5E1;">
-            Lead chapter activities and help organize opportunities for students to build, learn, and present their work.
+            I organize events where students can take a web project from an idea to a pitch.
           </p>
           <ul class="item-bullet-list">
             <li>Organized <strong>Build → Pitch → Win</strong>, a web development event with the Centre of Excellence for Cybersecurity &amp; Digital Forensics.</li>
@@ -611,142 +633,95 @@
         <div class="timeline-body">
           <div class="timeline-header">
             <span class="comp-name">AISyncTech Club &amp; Campus Workshops</span>
-            <span class="comp-date">IILM University, Gurugram</span>
+            <span class="comp-date">2025 · IILM University, Gurugram</span>
           </div>
-          <h4 class="job-title">Technical Workshop Lead</h4>
+          <h3 class="job-title">Technical Workshop Lead</h3>
           <p class="card-body-text" style="margin-bottom: 0.6rem; color: #CBD5E1;">
-            Help students get started with practical software development tools and workflows.
+            I led a workshop on the software development lifecycle, command-line tools and setting up a virtual machine.
           </p>
-          <ul class="item-bullet-list">
-            <li>Led hands-on sessions on the software development lifecycle, virtualization, command-line tools, PowerShell, and setting up virtual machines.</li>
-          </ul>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Technical Stack Specification -->
-  <section id="stack" class="section-wrap skills-section"><div class="section-title-box"><span class="accent-sub">03 // TECHNICAL STACK</span><h2 class="section-lead-title">Skills &amp; Tools</h2><p class="section-lead-desc">Technologies I use to build interfaces, work with data, and bring projects to life.</p></div><ul class="skills-gallery" aria-label="Technologies and how I use them"><li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/html5.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">HTML5</span><span class="skill-use">Responsive web pages</span></li>
+  <section id="stack" data-guide-source="Skills" class="section-wrap skills-section"><div class="section-title-box"><span class="accent-sub">03 / In my toolkit</span><h2 class="section-lead-title">Skills &amp; tools</h2><p class="section-lead-desc">React powers the WeatherGPT call dashboard. The MariaDB extension runs SQL inside Jupyter notebooks, and the Go console shows how a write reaches the other nodes.</p></div><ul class="skills-gallery" aria-label="Technologies and how I use them"><li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/html5.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">HTML5</span><span class="skill-use">Responsive web pages</span></li>
 <li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/css3.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">CSS3</span><span class="skill-use">Layouts & styling</span></li>
 <li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/javascript.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">JavaScript</span><span class="skill-use">Web interactions</span></li>
 <li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/typescript.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">TypeScript</span><span class="skill-use">Typed application code</span></li>
-<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/react.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">React</span><span class="skill-use">Application interfaces</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/react.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">React</span><span class="skill-use">WeatherGPT dashboard</span></li>
 <li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/nodejs.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Node.js</span><span class="skill-use">Services & integrations</span></li>
 <li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/python.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Python</span><span class="skill-use">APIs & data tooling</span></li>
-<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/go.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Go</span><span class="skill-use">Distributed storage</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/go.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Go</span><span class="skill-use">Three-node store</span></li>
 <li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/fastapi.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">FastAPI</span><span class="skill-use">Python web APIs</span></li>
-<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/postgresql.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">PostgreSQL</span><span class="skill-use">Application data</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/postgresql.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">PostgreSQL</span><span class="skill-use">Call and alert records</span></li>
 <li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/mariadb.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">MariaDB</span><span class="skill-use">SQL & vector search</span></li>
-<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/jupyter.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Jupyter</span><span class="skill-use">Notebooks & analysis</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/jupyter.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Jupyter</span><span class="skill-use">SQL in notebooks</span></li>
 <li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/git.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Git</span><span class="skill-use">Version control</span></li>
-<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/gitlab.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">GitLab</span><span class="skill-use">Pipelines & webhooks</span></li>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/gitlab.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">GitLab</span><span class="skill-use">Failed pipeline reports</span></li>
 <li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/docker.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Docker</span><span class="skill-use">Containerized deployment</span></li>
-<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/linux.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Linux</span><span class="skill-use">Development environments</span></li></ul><p class="skills-context">My projects also explore vector search, browser-based AI, and multilingual voice interfaces.</p></section>
+<li class="skill-item"><div class="skill-gem" aria-hidden="true"><svg class="gem-facets" viewBox="0 0 100 100"><path fill="#625b4e" d="M30 3 72 7 96 35 91 72 63 96 25 89 4 62 8 27Z"/><path fill="#968b75" d="M30 3 37 28 8 27Z"/><path fill="#baab8e" d="M30 3 72 7 62 28 37 28Z"/><path fill="#817661" d="m72 7 24 28-27 5-7-12Z"/><path fill="#4a473f" d="m96 35-5 37-22-12V40Z"/><path fill="#746d5b" d="m91 72-28 24-4-26 10-10Z"/><path fill="#49473f" d="m63 96-38-7 12-21 22 2Z"/><path fill="#8d826d" d="M25 89 4 62l23-9 10 15Z"/><path fill="#aaa08a" d="m4 62 4-35 29 1-10 25Z"/><path fill="#5f5b4e" d="m37 28 25 0 7 12v20L59 70 37 68 27 53Z"/></svg><img src="assets/skills/linux.svg" width="46" height="46" alt="" loading="lazy" decoding="async"></div><span class="skill-name">Linux</span><span class="skill-use">Development environments</span></li></ul><p class="skills-context">See these tools at work in <a href="#weather">WeatherGPT</a>, <a href="#mariadb">MariaDB Magics</a> and <a href="#distributed-kv">Distributed KV</a>.</p></section>
 
+  </main>
   <!-- Engineering Approach -->
   
 
   <!-- Contact & Direct Reach Footer -->
-  <footer id="contact" class="footer-warm">
+  <footer id="contact" data-guide-source="Contact" class="footer-warm">
+    <div class="footer-scene" aria-hidden="true"><div class="footer-sky"></div><div class="footer-rooftops"></div></div>
     <div class="section-wrap footer-inner">
-      <span class="accent-sub">04 // GET IN TOUCH</span>
-      <h2 class="footer-headline">Let’s build something useful.</h2>
+      <span class="accent-sub">04 / Contact</span>
+      <h2 class="footer-headline">Let’s talk<span>.</span></h2>
       <p class="footer-sub">
-        Have an internship opportunity or a project in mind? I’d love to hear from you.
+        I’m looking for a software engineering internship. If your team works on voice interfaces, developer tools or databases, I’d like to hear what you’re building.
       </p>
 
       <div class="resume-download-card">
         <div class="resume-download-copy">
-          <strong>Prefer a one-page overview?</strong>
-          <span>Download my resume as a PDF.</span>
+          <strong>My résumé</strong>
+          <span>Education, experience and selected projects · PDF</span>
         </div>
-        <a href="assets/Jatin-Aggarwal-Resume.pdf" class="btn-warm-outline" download="Jatin-Aggarwal-Resume.pdf" aria-label="Download Jatin Aggarwal’s resume as a PDF">
+        <a href="assets/Jatin-Aggarwal-Resume.pdf" class="btn-warm-outline" download="Engineering-Resume.pdf" aria-label="Download my résumé as a PDF">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg>
-          <span>Download resume</span>
+          <span>Download résumé</span>
         </a>
       </div>
 
-      <div class="footer-actions"><a href="mailto:Jatin946work@yahoo.com" class="btn-warm-outline">Send an email ↗</a>
-        <button id="copyEmailFooter" class="btn-warm-cta" data-email="Jatin946work@yahoo.com">
+      <div class="footer-actions"><a href="mailto:Jatin946work@yahoo.com" class="btn-warm-cta">Email me ↗</a>
+        <button id="copyEmailFooter" class="btn-warm-outline" aria-label="Copy email address" data-email="Jatin946work@yahoo.com">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           <span>Jatin946work@yahoo.com</span>
-          <span class="copy-hint">Click to Copy</span>
+          <span class="copy-hint">Copy</span>
         </button>
 
         <a href="https://github.com/Jatin2567" target="_blank" rel="noreferrer" class="btn-warm-outline">
-          <span>GitHub (Jatin2567)</span>
+          <span>GitHub ↗</span>
         </a>
 
         <a href="https://www.linkedin.com/in/jatin-aggarwal-3b046726b" target="_blank" rel="noreferrer" class="btn-warm-outline">
-          <span>LinkedIn</span>
+          <span>LinkedIn ↗</span>
         </a>
       </div>
 
       <div class="footer-meta-text">
-        <span>B.Tech CSE (AI & ML) 2023–2027 • IILM University, Gurugram • Delhi NCR, India</span>
+        <span>B.Tech in Computer Science (AI &amp; ML) · IILM University, Gurugram · 2023–2027</span>
       </div>
+      <button id="guideShortcut" class="guide-shortcut" type="button" data-open-page-guide aria-controls="portfolioGuide" aria-expanded="false">Ask the guide <kbd>/</kbd></button>
     </div>
+    <p class="scene-credit footer-credit" aria-hidden="true"><span>Fig. 02</span> Delhi NCR, after dark</p>
   </footer>
 
-  <!-- Yellow.ai-Style Interactive Floating Copilot -->
-  <!-- Exact Yellow.ai-Style Floating Agent Dock -->
-  <div id="yellowAgentContainer" class="yellow-agent-container">
-    <!-- Speech Bubble Callout (Yellow.ai Style) -->
-    <div class="yellow-speech-bubble" id="yellowSpeechBubble">
-      <span id="yellowSpeechText">Hi, I’m Jatin’s portfolio guide. Ask me about my work.</span>
-    </div>
-
-    <div id="yellowAgentBar" class="yellow-agent-bar aspired-dock agent-compact">
-      <!-- Main Horizontal Capsule Dock -->
-      <div class="yellow-dock-inner">
-        <!-- Left: Video Avatar Box -->
-        <div class="yellow-avatar-box" id="yellowAvatarBox">
-          <video id="dockVideo" class="yellow-dock-video" playsinline muted loop autoplay poster="correct_video_preview.jpg">
-            <source src="videos/correct_video.mp4" type="video/mp4">
-          </video>
-          </div>
-
-        <!-- Center & Right: Content Box -->
-        <div class="yellow-content-box">
-          <!-- Top: Input Field -->
-          <div class="yellow-input-wrap">
-            <input type="text" id="yellowAgentInput" class="yellow-agent-input" placeholder="Ask about projects, skills, or experience" aria-label="Ask Jatin’s portfolio guide" />
-          </div>
-
-          <!-- Bottom: Action Controls -->
-          <div class="yellow-actions-row">
-            <!-- Mutes spoken guide replies; the avatar video remains muted. -->
-            <button id="btnYellowAudioToggle" class="yellow-audio-btn" type="button" title="Mute spoken replies" aria-label="Mute spoken replies" aria-pressed="true">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="dockVolIcon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
-            </button>
-
-            <button id="btnYellowMic" class="yellow-mic-btn" type="button" title="Ask by voice" aria-label="Ask by voice" aria-pressed="false" aria-controls="yellowAgentInput yellowVoiceStatus">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"></path></svg>
-            </button>
-
-            <!-- Quick question and text submission -->
-            <button id="btnYellowWave" class="yellow-wave-btn" type="button" title="Ask about Raft consensus" aria-label="Ask about Raft consensus">
-              <span class="wave-bar bar-1"></span>
-              <span class="wave-bar bar-2"></span>
-              <span class="wave-bar bar-3"></span>
-              <span class="wave-bar bar-4"></span>
-            </button>
-          </div>
-          <span id="yellowVoiceStatus" class="sr-only" role="status" aria-live="polite">Spoken replies are on. The guide uses a recognized masculine English voice when available.</span>
-        </div>
-
-        <!-- Close / Minimize Button (Subtle top-right) -->
-        <button id="btnYellowMinimize" class="yellow-min-btn" title="Minimize">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-      </div>
-    </div>
-  </div>
+  <local-page-guide id="portfolioGuide" data-page-guide data-title="Portfolio guide"
+    data-video="videos/correct_video.mp4" data-poster="correct_video_preview.jpg"></local-page-guide>
 
   <!-- Toast Notification -->
   <div id="toast" class="toast-warm" role="status">Copied to clipboard!</div>
 
 
-  <script src="three.min.js" defer></script><script src="app.js?v=content_v11" defer></script><script src="studio.js?v=portfolio_v4" defer></script>
+  <script src="page-knowledge.js?v=release3d1" defer></script>
+  <script src="local-guide-voice.js?v=conversation3" defer></script>
+  <script src="page-guide.js?v=conversation3" defer></script>
+  <script src="app.js?v=release3d1" defer></script>
+  <script src="studio.js?v=release3d1" defer></script>
 </body>
 </html>
