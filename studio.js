@@ -18,6 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const desktopMotion = matchMedia('(min-width: 900px)');
   const pointerDepth = matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
   const heroScene = document.querySelector('.hero-scene');
+  const arrival = heroScene?.querySelector('.hero-train-runner');
+  const replay = document.querySelector('.scene-replay');
+  if (replay && typeof arrival?.getAnimations === 'function') {
+    replay.hidden = false;
+    replay.addEventListener('click', () => {
+      if (reducedMotion.matches) return;
+      const motion = arrival.getAnimations().find(animation => animation.animationName === 'metroArrival');
+      if (motion) {
+        motion.currentTime = 0;
+        motion.play();
+      }
+    });
+  }
   const skills = document.getElementById('stack');
   const projects = document.getElementById('projects');
   const reader = projects?.querySelector('.work-reader');
@@ -148,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // One observer reveals content once; hover transforms remain independent.
   const revealTargets = [...document.querySelectorAll(
-    '.section-title-box, .timeline-row, .skills-context'
+    '.section-title-box, .timeline-row, .skills-context, #projects .broad-col-media, #stack .skill-item'
   )];
   let revealObserver;
   function configureReveals() {
@@ -177,7 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if ('IntersectionObserver' in window) {
     const mediaObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.target === footer || entry.target === skills) {
+        if (entry.target === heroScene) {
+          heroScene.classList.toggle('scene-in-view', entry.isIntersecting);
+        } else if (entry.target === footer || entry.target === skills) {
           entry.target.classList.toggle('ambient-active', entry.isIntersecting);
         }
         else if (entry.isIntersecting) visibleMedia.add(entry.target);
@@ -186,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
       queueScrollScene();
     }, { rootMargin: '80px 0px' });
     document.querySelectorAll('.broad-col-media').forEach(media => mediaObserver.observe(media));
+    if (heroScene) mediaObserver.observe(heroScene);
     if (footer) mediaObserver.observe(footer);
     if (skills) mediaObserver.observe(skills);
   }

@@ -4,7 +4,10 @@
   <style>
     #sky:target ~ .city-layer, #sky:target ~ .near-scene,
     #city:target ~ .sky-layer, #city:target ~ .near-scene,
-    #skyline:target ~ .near-scene, #metro:target ~ .distant-scene { display: none; }
+    #skyline:target ~ .near-scene,
+    #viaduct:target ~ :is(.distant-scene, .train-layer, .foreground-layer),
+    #carriages:target ~ :is(.distant-scene, .viaduct-layer, .foreground-layer),
+    #foreground:target ~ :is(.distant-scene, .viaduct-layer, .train-layer) { display: none; }
   </style>
   <defs>
     <linearGradient id="sky-paint" x1="600" y1="0" x2="880" y2="720" gradientUnits="userSpaceOnUse">
@@ -56,7 +59,9 @@
   <view id="sky" viewBox="0 0 1600 760"/>
   <view id="city" viewBox="0 0 1600 760"/>
   <view id="skyline" viewBox="0 0 1600 760"/>
-  <view id="metro" viewBox="0 0 1600 760"/>
+  <view id="viaduct" viewBox="0 0 1600 760"/>
+  <view id="carriages" viewBox="0 0 1600 760"/>
+  <view id="foreground" viewBox="0 0 1600 760"/>
   <g class="distant-scene sky-layer">
   <!-- Sky, dusty evening light and the last clouds over the ridge. -->
   <path fill="url(#sky-paint)" d="M0 0h1600v760H0z"/>
@@ -96,7 +101,7 @@
   </g>
 
   </g>
-  <g class="near-scene">
+  <g class="near-scene viaduct-layer">
   <!-- Tall ribbed concrete piers fade into the stand of trees below. -->
   <g fill="#2c414d">
     <path d="m743 507 12-2-2 9-3 2v52l-4 2v-54l-2-1zm69-12 17-4-2 11-4 3-1 64-7 3 1-67-3-2zm97-20 24-5-2 12-7 6-1 96-9 2 1-99-5-4zm118-24 33-7-2 18-8 5-2 116-14 5 2-123-8-4zm157-32 47-10-2 25-14 9-2 161-20 5 3-171-11-7zm210-44 72-15-4 33-22 15-3 213-29 7 4-228-15-11z"/>
@@ -117,6 +122,8 @@
     <use href="#lamp" transform="translate(1536 278) scale(1.16)"/>
   </g>
 
+  </g>
+  <g class="near-scene train-layer">
   <!-- A metro in foreshortening, with a continuous belt line across four cars. -->
   <path d="m961 460 79-17 3-4-81 17zm82-18 100-22 3-6-102 23zm105-24 127-27 5-9-131 28zm134-29 156-34 9-12-162 34z" fill="#1d303a"/>
   <path d="m958 442 78-28 3 1v28l-81 17Zm84-30 99-35 3 2v41l-102 22Zm105-37 128-46 3 2v59l-131 28Z" fill="url(#steel)"/>
@@ -149,6 +156,8 @@
   <path d="m1319 314 10-6 23-7 10 3zm43-11 3-8 15-5 10 1-10 2-12 4-2 5z" fill="#75857e"/>
   <path d="m1167 368 8-8 20-7 7 2zm-94 33 6-5 15-6 4 2Z" fill="#73817b"/>
 
+  </g>
+  <g class="near-scene foreground-layer">
   <!-- Small warm windows and overlapping tree crowns soften the foreground. -->
   <g color="#274752">
     <use href="#tree" transform="translate(659 543) scale(.87)"/><use href="#tree" transform="translate(741 536) scale(1.02)"/>
