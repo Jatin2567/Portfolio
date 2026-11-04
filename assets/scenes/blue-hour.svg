@@ -2,10 +2,12 @@
   <title>Delhi NCR at blue hour</title>
   <desc>A silver metro train rides above rooftops and trees as the evening sun drops through a band of haze.</desc>
   <style>
+    #sky:target ~ .city-layer, #sky:target ~ .near-scene,
+    #city:target ~ .sky-layer, #city:target ~ .near-scene,
     #skyline:target ~ .near-scene, #metro:target ~ .distant-scene { display: none; }
   </style>
   <defs>
-    <linearGradient id="sky" x1="600" y1="0" x2="880" y2="720" gradientUnits="userSpaceOnUse">
+    <linearGradient id="sky-paint" x1="600" y1="0" x2="880" y2="720" gradientUnits="userSpaceOnUse">
       <stop stop-color="#132438"/><stop offset=".44" stop-color="#2e4a59"/>
       <stop offset=".78" stop-color="#697e79"/><stop offset="1" stop-color="#a38e75"/>
     </linearGradient>
@@ -50,12 +52,14 @@
     <g id="lamp" stroke="#29414b" stroke-linecap="round" fill="none"><path d="M0 54V7q0-5 6-6l11-1" stroke-width="2.4"/><path d="M13 1h7" stroke="#e6bd86" stroke-width="1.7"/></g>
   </defs>
 
-  <!-- Named views share the same crop; without a fragment both planes are painted. -->
+  <!-- All views use the same crop. The unfragmented image paints the complete scene. -->
+  <view id="sky" viewBox="0 0 1600 760"/>
+  <view id="city" viewBox="0 0 1600 760"/>
   <view id="skyline" viewBox="0 0 1600 760"/>
   <view id="metro" viewBox="0 0 1600 760"/>
-  <g class="distant-scene">
+  <g class="distant-scene sky-layer">
   <!-- Sky, dusty evening light and the last clouds over the ridge. -->
-  <path fill="url(#sky)" d="M0 0h1600v760H0z"/>
+  <path fill="url(#sky-paint)" d="M0 0h1600v760H0z"/>
   <path fill="url(#afterglow)" d="M0 0h1600v760H0z"/>
   <path d="M571 232c100-5 175-10 258-21l122-17c-55 2-103 5-151 11l-90 14-139 13Zm252-88c55 1 106-1 149-5l122-17-118 7-153 15Zm513-62c84 1 172-11 264-28v8c-83 15-174 24-264 20Z" fill="#aab9a7" opacity=".19"/>
   <path d="M953 250c103-1 188-8 258-19l-114 6-91 8-53 5Zm350-36c108-1 194-8 297-23v5c-100 15-215 21-297 18Z" fill="#e0c39e" opacity=".45"/>
@@ -73,6 +77,8 @@
     <use href="#bird" transform="translate(1086 218) rotate(8) scale(.34)"/>
   </g>
 
+  </g>
+  <g class="distant-scene city-layer">
   <!-- Successive ridgelines and buildings have less contrast at the horizon. -->
   <path d="M0 485c176-11 224 2 343-18 124-21 221-8 330-22 72-9 108-25 162-37 40-9 68-7 111-17 32-7 57-15 85-16 45-2 75 13 106 10 26-3 45-18 67-16 30 3 48 15 75 19 32 4 61-5 83-3 44 5 65 17 91 18 48 2 92-11 147-13v370H0Z" fill="#7e8b83"/>
   <path d="M0 514c163-37 269-13 387-35 111-22 154-13 255-31 103-18 132-4 210-18 59-11 98-26 152-25 43 1 67 9 111 7 68-3 84-11 131-5 76 11 106-2 157 0 110 6 150-11 197-20v373H0Z" fill="#5d7776"/>

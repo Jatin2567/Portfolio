@@ -36,16 +36,17 @@ body::before { content: none; }
 /* Full-bleed illustration. On a phone, the scene sits below the introduction. */
 .c4d-hero { max-width: none; padding: 0; margin: 0; background: var(--night); }
 .hero-spread { position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; min-height: clamp(620px, 97svh, 900px); padding: 124px 0 84px; background: #142738; }
-.hero-scene, .hero-landscape, .hero-metro { position: absolute; inset: 0; pointer-events: none; }
+.hero-scene, .hero-landscape, .hero-city, .hero-metro { position: absolute; inset: 0; pointer-events: none; }
 .hero-scene { z-index: -1; overflow: hidden; }
-.hero-landscape, .hero-metro { inset: -44px 0 0; background-position: 93% 58%; background-size: cover; background-repeat: no-repeat; }
-.hero-landscape { background-color: #142738; background-image: url("assets/scenes/blue-hour.svg?v=depth1"); }
-.hero-metro { display: none; }
+.hero-landscape, .hero-city, .hero-metro { inset: -44px 0 0; background-position: 93% 58%; background-size: cover; background-repeat: no-repeat; }
+.hero-landscape { background-color: #142738; background-image: url("assets/scenes/blue-hour.svg?v=planes2"); }
+.hero-city, .hero-metro { display: none; }
 /* A soft veil is confined to the text side of the jacket. */
 .hero-scene::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, #0b192ae8 0%, #1123338c 31%, transparent 62%); }
 .hero-container.hero-container-spacious { width: min(1180px, calc(100% - 96px)); margin-inline: auto; }
 .hero-editorial { max-width: min(49vw, 620px); }
-.tag-row { background: none; border: 0; padding: 0; box-shadow: none; margin: 0 0 19px; }
+.tag-row { flex-wrap: wrap; gap: .35rem .8rem; background: none; border: 0; padding: 0; box-shadow: none; margin: 0 0 19px; }
+.hero-byline { color: var(--ivory); font: 700 clamp(1rem, 1.4vw, 1.25rem)/1.35 var(--font-sans); letter-spacing: -.035em; }
 .kicker-tag { display: inline-flex; align-items: center; gap: .8em; padding: 0; color: #ffe0a9 !important; background: none !important; border: 0 !important; font: 700 .69rem/1.4 var(--font-sans) !important; letter-spacing: .16em !important; }
 .kicker-tag::before { content: ""; width: 29px; height: 2px; background: var(--apricot); }
 .kicker-tag span { color: #ad9275; }
@@ -122,12 +123,12 @@ body::before { content: none; }
 @media (prefers-reduced-motion: no-preference) {
   .motion-ready .hero-landscape, .motion-ready .hero-metro { inset: -24px; transform-origin: 76% 49%; }
   .motion-ready .hero-landscape {
-    background-image: url("assets/scenes/blue-hour.svg?v=depth1#skyline");
+    background-image: url("assets/scenes/blue-hour.svg?v=planes2#skyline");
     transform: translate3d(0, var(--sky-offset, 0px), 0);
     animation: sceneSettle 3s cubic-bezier(.18,.72,.24,1) both;
   }
   .motion-ready .hero-metro {
-    display: block; background-image: url("assets/scenes/blue-hour.svg?v=depth1#metro");
+    display: block; background-image: url("assets/scenes/blue-hour.svg?v=planes2#metro");
     transform: translate3d(var(--rail-x, 0px), var(--rail-y, 0px), 0);
     --entry-scale: 1.055; animation: sceneSettle 3s cubic-bezier(.18,.72,.24,1) both;
   }
@@ -136,33 +137,36 @@ body::before { content: none; }
   .motion-ready .broad-col-media { translate: 0 var(--media-drift, 0px); }
 }
 
-/* A slight change of viewpoint brings out the distance between the train and the hills. */
+/* The desktop view looks through the train toward the more distant hillside. */
 @media (min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .motion-ready .hero-scene { perspective: max(1500px, 120vw); perspective-origin: 76% 49%; }
-  .motion-ready .hero-landscape, .motion-ready .hero-metro {
-    transition: translate .25s ease-out, rotate .25s ease-out;
+  .motion-ready .hero-scene {
+    --hero-lens: max(1200px, 115vw);
+    perspective: var(--hero-lens);
+    perspective-origin: calc(50% + var(--view-x, 0) * 80px)
+      calc(50% + var(--view-y, 0) * 48px + var(--sky-offset, 0px) * 2);
+    transition: perspective-origin .27s ease-out;
   }
+  .motion-ready .hero-landscape, .motion-ready .hero-city, .motion-ready .hero-metro {
+    inset: calc(-28px - 1vw);
+    transform-origin: center;
+    transition: transform .22s ease-out;
+  }
+  /* Compensate for perspective magnification so all three prints register at rest. */
   .motion-ready .hero-landscape {
-    translate: calc(var(--view-x, 0) * 2px) calc(var(--view-y, 0) * 1.5px);
+    background-image: url("assets/scenes/blue-hour.svg?v=planes2#sky");
+    transform: translate3d(0, var(--sky-offset, 0px), calc(var(--hero-lens) * -.18)) scale(1.18);
+  }
+  .motion-ready .hero-city {
+    display: block;
+    background-image: url("assets/scenes/blue-hour.svg?v=planes2#city");
+    transform: translate3d(0, calc(var(--sky-offset, 0px) * .28), calc(var(--hero-lens) * .025))
+      scale(.975) rotateY(calc(var(--view-x, 0) * -.2deg));
+    --entry-scale: 1.035; animation: sceneSettle 3s cubic-bezier(.18,.72,.24,1) both;
   }
   .motion-ready .hero-metro {
-    translate: calc(var(--view-x, 0) * -7px) calc(var(--view-y, 0) * -5px);
-    rotate: y calc(var(--view-x, 0) * -.32deg);
+    transform: translate3d(var(--rail-x, 0px), var(--rail-y, 0px), calc(var(--hero-lens) * .16))
+      scale(.84) rotateY(calc(var(--view-x, 0) * -.85deg)) rotateX(calc(var(--view-y, 0) * .55deg));
   }
-
-  /* The paper has a shallow edge; only the screenshot tips toward the pointer. */
-  #projects .broad-col-media .preview-media-frame.is-tilting:not(:focus-within) {
-    transform: perspective(1050px) rotateX(calc(var(--view-y, 0) * -4deg)) rotateY(calc(var(--view-x, 0) * 5deg)) translateZ(7px);
-    box-shadow: 0 1px 0 #bfc9bc, 0 3px 0 #abb8aa,
-      calc(var(--view-x, 0) * -6px) calc(13px - var(--view-y, 0) * 3px) 24px #1b372b30;
-  }
-  #projects .broad-col-media .preview-media-frame:focus-within { transform: none; }
-  #projects .preview-media-frame::after {
-    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-    background: radial-gradient(ellipse at calc(50% + var(--view-x, 0) * 50%) calc(50% + var(--view-y, 0) * 50%), #fff6cd1c, transparent 60%);
-    opacity: 0; transition: opacity .25s ease;
-  }
-  #projects .preview-media-frame.is-tilting:not(:focus-within)::after { opacity: 1; }
 
   /* The colored logo sits just above the existing stone, as an individual badge. */
   #stack .skill-item { perspective: 440px; }
@@ -237,7 +241,7 @@ body::before { content: none; }
   .hero-spread { display: grid; grid-template-columns: 21px minmax(0, 1fr) 21px; align-items: start; min-height: 0; padding: 116px 0 27px; background: #142738; }
   .hero-container.hero-container-spacious, .hero-editorial { display: contents; }
   .hero-editorial > * { grid-column: 2; }
-  .tag-row { grid-row: 1; margin-bottom: 14px; }
+  .tag-row { grid-row: 1; flex-direction: column; align-items: flex-start; margin: 0 0 14px; }
   .kicker-tag { font-size: .62rem !important; }
   .c4d-main-headline { grid-row: 2; min-inline-size: 0; font-size: clamp(2.7rem, 15vw, 5.6rem) !important; margin: 0; }
   .hero-subtext { grid-row: 4; font-size: .96rem; max-width: 41ch; margin-top: 15px; }

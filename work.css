@@ -332,8 +332,82 @@
 }
 
 @media (min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  #projects .preview-media-frame.is-tilting {
-    transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  /* The mat stays on the page; the print, paper edge and label occupy real planes. */
+  #projects .card-featured-broad .broad-col-media {
+    perspective: 1200px;
+    perspective-origin: 50% 42%;
+  }
+
+  #projects .broad-col-media .preview-media-frame {
+    overflow: visible;
+    transform-style: preserve-3d;
+  }
+
+  #projects .preview-media-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid #a7b4a3;
+    border-radius: inherit;
+    background: #d2dacb;
+    box-shadow: 0 2px 0 #bac5b3;
+    transform: translate3d(2px, 4px, -5px);
+    pointer-events: none;
+  }
+
+  #projects .preview-media-link {
+    border-radius: inherit;
+    transform-style: preserve-3d;
+  }
+
+  #projects .broad-preview-img {
+    border-radius: 4px;
+    transform: translateZ(7px);
+    backface-visibility: hidden;
+  }
+
+  #projects .preview-media-overlay {
+    transform: translateZ(27px);
+    backface-visibility: hidden;
+  }
+
+  #projects .preview-media-badge {
+    box-shadow: 0 3px 5px #122e2a26;
+  }
+
+  #projects .preview-media-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(ellipse at calc(50% + var(--view-x, 0) * 50%) calc(50% + var(--view-y, 0) * 50%), #fff6cd1c, transparent 60%);
+    opacity: 0;
+    transition: opacity .25s ease;
+    transform: translateZ(8px);
+  }
+
+  #projects .preview-media-frame.is-tilting:not(:focus-within)::after { opacity: 1; }
+
+  #projects .broad-col-media .preview-media-frame.is-tilting:not(:focus-within) {
+    transform: rotateX(calc(var(--view-y, 0) * -5deg)) rotateY(calc(var(--view-x, 0) * 6deg));
+    box-shadow: 0 10px 22px #203c2e25;
+  }
+
+  /* A focused link is a steady, flat target, including its floating label. */
+  #projects .broad-col-media .preview-media-frame:focus-within,
+  #projects .preview-media-frame:focus-within .broad-preview-img,
+  #projects .preview-media-frame:focus-within .preview-media-overlay {
+    transform: none;
+  }
+
+  #projects .broad-col-media .preview-media-frame:focus-within {
+    transition: none;
+  }
+
+  #projects .preview-media-frame:focus-within::before,
+  #projects .preview-media-frame:focus-within::after {
+    visibility: hidden;
   }
 }
 
