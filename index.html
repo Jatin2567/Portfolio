@@ -109,7 +109,7 @@
                   <span>GITHUB ACTIVITY</span>
                 </div>
                 <div class="popover-row">
-                  <span class="popover-label">Latest Commit:</span>
+                  <span class="popover-label">Latest featured commit:</span>
                   <a href="https://github.com/Jatin2567/DistributedKvServer" target="_blank" rel="noreferrer" class="popover-val popover-link" id="popoverGithubCommit">View repository</a>
                 </div>
                 <div class="popover-row">
@@ -236,7 +236,7 @@
       <div class="section-title-box">
         <span class="accent-sub">01 / Portfolio</span>
         <h2 class="section-lead-title">Selected work</h2>
-        <p class="section-lead-desc">Six projects, from a phone service for farmers to a console that shows how three database nodes agree on a write. Each entry includes a demo, source code or both.</p>
+        <p class="section-lead-desc">Six projects, from a weather hotline prototype for farmers to a console that shows how three database nodes agree on a write. Each entry includes a demo, source code or both.</p>
       </div>
 
       <nav class="work-reader" aria-label="Jump to a project">
@@ -263,7 +263,7 @@
             <!-- Left Column: Architectural Breakdown & Technical Scope -->
             <div class="broad-col-content">
               <h3 class="card-headline">WeatherGPT</h3>
-              <p class="card-body-text">WeatherGPT connects farmers with local forecasts, crop advice and weather warnings by phone. A new caller chooses Hindi, English or Kannada and enters a six-digit postal code. Operators use a dashboard to manage warnings for the affected areas.</p>
+              <p class="card-body-text">WeatherGPT models a phone service for farmers. A caller chooses Hindi, English or Kannada and enters a six-digit postal code for local forecasts and crop advice. On the dashboard, operators can target weather warnings by postal code.</p>
               <div class="card-stack-row">
                 <span class="card-stack-pill"><img src="assets/skills/react.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> React</span>
                 <span class="card-stack-pill"><img src="assets/skills/typescript.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> TypeScript</span>
@@ -276,13 +276,13 @@
                 <ul class="item-bullet-list">
                   <li>The keypad menu offers today’s weather, crop advice and a seven-day forecast. Weather lookups use Open-Meteo.</li>
                   <li>The advisory uses the selected crop and local weather to suggest when to irrigate or spray.</li>
-                  <li>A separate, PIN-protected voice assistant takes spoken questions about weather and farming.</li>
-                  <li>Operators can target alerts by postal code. Outbound calls and SMS are simulated unless live delivery is configured and enabled.</li>
+                  <li>Option 4 in the <a href="https://weathergpt.duckdns.org/docs" target="_blank" rel="noreferrer">phone menu</a> opens a voice assistant for spoken questions about weather and farming.</li>
+                  <li>The public dispatch queue shows call retries and SMS fallbacks. The project lists delivery through phone carriers as still in development.</li>
                 </ul>
               </details>
 
               <div class="project-meta-box">
-                <div class="meta-entry"><strong>Status:</strong> Public dashboard. Starting the phone simulator requires an access PIN.</div>
+                <div class="meta-entry"><strong>Status:</strong> The public demo simulates calls and SMS. Starting the phone simulator requires an access PIN.</div>
 
               </div>
 
@@ -324,7 +324,7 @@
             <!-- Left Column: Architectural Breakdown & Technical Scope -->
             <div class="broad-col-content">
               <h3 class="card-headline">MariaDB Magics · Studio</h3>
-              <p class="card-body-text">MariaDB Magics lets you run SQL and plot the results inside a Jupyter notebook. The browser studio lets you try those queries on sample data. Vector search and historical queries need a connected MariaDB database.</p>
+              <p class="card-body-text">MariaDB Magics lets you run SQL and plot the results inside a Jupyter notebook. Try SQL and charts on sample data in the public studio. For vector search or historical queries, run your own studio connected to MariaDB.</p>
               <div class="card-stack-row">
                 <span class="card-stack-pill"><img src="assets/skills/mariadb.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> MariaDB 11.8</span>
                 <span class="card-stack-pill"><img src="assets/skills/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Python</span>
@@ -337,14 +337,14 @@
                 <ul class="item-bullet-list">
                   <li>The public studio runs SQL and charts against an in-memory SQLite sample dataset. You can browse the schema, export CSV results and save queries in your browser.</li>
                   <li>With a live MariaDB connection, the studio uses native vector functions to find similar records. These operations are unavailable in sample-data mode.</li>
-                  <li>Historical queries use a system-versioned table and FOR SYSTEM_TIME AS OF TIMESTAMP. The setup guide explains how to run this mode with your own database.</li>
-                  <li>The original Jupyter extension provides four commands: %mariadb, %mariadb_plot, %mariadb_time and %mariadb_vector, covering SQL, charts, time-based analysis and vector search.</li>
+                  <li>Historical queries use a system-versioned table and FOR SYSTEM_TIME AS OF TIMESTAMP. The <a href="https://mariadb-magics-studio.onrender.com/docs" target="_blank" rel="noreferrer">studio setup guide</a> explains how to run this mode with your own database.</li>
+                  <li>In Jupyter, connect with %mariadb_connect. Then use %mariadb for SQL, %mariadb_plot for charts, %mariadb_time for time-based analysis or %mariadb_vector for vector search.</li>
                 </ul>
               </details>
 
               <div class="project-meta-box">
                 <div class="meta-entry"><strong>Status:</strong> Sample-data web demo · Live database setup documented.</div>
-                <div class="meta-entry"><strong>Recognition:</strong> The original notebook project reached the top 59 of 4,000+ teams in the MariaDB Python Hackathon 2025.</div>
+                <div class="meta-entry"><strong>Origin:</strong> I built the original Jupyter extension for the 2025 MariaDB Python Hackathon.</div>
 
               </div>
 
@@ -407,7 +407,7 @@
                   <li>Each path uses the same recording, prompt and providers. Two paths change just one step so you can isolate the wait for text or for audio.</li>
                   <li>The timing report separates events on the server from the moment the browser schedules the first audio for playback.</li>
                   <li>You can check whether a reply contains an expected fact or JSON field, or whether it requested an allowed simulated action.</li>
-                  <li>Export a comparison as JSON or CSV. In the conversation view, you can ask a follow-up or interrupt a reply.</li>
+                  <li>Run the built-in evaluation suite, export the results as JSON or CSV, and compare reports across releases. In the conversation view, you can ask a follow-up or interrupt a reply.</li>
                 </ul>
               </details>
 
@@ -531,7 +531,7 @@
               <li>The tab organizer uses titles and URLs to group open tabs by topic.</li>
               <li>These features use Chrome’s built-in AI APIs. A compatible browser and device may need to download the models first.</li>
             </ul>
-            <div class="meta-entry"><strong>Try it:</strong> Unzip the demo, then use Chrome’s “Load unpacked” option to select the Project folder.</div>
+            <div class="meta-entry"><strong>Try it:</strong> Download and unzip the demo. In Chrome’s Extensions settings, turn on Developer mode, choose “Load unpacked” and select the Project folder.</div>
           </details>
 
           <div class="project-meta-box">
@@ -544,8 +544,8 @@
               <span>View on GitHub</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
-            <a href="https://github.com/Jatin2567/BHDesk/blob/main/demo/BHDesk.zip" target="_blank" rel="noopener noreferrer" class="warm-link">
-              <span>Open demo package</span>
+            <a href="https://raw.githubusercontent.com/Jatin2567/BHDesk/main/demo/BHDesk.zip" class="warm-link">
+              <span>Download demo ZIP</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
           </div>
@@ -558,7 +558,7 @@
           </div>
 
           <h3 class="card-headline">AI DevSecOps Guardian</h3>
-          <p class="card-body-text">When a GitLab build fails, Guardian asks a model to read the job log and suggest a fix. It can open an issue for a developer to review, or add a note when the same failure recurs.</p>
+          <p class="card-body-text">When a GitLab job fails, Guardian sends the end of its log to a model for a suggested fix. It can open an issue for a developer to review. If the same job event arrives again, it can add a note to that issue.</p>
           <div class="card-stack-row">
             <span class="card-stack-pill"><img src="assets/skills/nodejs.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Node.js</span>
             <span class="card-stack-pill"><img src="assets/skills/gitlab.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> GitLab</span>
@@ -567,8 +567,8 @@
             <summary>Project details</summary>
             <ul class="item-bullet-list">
               <li>A GitLab job event triggers a log lookup. Guardian sends the tail of a failed job’s log to a model hosted by Groq for a possible cause and suggested next step.</li>
-              <li>Rules can flag a successful job for analysis too. For example, the log may mention a deprecated dependency or repeated warnings.</li>
-              <li>Guardian uses SQLite to recognize repeat findings and link them to an existing GitLab issue. A developer reviews the suggestion and makes any code changes.</li>
+              <li>The source includes rules for spotting deprecated dependencies and repeated warnings in successful job logs.</li>
+              <li>SQLite records the issue linked to a job event and its log excerpt. A developer reviews the suggestion and decides whether to change the code.</li>
             </ul>
           </details>
 
@@ -693,7 +693,7 @@
           <strong>My résumé</strong>
           <span>Education, experience and selected projects · PDF</span>
         </div>
-        <a href="assets/Jatin-Aggarwal-Resume.pdf" class="btn-warm-outline" download="Engineering-Resume.pdf" aria-label="Download my résumé as a PDF">
+        <a href="assets/Jatin-Aggarwal-Resume.pdf?v=20261105" class="btn-warm-outline" download="Engineering-Resume.pdf" aria-label="Download my résumé as a PDF">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg>
           <span>Download résumé</span>
         </a>
@@ -733,7 +733,7 @@
   <script src="page-knowledge.js?v=release3d1" defer></script>
   <script src="local-guide-voice.js?v=conversation3" defer></script>
   <script src="page-guide.js?v=conversation3" defer></script>
-  <script src="app.js?v=release3d1" defer></script>
+  <script src="app.js?v=links1" defer></script>
   <script src="studio.js?v=arrival1" defer></script>
 </body>
 </html>

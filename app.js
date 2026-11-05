@@ -250,23 +250,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 6. Live GitHub Engineering Activity (Direct GitHub API)
       try {
-        const GH_CACHE_KEY = 'jatin_github_live_cache';
-        const cachedGh = sessionStorage.getItem(GH_CACHE_KEY);
+        const GH_CACHE_KEY = 'featured_github_activity_v2';
+        const cachedGh = JSON.parse(sessionStorage.getItem(GH_CACHE_KEY) || 'null');
 
-        if (cachedGh) {
-          const parsed = JSON.parse(cachedGh);
-          renderGh(parsed);
+        if (cachedGh && Date.now() - cachedGh.checkedAt < 15 * 60 * 1000) {
+          renderGh(cachedGh);
         } else {
           // Fetch latest commit from DistributedKvServer and total repos
           Promise.all([
             fetch('https://api.github.com/repos/Jatin2567/DistributedKvServer/commits?per_page=1').then(r => r.json()),
-            fetch('https://api.github.com/users/Jatin2567/repos?per_page=100').then(r => r.json())
+            fetch('https://api.github.com/users/Jatin2567').then(r => r.json())
           ])
-            .then(([commits, repos]) => {
+            .then(([commits, profile]) => {
               const commitMsg = commits && commits[0]?.commit?.message ? commits[0].commit.message.split('\n')[0] : 'Unavailable';
-              const repoCount = Array.isArray(repos) ? `${repos.length} Repositories` : 'Unavailable';
-              const ghData = { commitMsg, repoCount };
-              sessionStorage.setItem(GH_CACHE_KEY, JSON.stringify(ghData));
+              const repoCount = Number.isInteger(profile.public_repos) ? String(profile.public_repos) : 'Unavailable';
+              const ghData = { commitMsg, sha: commits[0]?.sha, repoCount, checkedAt: Date.now() };
+              if (ghData.sha && repoCount !== 'Unavailable') sessionStorage.setItem(GH_CACHE_KEY, JSON.stringify(ghData));
               renderGh(ghData);
             })
             .catch(() => {
@@ -278,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (popoverGithubCommit) {
             popoverGithubCommit.textContent = data.commitMsg.length > 24 ? data.commitMsg.substring(0, 24) + '...' : data.commitMsg;
             popoverGithubCommit.title = data.commitMsg;
+            if (/^[0-9a-f]{40}$/i.test(data.sha)) popoverGithubCommit.href = 'https://github.com/Jatin2567/DistributedKvServer/commit/' + data.sha;
           }
           if (popoverGithubCount) {
             popoverGithubCount.textContent = data.repoCount;
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCount(parseInt(cached, 10));
       }
 
-      const isLocalPreview = ['localhost','127.0.0.1'].includes(location.hostname);
+      const isLocalPreview = location.protocol === 'file:' || ['localhost','127.0.0.1'].includes(location.hostname);
       const isNewSession = !isLocalPreview && !sessionStorage.getItem(SESSION_KEY);
       const endpoint = isNewSession
         ? 'https://countapi.mileshilliard.com/api/v1/hit/jatin_aggarwal_portfolio_live'
