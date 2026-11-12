@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="style.css?v=content_v12">
   <link rel="preload" href="assets/scenes/blue-hour.svg?v=arrival3" as="image" type="image/svg+xml">
   <link rel="stylesheet" href="atmosphere.css?v=projects8">
-  <link rel="stylesheet" href="work.css?v=arrival1">
+  <link rel="stylesheet" href="work.css?v=featured8">
 </head>
 <body class="palette-warm"><a class="skip-link" href="#projects">Skip to selected work</a>
 
@@ -242,20 +242,140 @@
       <nav class="work-reader" aria-label="Jump to a project">
         <span class="reader-label">Project index</span>
         <div class="reader-links">
+          <a href="#zeroscream">ZeroScream</a>
+          <a href="#charcha">Charcha</a>
           <a href="#weather">WeatherGPT</a>
           <a href="#mariadb">MariaDB</a>
           <a href="#voiceops">VoiceOps</a>
           <a href="#distributed-kv">Distributed KV</a>
           <a href="#bhdesk">BHDesk</a>
           <a href="#guardian">Guardian</a>
-          <a href="#zeroscream">ZeroScream</a>
-          <a href="#charcha">Charcha</a>
         </div>
       </nav>
 
       <div class="projects-masonry">
 
-        <!-- 1. WeatherGPT (Broadened Two-Column Featured Project) -->
+        <!-- ZeroScream (Featured Project) -->
+        <div id="zeroscream" class="card-item-warm card-featured-broad">
+          <div class="card-top-tag">
+            <span class="chip-warm chip-red">Service retirement</span>
+          </div>
+          <div class="card-broad-grid">
+            <div class="broad-col-content">
+              <h3 class="card-headline">ZeroScream</h3>
+              <p class="card-body-text">ZeroScream helps teams check what still depends on an old service before switching it off. It tracks callers and unfinished work, verifies the replacement and requires approval before retiring the selected service. Signed receipts preserve the evidence behind the decision.</p>
+              <div class="card-stack-row">
+                <span class="card-stack-pill"><img src="assets/skills/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Python</span>
+                <span class="card-stack-pill"><img src="assets/skills/fastapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> FastAPI</span>
+                <span class="card-stack-pill"><img src="assets/skills/react.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> React</span>
+                <span class="card-stack-pill"><img src="assets/skills/typescript.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> TypeScript</span>
+                <span class="card-stack-pill"><img src="assets/skills/gitlab.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> GitLab Duo</span>
+              </div>
+              <details class="project-details">
+                <summary>Project details</summary>
+                <ul class="item-bullet-list">
+                  <li>A reversible withdrawal exposes services that still call the old endpoint. Unfinished accepted work blocks retirement, even when newer work succeeds on the replacement.</li>
+                  <li>GitLab Duo prepares migration changes and CI checks the revision. An operator reviews, merges and installs the change before approving retirement.</li>
+                  <li>The implemented workloads cover document exports and acknowledged webhook delivery. The connected staging run retired one process on a virtual machine; general production retirement is outside that demonstrated scope.</li>
+                </ul>
+              </details>
+              <div class="project-meta-box">
+                <div class="meta-entry"><strong>Status:</strong> Controlled staging demonstration. Hosted console scheduled through 16 November 2026; the recorded walkthrough and source remain available.</div>
+              </div>
+              <div class="card-cta">
+                <a href="https://youtu.be/gqEsECFeOv4" target="_blank" rel="noreferrer" class="warm-link">
+                  <span>Watch demo</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+                <a href="https://gitlab.com/gitlab-ai-hackathon/transcend-october-2026/43538696/showcase" target="_blank" rel="noreferrer" class="warm-link">
+                  <span>View source on GitLab</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+                <a href="https://zeroscream-xwgfucopha-uc.a.run.app/engine" target="_blank" rel="noreferrer" class="warm-link">
+                  <span>Open staging console</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="broad-col-media">
+              <div class="preview-media-frame">
+                <a href="https://youtu.be/gqEsECFeOv4" target="_blank" rel="noreferrer" class="preview-media-link" title="Watch the ZeroScream demo">
+                  <img src="zeroscream-preview.jpg" width="1440" height="1000" alt="ZeroScream console showing a retired service, migration checks and completed work" class="broad-preview-img" loading="lazy" decoding="async" />
+                  <div class="preview-media-overlay">
+                    <span class="preview-media-badge"><span>Watch demo</span></span>
+                  </div>
+                </a>
+              </div>
+              <div class="preview-media-caption">
+                <span class="caption-title">Service retirement, with evidence</span>
+                <span class="caption-sub">The staging console shows migration checks, completed work and a signed retirement receipt.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charcha (Featured Project) -->
+        <div id="charcha" class="card-item-warm card-featured-broad">
+          <div class="card-top-tag">
+            <span class="chip-warm chip-amber">Multilingual meetings</span>
+          </div>
+          <div class="card-broad-grid">
+            <div class="broad-col-content">
+              <h3 class="card-headline">Charcha</h3>
+              <p class="card-body-text">Charcha brings interpreted speech and original and translated captions into audio and video meetings. When an instruction changes, participants can review a corrected version, acknowledge it individually and keep both versions in a bilingual recap.</p>
+              <div class="card-stack-row">
+                <span class="card-stack-pill"><img src="assets/skills/react.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> React</span>
+                <span class="card-stack-pill"><img src="assets/skills/typescript.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> TypeScript</span>
+                <span class="card-stack-pill"><img src="assets/skills/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Python</span>
+                <span class="card-stack-pill"><img src="assets/skills/fastapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> FastAPI</span>
+                <span class="card-stack-pill">LiveKit</span>
+              </div>
+              <details class="project-details">
+                <summary>Project details</summary>
+                <ul class="item-bullet-list">
+                  <li>LiveKit carries the call. Interpretation combines Gnani speech recognition and synthesis with hosted Evon translation. Live interpretation needs configured providers and available compute.</li>
+                  <li>Corrections preserve the original message. Each eligible listener acknowledges the updated version separately.</li>
+                  <li>Download a recap as text or JSON, print it as a PDF or prepare a WhatsApp message. Sharing happens only when a participant chooses to share.</li>
+                </ul>
+              </details>
+              <div class="project-meta-box">
+                <div class="meta-entry"><strong>Status:</strong> Deployed application. Sign-in is required; hosting needs owner or reviewer access.</div>
+              </div>
+              <div class="card-cta">
+                <a href="https://charcha-234398803946.asia-south2.run.app/" target="_blank" rel="noreferrer" class="warm-link">
+                  <span>Open Charcha app</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+                <a href="https://github.com/Jatin2567/Charcha" target="_blank" rel="noreferrer" class="warm-link">
+                  <span>View on GitHub</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+                <a href="https://github.com/Jatin2567/Charcha/blob/main/docs/media/Charcha-2m40-multilingual-build.mp4" target="_blank" rel="noreferrer" class="warm-link">
+                  <span>Watch build film</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="broad-col-media">
+              <div class="preview-media-frame">
+                <a href="https://github.com/Jatin2567/Charcha/blob/main/docs/media/Charcha-2m40-multilingual-build.mp4" target="_blank" rel="noreferrer" class="preview-media-link" title="Watch the Charcha build film">
+                  <img src="charcha-preview.jpg" width="1440" height="1000" alt="Charcha meeting with original and translated captions and a correction awaiting acknowledgement" class="broad-preview-img" loading="lazy" decoding="async" />
+                  <div class="preview-media-overlay">
+                    <span class="preview-media-badge"><span>Watch build film</span></span>
+                  </div>
+                </a>
+              </div>
+              <div class="preview-media-caption">
+                <span class="caption-title">Inside a multilingual meeting</span>
+                <span class="caption-sub">Original and translated captions, with a correction ready to acknowledge. From the recorded interface rehearsal.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WeatherGPT (Broadened Two-Column Featured Project) -->
         <div id="weather" class="card-item-warm card-featured-broad">
           <div class="card-top-tag">
             <span class="chip-warm chip-amber">Voice &amp; weather</span>
@@ -316,7 +436,7 @@
           </div>
         </div>
 
-        <!-- 2. MariaDB Magics · Studio (Broadened Two-Column Featured Project) -->
+        <!-- MariaDB Magics · Studio (Broadened Two-Column Featured Project) -->
         <div id="mariadb" class="card-item-warm card-featured-broad">
           <div class="card-top-tag">
             <span class="chip-warm chip-amber">Data tools</span>
@@ -386,7 +506,7 @@
           </div>
         </div>
 
-        <!-- 3. VoiceOps -->
+        <!-- VoiceOps -->
         <div id="voiceops" class="card-item-warm card-featured-broad">
           <div class="card-top-tag">
             <span class="chip-warm chip-amber">Voice AI</span>
@@ -450,7 +570,7 @@
           </div>
         </div>
 
-        <!-- 4. Distributed KV Server (Broadened Two-Column Featured Project) -->
+        <!-- Distributed KV Server (Broadened Two-Column Featured Project) -->
         <div id="distributed-kv" class="card-item-warm card-featured-broad">
           <div class="card-top-tag">
             <span class="chip-warm chip-red">Distributed systems</span>
@@ -513,7 +633,7 @@
           </div>
         </div>
 
-        <!-- 5. BHDesk -->
+        <!-- BHDesk -->
         <div id="bhdesk" class="card-item-warm">
           <div class="card-top-tag">
             <span class="chip-warm chip-orange">Browser extension</span>
@@ -582,86 +702,6 @@
           <div class="card-cta">
             <a href="https://github.com/Jatin2567/AI-DevSecOps-Guardian" target="_blank" rel="noreferrer" class="warm-link">
               <span>View on GitHub</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <div id="zeroscream" class="card-item-warm">
-          <div class="card-top-tag">
-            <span class="chip-warm chip-red">Service retirement</span>
-          </div>
-          <h3 class="card-headline">ZeroScream</h3>
-          <p class="card-body-text">ZeroScream helps teams check what still depends on an old service before switching it off. It tracks callers and unfinished work, verifies the replacement and requires approval before retiring the selected service. Signed receipts preserve the evidence behind the decision.</p>
-          <div class="card-stack-row">
-            <span class="card-stack-pill"><img src="assets/skills/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Python</span>
-            <span class="card-stack-pill"><img src="assets/skills/fastapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> FastAPI</span>
-            <span class="card-stack-pill"><img src="assets/skills/react.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> React</span>
-            <span class="card-stack-pill"><img src="assets/skills/typescript.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> TypeScript</span>
-            <span class="card-stack-pill"><img src="assets/skills/gitlab.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> GitLab Duo</span>
-          </div>
-          <details class="project-details">
-            <summary>Project details</summary>
-            <ul class="item-bullet-list">
-              <li>A reversible withdrawal exposes services that still call the old endpoint. Unfinished accepted work blocks retirement, even when newer work succeeds on the replacement.</li>
-              <li>GitLab Duo prepares migration changes and CI checks the revision. An operator reviews, merges and installs the change before approving retirement.</li>
-              <li>The implemented workloads cover document exports and acknowledged webhook delivery. The connected staging run retired one process on a virtual machine; general production retirement is outside that demonstrated scope.</li>
-            </ul>
-          </details>
-          <div class="project-meta-box">
-            <div class="meta-entry"><strong>Status:</strong> Controlled staging demonstration. Hosted console scheduled through 16 November 2026; the recorded walkthrough and source remain available.</div>
-          </div>
-          <div class="card-cta">
-            <a href="https://youtu.be/gqEsECFeOv4" target="_blank" rel="noreferrer" class="warm-link">
-              <span>Watch demo</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </a>
-            <a href="https://gitlab.com/gitlab-ai-hackathon/transcend-october-2026/43538696/showcase" target="_blank" rel="noreferrer" class="warm-link">
-              <span>View source on GitLab</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </a>
-            <a href="https://zeroscream-xwgfucopha-uc.a.run.app/engine" target="_blank" rel="noreferrer" class="warm-link">
-              <span>Open staging console</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <div id="charcha" class="card-item-warm">
-          <div class="card-top-tag">
-            <span class="chip-warm chip-amber">Multilingual meetings</span>
-          </div>
-          <h3 class="card-headline">Charcha</h3>
-          <p class="card-body-text">Charcha brings interpreted speech and original and translated captions into audio and video meetings. When an instruction changes, participants can review a corrected version, acknowledge it individually and keep both versions in a bilingual recap.</p>
-          <div class="card-stack-row">
-            <span class="card-stack-pill"><img src="assets/skills/react.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> React</span>
-            <span class="card-stack-pill"><img src="assets/skills/typescript.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> TypeScript</span>
-            <span class="card-stack-pill"><img src="assets/skills/python.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> Python</span>
-            <span class="card-stack-pill"><img src="assets/skills/fastapi.svg" alt="" width="14" height="14" loading="lazy" decoding="async"> FastAPI</span>
-            <span class="card-stack-pill">LiveKit</span>
-          </div>
-          <details class="project-details">
-            <summary>Project details</summary>
-            <ul class="item-bullet-list">
-              <li>LiveKit carries the call. Interpretation combines Gnani speech recognition and synthesis with hosted Evon translation. Live interpretation needs configured providers and available compute.</li>
-              <li>Corrections preserve the original message. Each eligible listener acknowledges the updated version separately.</li>
-              <li>Download a recap as text or JSON, print it as a PDF or prepare a WhatsApp message. Sharing happens only when a participant chooses to share.</li>
-            </ul>
-          </details>
-          <div class="project-meta-box">
-            <div class="meta-entry"><strong>Status:</strong> Deployed application. Sign-in is required; hosting needs owner or reviewer access.</div>
-          </div>
-          <div class="card-cta">
-            <a href="https://charcha-234398803946.asia-south2.run.app/" target="_blank" rel="noreferrer" class="warm-link">
-              <span>Open Charcha app</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </a>
-            <a href="https://github.com/Jatin2567/Charcha" target="_blank" rel="noreferrer" class="warm-link">
-              <span>View on GitHub</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </a>
-            <a href="https://github.com/Jatin2567/Charcha/blob/main/docs/media/Charcha-2m40-multilingual-build.mp4" target="_blank" rel="noreferrer" class="warm-link">
-              <span>Watch build film</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
           </div>

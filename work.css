@@ -102,9 +102,11 @@
   content: none !important;
 }
 
-#projects .card-item-warm:nth-child(2) { --plate-mat: #d4dfe0; }
-#projects .card-item-warm:nth-child(3) { --plate-mat: #e3d8c8; }
-#projects .card-item-warm:nth-child(4) { --plate-mat: #d8dce7; }
+#projects #zeroscream,
+#projects #mariadb { --plate-mat: #d4dfe0; }
+#projects #charcha,
+#projects #voiceops { --plate-mat: #e3d8c8; }
+#projects #distributed-kv { --plate-mat: #d8dce7; }
 
 #projects .card-top-tag {
   align-items: flex-start;
