@@ -93,7 +93,7 @@ body::before { content: none; }
 .reader-links a[aria-current="location"] { background: #254b42; color: #fffaf0; }
 .reader-links a:hover:not([aria-current]) { background: #e1e7db; color: #1a4337; }
 .work-reader select { display: none; }
-#projects .card-item-warm[id] { scroll-margin-top: 54px; }
+#projects .card-item-warm[id] { scroll-margin-top: var(--project-index-height, 54px); }
 .chapter-seam { position: relative; overflow: hidden; height: clamp(65px, 7vw, 108px); margin: 0; background: #f2f0e8; }
 .chapter-seam svg { display: block; width: 100%; height: calc(100% + 1px); }
 #stack .skills-context a { color: #f6d7a2; text-decoration-color: #a38b66; text-underline-offset: 4px; }

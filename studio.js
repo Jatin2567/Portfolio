@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const skills = document.getElementById('stack');
   const projects = document.getElementById('projects');
   const reader = projects?.querySelector('.work-reader');
+  if (reader && 'ResizeObserver' in window) {
+    new ResizeObserver(() => root.style.setProperty('--project-index-height', Math.ceil(reader.getBoundingClientRect().height) + 'px')).observe(reader);
+  }
   const entries = [...(reader?.querySelectorAll('a[href^="#"]') || [])].map(link => ({
     link, card: document.getElementById(link.hash.slice(1))
   })).filter(entry => entry.card);
@@ -85,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let current = 0;
     bounds.forEach((rect, i) => {
       if (rect.top > line + 1) return;
-      // The final two projects share a desktop row. A direct link chooses either one.
+      // Compact projects share desktop rows. A direct link chooses either one.
       if (rect.top > bounds[current].top + 2 || entries[i].link.hash === location.hash) current = i;
     });
     entries.forEach(({ link, card }, i) => {

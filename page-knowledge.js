@@ -17,6 +17,7 @@
   const clean = value => String(value || '').replace(/\s+/g, ' ').trim();
   const normalize = value => clean(value).normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/[’']/g, '').replace(/[^\p{L}\p{N}+#]+/gu, ' ').trim();
   const words = value => normalize(value).split(' ').filter(Boolean);
+  const spokenName = value => normalize(clean(value).replace(/([a-z\d])([A-Z])/g, '$1 $2'));
   const stop = new Set(words('a an the to on at of from in and or for with about by as this that these those me my you your yours he his she her they their them it its is are was were be been being do does did has have had can could would should will i we what who which why how where when tell give show please describe explain learn know there here more details detail any all list overview summary summarize summarise page site website portfolio mentioned listed using use uses built building build made make making developed work works used someone something another also exactly briefly brief information some').concat(['s']));
   const scopes = {
     projects: /\b(projects?|selected work|case studies|portfolio pieces)\b/,
@@ -187,15 +188,15 @@
     for (const link of [...links, ...(item.anchor ? [{ label: item.node.id || item.headingId ? item.title : (item.section || item).title, href: item.anchor }] : [])]) {
       if (!sources.some(other => other.href === link.href)) sources.push({ label: link.label, href: link.href });
     }
-    return { matched: true, text: brief(text), sources: sources.slice(0, 7), context: { sectionId: item.sectionId, topic: item.key, ...context } };
+    return { matched: true, text: brief(text), sources: sources.slice(0, 10), context: { sectionId: item.sectionId, topic: item.key, ...context } };
   }
   const childrenOf = (records, section) => records.filter(item => item.section === section);
   const recordFor = (records, context) => context && records.find(item => item.sectionId === context.sectionId && item.key === context.topic);
   const summaryFor = item => item.facts.find(line => line.length > 45 && !/^(?:status|project outcome):/i.test(line)) || item.facts[0] || item.title;
   const linkTo = item => item.anchor && ({ label: item.title, href: item.anchor });
-  const demoLinks = item => item.links.filter(link => /demo|live|preview|console|playground|dashboard/i.test(link.label));
+  const demoLinks = item => item.links.filter(link => /demo|live|preview|console|playground|dashboard|\b(?:app|walkthrough|film)\b/i.test(link.label));
   const sourceLinks = item => item.links.filter(link => /\b(?:source|repo|repository)\b/i.test(link.label) ||
-    /^https?:\/\/(?:www\.)?(?:github|gitlab)\.com\/[^/?#]+\/[^/?#]+/i.test(link.href));
+    (!/\b(?:watch|video|film)\b/i.test(link.label) && /^https?:\/\/(?:www\.)?(?:github|gitlab)\.com\/[^/?#]+\/[^/?#]+/i.test(link.href)));
   const asksMore = q => /^(?:and )?(?:(?:tell|show|give) me (?:more|another detail)|(?:a little |a bit )?more(?: details?)?|another detail|what else(?: can you (?:tell|show) me)?|anything else|go on|continue)(?: (?:please|about (?:it|that|this)|on (?:it|that|this)))?$/.test(q);
   const cursorFor = context => Number.isSafeInteger(context?.nextDetail) && context.nextDetail > 0 ? context.nextDetail : 0;
   function detailChoices(records, item) {
@@ -362,7 +363,7 @@
     const named = items.filter(item => !requested || requested === 'skills' || !sectionFor(requested) || item.kind === requested).map(item => {
       const labels = words(item.title);
       const titleHits = describes(terms, item.title);
-      const exact = labels.length && (' ' + q + ' ').includes(' ' + labels.join(' ') + ' ');
+      const exact = labels.length && [labels.join(' '), spokenName(item.title)].some(title => (' ' + q + ' ').includes(' ' + title + ' '));
       const unique = titleHits.some(term => term.length >= 3 && items.filter(other => describes([term], other.title).length).length === 1);
       // A meaningful multiword title prefix must outrank a one-word tool name.
       const prefix = labels.length > 2 && titleHits.length >= 2 &&
@@ -412,7 +413,7 @@
         if (languageFacts.length) return reply(target, compactFacts(languageFacts));
       }
       const questionWords = new Set(words('support supports supported achieve achieved achievement achievements compatible compatibility current currently latest version versions today'));
-      const remaining = terms.filter(term => !describes([term], target.title).length && !questionWords.has(term));
+      const remaining = terms.filter(term => !describes([term], target.title + ' ' + spokenName(target.title)).length && !questionWords.has(term));
       if (/\b(compatible|compatibility)\b/.test(q)) {
         const limits = target.facts.filter(line => /\b(requires?|needs?|depends?|compatible|retired|unsupported)\b/i.test(line) &&
           (!remaining.length || describes(remaining, line).length >= Math.ceil(remaining.length / 2)));
