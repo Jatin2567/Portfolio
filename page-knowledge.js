@@ -225,23 +225,46 @@
   function pageOverview(records) {
     const sections = records.filter(item => !item.section);
     if (!sections.length) return { ...unknown(), text: 'There are no shared sections to summarize on this page.' };
-    const intro = sections.find(section => section.kind === 'about') || sections[0];
-    const introFacts = [...intro.facts, ...records.filter(item => item.section === intro).flatMap(item => item.facts)];
-    const lead = introFacts.find(line => line.length > 48) || introFacts[0];
+    // Describe what visitors can explore. The author's bio is a separate topic.
+    const content = sections.filter(section => section.kind !== 'about');
     const projects = sections.find(section => section.kind === 'projects');
-    const examples = projects && records.filter(item => item.section === projects).slice(0, 3).map(item => item.title);
+    const projectItems = projects ? childrenOf(records, projects) : [];
+    const primary = projects || content[0] || sections[0];
+    const links = (content.length ? content : sections).map(linkTo).filter(Boolean);
     const parts = [];
-    if (lead) parts.push(lead);
-    if (examples?.length) parts.push('Projects include ' + joinNames(examples) + '.');
-    const remaining = sections.filter(section => !(section === intro && lead) && !(section === projects && examples?.length));
-    if (remaining.length) parts.push('This page covers ' + joinNames(remaining.map(section => section.title).slice(0, 5)) + '.');
-    const links = [intro, projects, ...remaining].filter(section => section?.anchor)
-      .map(section => ({ label: section.title, href: section.anchor }));
-    return reply(intro, parts.join(' '), links, { view: 'overview' });
+    if (projectItems.length) {
+      parts.push('This page showcases ' + projectItems.length + (projectItems.length === 1 ? ' project: ' : ' projects, including ') +
+        joinNames(projectItems.slice(0, 3).map(item => item.title)) + '.');
+    } else if (content.length) {
+      parts.push('This page covers ' + joinNames(content.map(section => section.title).slice(0, 5)) + '.');
+      // Unrelated hosts still get a useful public fact, rather than a portfolio script.
+      const topic = content.find(section => !section.kind);
+      if (topic) {
+        const lead = summaryFor(childrenOf(records, topic)[0] || topic);
+        if (lead && lead !== topic.title) parts.push(lead);
+      }
+    } else {
+      parts.push('This page includes an About section with background information.');
+    }
+    const actions = [];
+    if (sections.some(section => section.kind === 'experience')) actions.push('explore work experience');
+    if (sections.some(section => section.kind === 'skills')) actions.push('browse skills and tools');
+    if (sections.some(section => section.kind === 'contact')) actions.push('find contact details');
+    const hasDemos = projectItems.some(item => demoLinks(item).length);
+    const hasSource = projectItems.some(item => sourceLinks(item).length);
+    if (hasDemos || hasSource) actions.push('open ' + (hasDemos && hasSource ? 'project demos and source links' : hasDemos ? 'project demos' : 'project source links'));
+    const resume = records.flatMap(item => item.links).find(link => /\b(resume|cv)\b/.test(normalize(link.label + ' ' + link.href)));
+    if (resume) {
+      actions.push('download the résumé');
+      links.push(resume);
+    }
+    if (actions.length) parts.push('You can ' + joinNames(actions) + '.');
+    return reply(primary, parts.join(' '), links, { view: 'overview' });
   }
   function asksForPageOverview(question) {
     const request = question.replace(/^(?:please |(?:can|could|would) you (?:please )?)/, '').replace(/ please$/, '');
     return /^(?:(?:give|show) me |provide )?(?:a |an |the )?(?:quick |brief )?(?:overview|summary)(?: of (?:this |the )?(?:page|site|website|portfolio|portal))?$/.test(request) ||
+      /^(?:tell me about|describe|explain|show me around) (?:this|the) (?:page|site|website|portfolio|portal)$/.test(request) ||
       /^(?:summari[sz]e (?:this|the) (?:page|site|website|portfolio|portal)|what(?:s| is) (?:on )?(?:this |the )?(?:page|site|website|portfolio|portal)(?: about)?|what can (?:i|you) (?:ask(?: about)?|answer|help(?: me)?(?: with)?))$/.test(request);
   }
   function askPage(records, prompt, previous) {
@@ -256,6 +279,10 @@
     if (asksForPageOverview(q)) return pageOverview(records);
     if (!q || !records.length) return unknown();
     const sections = records.filter(rec => !rec.section);
+    if (/^(?:who are you|introduce yourself|tell me about (?:yourself|you))$/.test(q)) {
+      return reply(sections[0], 'I’m this page’s guide. I can explain the content shared on this page and help you find the relevant sections and links.',
+        sections.map(linkTo).filter(Boolean), { view: 'overview' });
+    }
     const sectionFor = kind => sections.find(rec => rec.kind === kind);
     const children = section => childrenOf(records, section);
     const overview = section => {
@@ -434,7 +461,7 @@
       return reply(target, answer);
     }
     if (intro && (q === normalize(intro.title) ||
-      /^(?:who are you|who is (?:the author|behind (?:this|the) (?:portfolio|site|page))|introduce yourself|tell me about (?:yourself|the author|you|him|her))$/.test(q))) {
+      /^(?:who is (?:the author|behind (?:this|the) (?:portfolio|site|page))|tell me about (?:the author|him|her))$/.test(q))) {
       return reply(intro, summaryFor(intro));
     }
     const area = sectionFor(requested);

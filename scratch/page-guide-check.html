@@ -135,6 +135,24 @@
         };
       }
       const index = roots => window.PageKnowledge.create({ roots, exclude: exclusion });
+      function portfolioFixture() {
+        const host = document.createElement('div');
+        host.innerHTML = `
+          <section id="fixture-about" data-guide-source="About">
+            <h1>A considered approach.</h1>
+            <p>I build quiet little tools and study furniture design.</p>
+          </section>
+          <section id="fixture-projects" data-guide-source="Projects">
+            <h2>Selected work</h2>
+            <article id="fixture-atlas"><h3>Atlas Notes</h3><p>A notebook that groups research by topic.</p><a href="https://example.org/atlas">Open demo</a></article>
+            <article id="fixture-beacon"><h3>Beacon Calls</h3><p>A call dashboard with translated captions.</p><a href="https://example.org/beacon">View source</a></article>
+          </section>
+          <section id="fixture-experience" data-guide-source="Experience"><h2>Experience</h2><p>Work experience includes a browser extension internship.</p></section>
+          <section id="fixture-skills" data-guide-source="Skills"><h2>Skills</h2><p>Skills include JavaScript and accessible web layouts.</p></section>
+          <footer id="fixture-contact" data-guide-source="Contact"><h2>Contact</h2><p>Find contact details and a résumé here.</p><a href="assets/fixture-resume.pdf?v=2" download>Download résumé</a></footer>`;
+        document.body.append(host);
+        return { host, roots: Array.from(host.querySelectorAll('[data-guide-source]')) };
+      }
       const currentGrants = () => Array.from(document.querySelectorAll('[data-guide-source]'));
       const pause = () => new Promise(resolve => setTimeout(resolve, 20));
       async function waitFor(predicate, message) {
@@ -197,11 +215,61 @@
           document.body.append(about);
           try {
             const reader = index([about]);
-            for (const result of [reader.overview(), reader.ask('Who is behind this portfolio?')]) {
-              assert(result.matched && result.text.startsWith('I repair wooden furniture'), 'The guide must use the introduction without inventing an author.');
-              assert(result.sources.some(source => source.href === '#editorial-intro'), 'The guide should cite the About section.');
-            }
+            const overview = reader.overview();
+            assert(overview.matched && /page|section/i.test(overview.text), 'The overview should describe the shared page.');
+            assert(!overview.text.includes('I repair wooden furniture'), 'The page overview repeated the author’s introduction.');
+            assert(overview.sources.some(source => source.href === '#editorial-intro'), 'The overview should cite the shared About section.');
+            const author = reader.ask('Who is behind this portfolio?');
+            assert(author.matched && author.text.includes('I repair wooden furniture'), 'An explicit author question should still use the stated introduction.');
+            assert(author.sources.some(source => source.href === '#editorial-intro'), 'The author answer should cite About.');
+            assert(!/author(?:’s|s)? name is from the workshop|from the workshop is (?:the author|a person)/i.test(author.text), 'An editorial heading was invented as the author’s name.');
           } finally { about.remove(); }
+        });
+
+        await check('A portfolio overview describes its projects, sections and available résumé', () => {
+          const { host, roots } = portfolioFixture();
+          try {
+            const reader = index(roots);
+            const results = [reader.overview(), ...[
+              'Give me an overview', 'Tell me about this page', 'What is this website about?'
+            ].map(question => reader.ask(question))];
+            for (const result of results) {
+              assert(result.matched && result.context?.view === 'overview', 'A page-level question was not routed to the page overview.');
+              assert(/(?:2|two) projects/i.test(result.text) && /Atlas Notes/.test(result.text) && /Beacon Calls/.test(result.text), 'The overview omitted the actual project count or names.');
+              assert(/experience/i.test(result.text) && /skills/i.test(result.text) && /contact/i.test(result.text), 'The overview omitted the other shared page sections.');
+              assert(/r[eé]sum[eé]|\bcv\b/i.test(result.text), 'The available résumé was not described.');
+              assert(result.sources.some(source => /assets\/fixture-resume\.pdf\?v=2$/.test(source.href)), 'The overview did not cite the actual résumé link.');
+              assert(!/I build quiet little tools|study furniture design/i.test(result.text), 'The page overview repeated the personal introduction.');
+              assert(noSecrets(result), 'The portfolio overview leaked surrounding fixture content.');
+            }
+          } finally { host.remove(); }
+        });
+
+        await check('Guide identity questions do not impersonate the portfolio author', () => {
+          const { host, roots } = portfolioFixture();
+          try {
+            const reader = index(roots);
+            for (const question of ['Who are you?', 'Introduce yourself']) {
+              const result = reader.ask(question);
+              assert(result.matched && /guide|assistant/i.test(result.text), 'The chatbot did not identify its page-guide role.');
+              assert(/page|section|content/i.test(result.text), 'The guide did not explain its page-content scope.');
+              assert(!/I build quiet little tools|study furniture design/i.test(result.text), 'The guide presented the author’s biography as its own.');
+              assert(noSecrets(result), 'The guide identity response leaked surrounding content.');
+            }
+          } finally { host.remove(); }
+        });
+
+        await check('A restricted overview does not promise ungranted projects or résumé access', () => {
+          const { host, roots } = portfolioFixture();
+          try {
+            const reader = index([roots[0]]);
+            for (const result of [reader.overview(), reader.ask('Tell me about this page')]) {
+              assert(result.matched && /page|section/i.test(result.text), 'The granted About section has no page overview.');
+              assert(!/Atlas Notes|Beacon Calls|projects|r[eé]sum[eé]|\bcv\b|experience|skills|contact/i.test(result.text), 'The overview advertised content outside its grants.');
+              assert(result.sources.length > 0 && result.sources.every(source => source.href === '#fixture-about'), 'The restricted overview cited an ungranted section or file.');
+              assert(!/I build quiet little tools|study furniture design/i.test(result.text), 'The restricted overview fell back to the author’s introduction.');
+            }
+          } finally { host.remove(); }
         });
 
         await check('A polite spoken-transcription summary uses public evidence', () => {
